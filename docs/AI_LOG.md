@@ -10,3 +10,25 @@ Qué se usó / modificó / descartó: Se usó la estructura de carpetas, los con
 Archivos y commit: src/theme/colors.js (hash: 01b77f1091775c34064032ac69183e7410e1ca88)
 Verificación: Importar colors en App.js y comprobar en Expo Go que el fondo y el color primario se ven correctos
 Aprendizaje: Las librerías con código nativo propio no corren en Expo Go, separar el trabajo por dueño de archivo evita conflictos en Git
+
+### Entrada #A-2
+Fecha: 2026-10-26
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el sistema tipográfico de la app: fuentes y estilos de texto reutilizables
+Prompt: Ayúdame a organizar las fuentes y los estilos de texto de la aplicación para reutilizarlos en las diferentes pantallas, incluyendo títulos, textos normales y precios.
+Qué se usó / modificó / descartó: Se usó el archivo src/theme/typography.js completo. Nada descartado.
+Archivos y commit: src/theme/typography.js (hash: 8a9cbd421ed7abbe05635f09ec75b2b9bb60fdc0)
+Verificación: Cargar fontAssets con useFonts en App.js y renderizar un Text con typography.title y typography.money en Expo Go
+Aprendizaje: Las fuentes de Google se importan como paquetes y deben cargarse con useFonts antes de renderizar.
+
+### Entrada #A-3
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Definir la escala de espacios, radios y sombras de la app
+Prompt: ayudame a definir la escala de espacios, radios y sombras de la app
+Qué se usó / modificó / descartó: Se usaron algunos estilos y sombras que claude propuso, nada descartado.
+Archivos y commit: src/theme/spacing.js (hash: {{HASH:A-3}})
+Verificación: Importar spacing y shadows.glow en una vista de prueba y ver el halo lima
+Aprendizaje: Una escala fija de espacios evita números sueltos y mantiene el diseño consistente
