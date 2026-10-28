@@ -23,12 +23,23 @@ Verificación: Cargar fontAssets con useFonts en App.js y renderizar un Text con
 Aprendizaje: Las fuentes de Google se importan como paquetes y deben cargarse con useFonts antes de renderizar.
 
 ### Entrada #A-3
-Fecha: 2026-10-27
+Fecha: 2026-10-28
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Definir la escala de espacios, radios y sombras de la app
 Prompt: ayudame a definir la escala de espacios, radios y sombras de la app
 Qué se usó / modificó / descartó: Se usaron algunos estilos y sombras que claude propuso, nada descartado.
-Archivos y commit: src/theme/spacing.js (hash: {{HASH:A-3}})
+Archivos y commit: src/theme/spacing.js (hash: c925c16ca79aeb218c607eba308e34ffe7fb2b84)
 Verificación: Importar spacing y shadows.glow en una vista de prueba y ver el halo lima
 Aprendizaje: Una escala fija de espacios evita números sueltos y mantiene el diseño consistente
+
+### Entrada #A-4
+Fecha: 2026-10-28
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el estilo de mapa oscuro a juego con la paleta
+Prompt: ayudame a crear el estilo de mapa oscuro 
+Qué se usó / modificó / descartó: Se utilizaron los elementos que aportaban al desarrollo de la actividad y se modificaron algunas partes para mejorar el resultado. También se descartaron los elementos que no eran necesarios o que no cumplían con lo que se buscaba. 
+Archivos y commit: src/theme/mapStyle.js (hash: {{HASH:A-4}})
+Verificación: Pasar darkMapStyle a un MapView en Android y comprobar que el mapa se ve oscuro
+Aprendizaje: El estilo de Google Maps es un JSON.
