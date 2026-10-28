@@ -51,6 +51,17 @@ Herramienta: Claude
 Objetivo: Dejar todas las tarifas y la comisión en un único archivo configurable
 Prompt: ayudame a dejar todas las tarifas y la comisión en un único archivo configurable
 Qué se usó / modificó / descartó: Se incluyeron todas las tarifas y la comisión del 20% tomando como referencia los valores del enunciado. No fue necesario descartar nada.
-Archivos y commit: src/config/pricing.js (hash: {{HASH:A-5}})
+Archivos y commit: src/config/pricing.js (hash: 3d4450787bc6dd13e738ebfc8096f9290246c114)
 Verificación: Revisar que los valores coinciden con la tabla de la sección 5 del enunciado
 Aprendizaje: Centralizar la configuración permite cambiar una tarifa sin tocar la lógica
+
+### Entrada #A-6
+Fecha: 2026-10-28
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Leer las variables EXPO_PUBLIC_* en un solo lugar y fijar constantes como los 15 segundos
+Prompt: ayudame a leer las variables EXPO_PUBLIC_* en un solo lugar y fijar constantes 
+Qué se usó / modificó / descartó: Se centralizó la lectura de las variables de entorno EXPO_PUBLIC_* y se definieron las constantes necesarias, incluyendo los 15 segundos. No se descartó nada.
+Archivos y commit: src/config/env.js (hash: {{HASH:A-6}})
+Verificación: Imprimir ENV.USE_MOCKS con y sin la variable en el .env
+Aprendizaje: Expo solo expone al código las variables que empiezan por EXPO_PUBLIC_
