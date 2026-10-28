@@ -40,6 +40,17 @@ Herramienta: Claude
 Objetivo: Crear el estilo de mapa oscuro a juego con la paleta
 Prompt: ayudame a crear el estilo de mapa oscuro 
 Qué se usó / modificó / descartó: Se utilizaron los elementos que aportaban al desarrollo de la actividad y se modificaron algunas partes para mejorar el resultado. También se descartaron los elementos que no eran necesarios o que no cumplían con lo que se buscaba. 
-Archivos y commit: src/theme/mapStyle.js (hash: {{HASH:A-4}})
+Archivos y commit: src/theme/mapStyle.js (hash: 21b8daae08e0e9b46567da3234fd8db6eae5a67c)
 Verificación: Pasar darkMapStyle a un MapView en Android y comprobar que el mapa se ve oscuro
 Aprendizaje: El estilo de Google Maps es un JSON.
+
+### Entrada #A-5
+Fecha: 2026-10-28
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Dejar todas las tarifas y la comisión en un único archivo configurable
+Prompt: ayudame a dejar todas las tarifas y la comisión en un único archivo configurable
+Qué se usó / modificó / descartó: Se incluyeron todas las tarifas y la comisión del 20% tomando como referencia los valores del enunciado. No fue necesario descartar nada.
+Archivos y commit: src/config/pricing.js (hash: {{HASH:A-5}})
+Verificación: Revisar que los valores coinciden con la tabla de la sección 5 del enunciado
+Aprendizaje: Centralizar la configuración permite cambiar una tarifa sin tocar la lógica
