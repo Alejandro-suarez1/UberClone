@@ -62,6 +62,17 @@ Herramienta: Claude
 Objetivo: Leer las variables EXPO_PUBLIC_* en un solo lugar y fijar constantes como los 15 segundos
 Prompt: ayudame a leer las variables EXPO_PUBLIC_* en un solo lugar y fijar constantes 
 Qué se usó / modificó / descartó: Se centralizó la lectura de las variables de entorno EXPO_PUBLIC_* y se definieron las constantes necesarias, incluyendo los 15 segundos. No se descartó nada.
-Archivos y commit: src/config/env.js (hash: {{HASH:A-6}})
+Archivos y commit: src/config/env.js (hash: 2f97014d2fe01b3b14509132d2e808ef3cc05ce9)
 Verificación: Imprimir ENV.USE_MOCKS con y sin la variable en el .env
 Aprendizaje: Expo solo expone al código las variables que empiezan por EXPO_PUBLIC_
+
+### Entrada #A-7
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Tener las listas de opciones de los selectores y el nombre de la app
+Prompt: Ayúdame a definir un nombre adecuado para la aplicación y a crear las listas de opciones que se utilizarán en los selectores del sistema
+Qué se usó / modificó / descartó: Se tomó como base la propuesta generada por Claude para organizar las opciones de los selectores en el archivo src/config/options.js. Se revisó la estructura del código y se ajustó según las necesidades del proyecto, verificando la correspondencia entre los valores y sus traducciones en status. Se descartaron las opciones que no eran necesarias para la implementación. Se uso el nombre sugerido por Claude para la app
+Archivos y commit: src/config/options.js (hash: {{HASH:A-7}})
+Verificación: Revisar que cada valor tenga su traducción en status.
+Aprendizaje: Separar valores de etiquetas facilita traducir los selectores
