@@ -67,12 +67,23 @@ Verificación: Imprimir ENV.USE_MOCKS con y sin la variable en el .env
 Aprendizaje: Expo solo expone al código las variables que empiezan por EXPO_PUBLIC_
 
 ### Entrada #A-7
-Fecha: 2026-10-27
+Fecha: 2026-10-29
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Tener las listas de opciones de los selectores y el nombre de la app
 Prompt: Ayúdame a definir un nombre adecuado para la aplicación y a crear las listas de opciones que se utilizarán en los selectores del sistema
 Qué se usó / modificó / descartó: Se tomó como base la propuesta generada por Claude para organizar las opciones de los selectores en el archivo src/config/options.js. Se revisó la estructura del código y se ajustó según las necesidades del proyecto, verificando la correspondencia entre los valores y sus traducciones en status. Se descartaron las opciones que no eran necesarias para la implementación. Se uso el nombre sugerido por Claude para la app
-Archivos y commit: src/config/options.js (hash: {{HASH:A-7}})
+Archivos y commit: src/config/options.js (hash: 936972506e8fbb5bbf08104de413176fac899946)
 Verificación: Revisar que cada valor tenga su traducción en status.
 Aprendizaje: Separar valores de etiquetas facilita traducir los selectores
+
+### Entrada #A-8
+Fecha: 2026-10-29
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la función única que calcula tarifa, comisión y ganancia neta
+Prompt: Ayúdame a implementar una función en JavaScript que permita calcular la tarifa total del viaje, la comisión correspondiente y la ganancia neta, teniendo en cuenta la distancia recorrida, el tiempo del viaje y la categoría del servicio (Económico o XL). Organiza la lógica de manera clara y reutilizable, evitando duplicar cálculos en diferentes partes de la aplicación. Explícame cómo funciona y qué casos debo probar para verificar que los resultados sean correctos
+Qué se usó / modificó / descartó: Se tomó como base la solución propuesta por Claude para centralizar los cálculos de tarifas, comisiones y ganancias netas. Se revisó la lógica implementada y se validaron los resultados con los valores del ejemplo del enunciado. Se descartaron alternativas que implicaran duplicar los cálculos en distintas partes del sistema.
+Archivos y commit: src/utils/calculateFare.js (hash: {{HASH:A-8}})
+Verificación: Con 8,5 km y 22 min: Económico da 19.200 / 3.840 / 15.360 y XL da 26.900 / 5.380 / 21.520
+Aprendizaje: Una función pura con una sola fuente de verdad evita diferencias entre la estimación y el cierre del viaje
