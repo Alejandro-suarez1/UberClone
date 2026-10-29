@@ -84,6 +84,17 @@ Herramienta: Claude
 Objetivo: Crear la función única que calcula tarifa, comisión y ganancia neta
 Prompt: Ayúdame a implementar una función en JavaScript que permita calcular la tarifa total del viaje, la comisión correspondiente y la ganancia neta, teniendo en cuenta la distancia recorrida, el tiempo del viaje y la categoría del servicio (Económico o XL). Organiza la lógica de manera clara y reutilizable, evitando duplicar cálculos en diferentes partes de la aplicación. Explícame cómo funciona y qué casos debo probar para verificar que los resultados sean correctos
 Qué se usó / modificó / descartó: Se tomó como base la solución propuesta por Claude para centralizar los cálculos de tarifas, comisiones y ganancias netas. Se revisó la lógica implementada y se validaron los resultados con los valores del ejemplo del enunciado. Se descartaron alternativas que implicaran duplicar los cálculos en distintas partes del sistema.
-Archivos y commit: src/utils/calculateFare.js (hash: {{HASH:A-8}})
+Archivos y commit: src/utils/calculateFare.js (hash: 58a21e5942ff0bc674be8e3a653dd7afd5669616)
 Verificación: Con 8,5 km y 22 min: Económico da 19.200 / 3.840 / 15.360 y XL da 26.900 / 5.380 / 21.520
 Aprendizaje: Una función pura con una sola fuente de verdad evita diferencias entre la estimación y el cierre del viaje
+
+### Entrada #A-9
+Fecha: 2026-10-29
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Dar formato a pesos y fechas 
+Prompt: Ayúdame a implementar funciones para dar formato a los valores monetarios en pesos colombianos y para procesar fechas en formato ISO. La función formatCOP debe mostrar los valores con el símbolo $ y utilizar puntos como separadores de miles. Por otra parte, parseISODate debe validar correctamente las fechas recibidas y rechazar fechas inexistentes, como el 30 de febrero. Evita depender de Intl, ya que el entorno de ejecución puede no contar con soporte completo para esta funcionalidad. Y por ultimo explicame como funciona y como lo podría adaptar
+Qué se usó / modificó / descartó: Se tomó como referencia la solución propuesta por Claude para implementar el formato de moneda y la validación de fechas. Se descartó el uso de Intl para evitar problemas de compatibilidad con el entorno de ejecución.
+Archivos y commit: src/utils/format.js (hash: {{HASH:A-9}})
+Verificación: formatCOP(26900) devuelve $26.900 y parseISODate rechaza el 30 de febrero
+Aprendizaje: Hermes no siempre trae Intl completo, por eso conviene formatear a mano
