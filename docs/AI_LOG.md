@@ -33,6 +33,17 @@ Herramienta: Claude
 Objetivo: Crear el servicio de solicitudes, estados, cierre del viaje e historial
 Prompt: Ayudame a crear el servicio de solicitudes, estados, cierre del viaje e historial
 Qué se usó / modificó / descartó: Se usó la propuesta generada por Claude, sin necesidad de realizar cambios ni descartar contenido. La solución permite finalizar el viaje, calcular el costo del servicio y guardar la información necesaria para consultar el historial de viajes
-Archivos y commit: src/services/tripService.js hash:
+Archivos y commit: src/services/tripService.js hash: 066fdcd9c34cb6f9e9e0cf09da6dcf034a3d0818
 Verificación: Crear una solicitud en Firestore y comprobar que subscribeToRequests la recibe; pedir dos páginas del historial
 Aprendizaje: Aprendí que Firestore puede requerir índices compuestos para ejecutar determinadas consultas y que la consola facilita su creación mediante un enlace
+
+### Entrada #B-3
+Fecha: 2026-10-29
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el servicio encargado de solicitar permisos de ubicación, obtener la ubicación actual del conductor y realizar un seguimiento continuo de sus coordenadas
+Prompt: Me puedes guiar de tal manera que pueda crear el archivo para solicitar los permisos de ubicación del conductor, obtener su ubicación actual y permitir el seguimiento de sus movimientos en tiempo real
+Qué se usó / modificó / descartó: Se usó Expo Location para solicitar permisos y rastrear en tiempo real al conductor en primer plano. Se implementó stopWatchingPlace() para cancelar la suscripción y limpiar la memoria al salir de la pantalla o cambiar de estado, descartando el seguimiento en segundo plano
+Archivos y commit: src/services/locationService.js hash: 
+Verificación: Aceptar y negar el permiso y ver el resultado; mover el teléfono y ver nuevas posiciones
+Aprendizaje: Comprendí cómo gestionar el ciclo completo de localización en primer plano, desde el control asíncrono de los permisos del usuario y la captura de coordenadas actuales, hasta el manejo correcto de flujos de datos continuos que deben ser cancelados para no saturar el dispositivo
