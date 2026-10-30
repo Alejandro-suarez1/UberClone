@@ -98,3 +98,14 @@ Qué se usó / modificó / descartó: Se tomó como referencia la solución prop
 Archivos y commit: src/utils/format.js (hash: {{HASH:A-9}})
 Verificación: formatCOP(26900) devuelve $26.900 y parseISODate rechaza el 30 de febrero
 Aprendizaje: Hermes no siempre trae Intl completo, por eso conviene formatear a mano
+
+### Entrada #A-10
+Fecha: 2026-10-30
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Calcular los rangos de fechas para Ganancias e Historial
+Prompt: ayudame a implementar las funciones para calcular los rangos de fechas de Ganancias e Historial (hoy, semana, mes, año y fechas personalizadas). Utiliza fechas locales para evitar errores de zona horaria, establece el lunes como inicio de semana y asegúrate de que el rango de hoy abarque las 24 horas del día
+Qué se usó / modificó / descartó: Se tomó como base el código generado por Claude. Se revisó y ajustó la lógica de los rangos de fechas para adaptarla al funcionamiento del proyecto. No se descartó ninguna función principal
+Archivos y commit: src/utils/dateRanges.js (hash: {{HASH:A-10}})
+Verificación: La semana empieza el lunes anterior y el rango de hoy dura 24 horas
+Aprendizaje: Trabajar con fechas locales evita errores de zona horaria en los totales
