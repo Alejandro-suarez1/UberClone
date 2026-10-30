@@ -95,7 +95,7 @@ Herramienta: Claude
 Objetivo: Dar formato a pesos y fechas 
 Prompt: Ayúdame a implementar funciones para dar formato a los valores monetarios en pesos colombianos y para procesar fechas en formato ISO. La función formatCOP debe mostrar los valores con el símbolo $ y utilizar puntos como separadores de miles. Por otra parte, parseISODate debe validar correctamente las fechas recibidas y rechazar fechas inexistentes, como el 30 de febrero. Evita depender de Intl, ya que el entorno de ejecución puede no contar con soporte completo para esta funcionalidad. Y por ultimo explicame como funciona y como lo podría adaptar
 Qué se usó / modificó / descartó: Se tomó como referencia la solución propuesta por Claude para implementar el formato de moneda y la validación de fechas. Se descartó el uso de Intl para evitar problemas de compatibilidad con el entorno de ejecución.
-Archivos y commit: src/utils/format.js (hash: {{HASH:A-9}})
+Archivos y commit: src/utils/format.js (hash: 0994c8259e4372d25aa1667ed62e7a7c92212fcb)
 Verificación: formatCOP(26900) devuelve $26.900 y parseISODate rechaza el 30 de febrero
 Aprendizaje: Hermes no siempre trae Intl completo, por eso conviene formatear a mano
 
@@ -106,6 +106,17 @@ Herramienta: Claude
 Objetivo: Calcular los rangos de fechas para Ganancias e Historial
 Prompt: ayudame a implementar las funciones para calcular los rangos de fechas de Ganancias e Historial (hoy, semana, mes, año y fechas personalizadas). Utiliza fechas locales para evitar errores de zona horaria, establece el lunes como inicio de semana y asegúrate de que el rango de hoy abarque las 24 horas del día
 Qué se usó / modificó / descartó: Se tomó como base el código generado por Claude. Se revisó y ajustó la lógica de los rangos de fechas para adaptarla al funcionamiento del proyecto. No se descartó ninguna función principal
-Archivos y commit: src/utils/dateRanges.js (hash: {{HASH:A-10}})
+Archivos y commit: src/utils/dateRanges.js (hash: d049e3fc14532de2c1e25cdeebdab9c9d38e94a4)
 Verificación: La semana empieza el lunes anterior y el rango de hoy dura 24 horas
 Aprendizaje: Trabajar con fechas locales evita errores de zona horaria en los totales
+
+### Entrada #A-11
+Fecha: 2026-10-30
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Escribir las validaciones de los campos del registro
+Prompt: ayudame a implementar las validaciones de los campos del formulario de registro. Incluye validaciones para la placa del vehículo, mayoría de edad, capacidad de pasajeros y fechas de vencimiento 
+Qué se usó / modificó / descartó: Se utilizó como base el código generado por Claude. Se revisaron las condiciones de validación y se ajustaron algunos criterios según los requisitos del registro. Se conservaron las claves de error para facilitar las traducciones. No se descartaron funciones principales
+Archivos y commit: src/utils/validators.js (hash: {{HASH:A-11}})
+Verificación: Probar placa ABC123, menor de 18, XL con 4 pasajeros y vencimientos de hoy y de mañana
+Aprendizaje: Devolver claves de error y no textos permite mostrar el mensaje en cualquier idioma
