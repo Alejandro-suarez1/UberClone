@@ -117,6 +117,17 @@ Herramienta: Claude
 Objetivo: Escribir las validaciones de los campos del registro
 Prompt: ayudame a implementar las validaciones de los campos del formulario de registro. Incluye validaciones para la placa del vehículo, mayoría de edad, capacidad de pasajeros y fechas de vencimiento 
 Qué se usó / modificó / descartó: Se utilizó como base el código generado por Claude. Se revisaron las condiciones de validación y se ajustaron algunos criterios según los requisitos del registro. Se conservaron las claves de error para facilitar las traducciones. No se descartaron funciones principales
-Archivos y commit: src/utils/validators.js (hash: {{HASH:A-11}})
+Archivos y commit: src/utils/validators.js (hash: 80402bd0ceab598943d016d9f67b4e05c9537e9a)
 Verificación: Probar placa ABC123, menor de 18, XL con 4 pasajeros y vencimientos de hoy y de mañana
 Aprendizaje: Devolver claves de error y no textos permite mostrar el mensaje en cualquier idioma
+
+### Entrada #A-12
+Fecha: 2026-10-30
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Reunir todos los textos en español
+Prompt: Ayudame a estructurar todos los textos en español
+Qué se usó / modificó / descartó: Se usó la estructura similar a la sugerida por claude cambiando los textos correspientes de la aplicación
+Archivos y commit: src/i18n/es.js (hash: {{HASH:A-12}})
+Verificación: Buscar en el código claves y comprobar que existen en el diccionario
+Aprendizaje: Tener todos los textos juntos hace fácil revisar y traducir
