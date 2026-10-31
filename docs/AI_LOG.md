@@ -131,3 +131,14 @@ Qué se usó / modificó / descartó: Se usó la estructura similar a la sugerid
 Archivos y commit: src/i18n/es.js (hash: {{HASH:A-12}})
 Verificación: Buscar en el código claves y comprobar que existen en el diccionario
 Aprendizaje: Tener todos los textos juntos hace fácil revisar y traducir
+
+### Entrada #A-13
+Fecha: 2026-10-30
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Traducir los textos al inglés
+Prompt: Ayudame a traducir estos textos
+Qué se usó / modificó / descartó: Se usaron las traducciones sugeridas, se descarto la estructura
+Archivos y commit: src/i18n/en.js (hash: {{HASH:A-13}})
+Verificación: Comparar que es.js y en.js tienen exactamente las mismas claves
+Aprendizaje: Si falta una clave en un idioma, la app muestra el texto en español como respaldo
