@@ -150,6 +150,17 @@ Herramienta: Claude
 Objetivo: Crear la función translate y unir los textos de A y de B
 Prompt: Ayúdame a implementar la función translate, integrando los diccionarios de español e inglés con sus respectivos espacios de nombres. La función debe reemplazar variables dinámicas y devolver la clave cuando no exista una traducción.
 Qué se usó / modificó / descartó: Se integraron es.js con trip.es.js y en.js con trip.en.js, manteniendo separados los espacios de nombres. Une es.js con trip.es.js y en.js con trip.en.js.
-Archivos y commit: src/i18n/index.js (hash: {{HASH:A-14}})
+Archivos y commit: src/i18n/index.js (hash: 1c8a30318060dea9d937139ec90367544f2c7901)
 Verificación: translate('es','auth.register.terms',{rate:20}) reemplaza {rate} y una clave inexistente devuelve la misma clave
 Aprendizaje: Unir diccionarios por espacios de nombres evita que dos personas editen el mismo archivo
+
+### Entrada #A-15
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Cambiar el idioma de toda la app y recordarlo
+Prompt: Ayúdame a implementar un contexto de idioma para que la aplicación pueda cambiar entre español e inglés y recordar la selección del usuario al cerrar y volver a abrir la app.
+Qué se usó / modificó / descartó: Se tomó como referencia la estructura propuesta por Claude para implementar el contexto de idioma. Se adaptó la solución al proyecto y se aprovechó la lógica sugerida para guardar y recuperar el idioma mediante AsyncStorage. No se descartaron partes importantes de la propuesta
+Archivos y commit: src/context/I18nContext.js (hash: {{HASH:A-15}})
+Verificación: Cambiar a inglés, cerrar y abrir la app: debe seguir en inglés
+Aprendizaje: El idioma es una preferencia, por eso puede ir en AsyncStorage
