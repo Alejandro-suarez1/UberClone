@@ -128,7 +128,7 @@ Herramienta: Claude
 Objetivo: Reunir todos los textos en español
 Prompt: Ayudame a estructurar todos los textos en español
 Qué se usó / modificó / descartó: Se usó la estructura similar a la sugerida por claude cambiando los textos correspientes de la aplicación
-Archivos y commit: src/i18n/es.js (hash: {{HASH:A-12}})
+Archivos y commit: src/i18n/es.js (hash: 9da3a67c2f5b44e02e1aefbb4b1ffac3e79a183f)
 Verificación: Buscar en el código claves y comprobar que existen en el diccionario
 Aprendizaje: Tener todos los textos juntos hace fácil revisar y traducir
 
@@ -139,6 +139,17 @@ Herramienta: Claude
 Objetivo: Traducir los textos al inglés
 Prompt: Ayudame a traducir estos textos
 Qué se usó / modificó / descartó: Se usaron las traducciones sugeridas, se descarto la estructura
-Archivos y commit: src/i18n/en.js (hash: {{HASH:A-13}})
+Archivos y commit: src/i18n/en.js (hash: 2a6ef18a774a5ee23756f9eac52442d640daa1b2)
 Verificación: Comparar que es.js y en.js tienen exactamente las mismas claves
 Aprendizaje: Si falta una clave en un idioma, la app muestra el texto en español como respaldo
+
+### Entrada #A-14
+Fecha: 2026-10-30
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la función translate y unir los textos de A y de B
+Prompt: Ayúdame a implementar la función translate, integrando los diccionarios de español e inglés con sus respectivos espacios de nombres. La función debe reemplazar variables dinámicas y devolver la clave cuando no exista una traducción.
+Qué se usó / modificó / descartó: Se integraron es.js con trip.es.js y en.js con trip.en.js, manteniendo separados los espacios de nombres. Une es.js con trip.es.js y en.js con trip.en.js.
+Archivos y commit: src/i18n/index.js (hash: {{HASH:A-14}})
+Verificación: translate('es','auth.register.terms',{rate:20}) reemplaza {rate} y una clave inexistente devuelve la misma clave
+Aprendizaje: Unir diccionarios por espacios de nombres evita que dos personas editen el mismo archivo
