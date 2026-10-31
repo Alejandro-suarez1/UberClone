@@ -155,12 +155,23 @@ Verificación: translate('es','auth.register.terms',{rate:20}) reemplaza {rate} 
 Aprendizaje: Unir diccionarios por espacios de nombres evita que dos personas editen el mismo archivo
 
 ### Entrada #A-15
-Fecha: 2026-10-27
+Fecha: 2026-10-30
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Cambiar el idioma de toda la app y recordarlo
 Prompt: Ayúdame a implementar un contexto de idioma para que la aplicación pueda cambiar entre español e inglés y recordar la selección del usuario al cerrar y volver a abrir la app.
 Qué se usó / modificó / descartó: Se tomó como referencia la estructura propuesta por Claude para implementar el contexto de idioma. Se adaptó la solución al proyecto y se aprovechó la lógica sugerida para guardar y recuperar el idioma mediante AsyncStorage. No se descartaron partes importantes de la propuesta
-Archivos y commit: src/context/I18nContext.js (hash: {{HASH:A-15}})
+Archivos y commit: src/context/I18nContext.js (hash: 2b886fa6ba1c25fd9dc92599b50290abc8a7a081)
 Verificación: Cambiar a inglés, cerrar y abrir la app: debe seguir en inglés
 Aprendizaje: El idioma es una preferencia, por eso puede ir en AsyncStorage
+
+### Entrada #A-16
+Fecha: 2026-10-30 
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la hoja inferior que usan los selectores, las fechas y la cámara
+Prompt: Ayúdame a crear un componente BottomSheet reutilizable que pueda utilizar en los selectores, fechas y cámara
+Qué se usó / modificó / descartó: Se aprovechó la estructura y la lógica de apertura y cierre, integrándolas en el proyecto para poder reutilizarlo en diferentes pantallas.
+Archivos y commit: src/components/common/BottomSheet.js (hash: {{HASH:A-16}})
+Verificación: Abrirla y cerrarla tocando fuera; el contenido respeta la zona segura
+Aprendizaje: Un componente base evita repetir el mismo modal en varias pantallas
