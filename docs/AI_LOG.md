@@ -44,6 +44,17 @@ Herramienta: Claude
 Objetivo: Crear el servicio encargado de solicitar permisos de ubicación, obtener la ubicación actual del conductor y realizar un seguimiento continuo de sus coordenadas
 Prompt: Me puedes guiar de tal manera que pueda crear el archivo para solicitar los permisos de ubicación del conductor, obtener su ubicación actual y permitir el seguimiento de sus movimientos en tiempo real
 Qué se usó / modificó / descartó: Se usó Expo Location para solicitar permisos y rastrear en tiempo real al conductor en primer plano. Se implementó stopWatchingPlace() para cancelar la suscripción y limpiar la memoria al salir de la pantalla o cambiar de estado, descartando el seguimiento en segundo plano
-Archivos y commit: src/services/locationService.js hash: 
+Archivos y commit: src/services/locationService.js hash: 6286ca84bc56e7d6295e3c49d5e899278827d614
 Verificación: Aceptar y negar el permiso y ver el resultado; mover el teléfono y ver nuevas posiciones
 Aprendizaje: Comprendí cómo gestionar el ciclo completo de localización en primer plano, desde el control asíncrono de los permisos del usuario y la captura de coordenadas actuales, hasta el manejo correcto de flujos de datos continuos que deben ser cancelados para no saturar el dispositivo
+
+### Entrada #B-4
+Fecha: 2026-11-1
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Obtener la ruta entre dos puntos y dibujarla
+Prompt: Necesito armar la ruta entre dos puntos en React Native usando Google Maps, la cual guarde los viajes buscados para no gastar el cupo gratis y dibuje una línea recta de respaldo si no hay internet o clave de la API
+Qué se usó / modificó / descartó: Se usó la estructura del fetch y la decodificación de la polilínea. Se modificó añadiendo un límite de 50 elementos al caché para no saturar la RAM y formateando los kilómetros a dos decimales, descartando el bloque de error vacío para meter un console.error que detecte fallas de red
+Archivos y commit: src/services/directionsService.js hash: 
+Verificación: Solicitar una ruta conocida para validar distancia y tiempo; remover la API key para forzar la línea recta de respaldo
+Aprendizaje: Aprendí que se debe solicitar la ruta únicamente por tramo y no por cada movimiento del vehículo, reduciendo drásticamente las consultas innecesarias para cuidar el cupo gratuito
