@@ -183,6 +183,17 @@ Herramienta: Claude
 Objetivo: como hacer el botón principal de una app con degradado lima y efecto al presionar
 Prompt: Como puedo mejorar el botón principal de una aplicación con un degradado en tonos lima y una animación suave al presionarlo. También quiero que pueda manejar diferentes estilos y estados, como cargando y deshabilitado
 Qué se usó / modificó / descartó: Se tomó como referencia la propuesta de Claude para implementar el diseño y las animaciones del botón. Se aprovechó la estructura sugerida y se integraron las variantes primary, secondary, danger y ghost, junto con los estados de carga y deshabilitado
-Archivos y commit: src/components/common/Button.js (hash: {{HASH:A-17}})
+Archivos y commit: src/components/common/Button.js (hash: 4aa4a1ef3d7fc24209d755e2ad083bef9366c2c2)
 Verificación: Probar los cuatro estilos, el estado cargando y el estado deshabilitado
 Aprendizaje: Animated.spring con useNativeDriver da un efecto suave sin gastar rendimiento
+
+### Entrada #A-18
+Fecha: 2026-10-31
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el campo de texto con etiqueta y error debajo (no en un Alert)
+Prompt: Ayúdame a crear un componente Input reutilizable que tenga una etiqueta y permita mostrar mensajes de error debajo del campo, cambiando el borde a rojo cuando el valor no sea válido. 
+Qué se usó / modificó / descartó: Se utilizó la orientación de Claude para definir la estructura del componente y manejar los estados de validación. Se integró la propuesta al proyecto, ajustando el campo para mostrar los errores directamente debajo del input, sin utilizar Alert
+Archivos y commit: src/components/common/Input.js (hash: {{HASH:A-18}})
+Verificación: Escribir un valor inválido: el borde se pone rojo y el mensaje sale debajo
+Aprendizaje: El error va en el campo para que el usuario sepa exactamente qué corregir
