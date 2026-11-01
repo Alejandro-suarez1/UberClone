@@ -49,12 +49,23 @@ Verificación: Aceptar y negar el permiso y ver el resultado; mover el teléfono
 Aprendizaje: Comprendí cómo gestionar el ciclo completo de localización en primer plano, desde el control asíncrono de los permisos del usuario y la captura de coordenadas actuales, hasta el manejo correcto de flujos de datos continuos que deben ser cancelados para no saturar el dispositivo
 
 ### Entrada #B-4
-Fecha: 2026-11-1
+Fecha: 2026-11-01
 Integrante: Juan Diego
 Herramienta: Claude
 Objetivo: Obtener la ruta entre dos puntos y dibujarla
 Prompt: Necesito armar la ruta entre dos puntos en React Native usando Google Maps, la cual guarde los viajes buscados para no gastar el cupo gratis y dibuje una línea recta de respaldo si no hay internet o clave de la API
 Qué se usó / modificó / descartó: Se usó la estructura del fetch y la decodificación de la polilínea. Se modificó añadiendo un límite de 50 elementos al caché para no saturar la RAM y formateando los kilómetros a dos decimales, descartando el bloque de error vacío para meter un console.error que detecte fallas de red
-Archivos y commit: src/services/directionsService.js hash: 
+Archivos y commit: src/services/directionsService.js hash: 7022623b0542b15424f0ce0b3e8a31bdb867b87c
 Verificación: Solicitar una ruta conocida para validar distancia y tiempo; remover la API key para forzar la línea recta de respaldo
 Aprendizaje: Aprendí que se debe solicitar la ruta únicamente por tramo y no por cada movimiento del vehículo, reduciendo drásticamente las consultas innecesarias para cuidar el cupo gratuito
+
+### Entrada #B-5
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar un servicio de integración con la pasarela de pagos en el cliente, delegando la lógica de negocio y las credenciales críticas en el backend, y controlando las redirecciones del flujo mediante URLs de retorno
+Prompt: Necesito crear un archivo de servicios para mandarle al backend el ID del viaje y el monto que se va a cobrar. El backend nos debe responder con un enlace para que el usuario pague. Agrega una seguridad por si se nos olvida configurar la URL del backend, evita que la app se cierre si la respuesta falla, y crea una función que detecte cuando el usuario termina de pagar para mandarlo de vuelta a la app
+Qué se usó / modificó / descartó: Se usó la estructura original del fetch y las funciones planteadas por Claude. Se modificó el código añadiendo una validación temprana para el monto y un control de seguridad en la función de las URLs para evitar fallos si los datos llegan vacíos. Se descartó procesar la solicitud si el monto no es un número válido mayor a cero
+Archivos y commit: src/services/paymentService.js hash: 
+Verificación: Con el backend corriendo, createPayment devuelve una URL de checkout
+Aprendizaje: Aprendí que por seguridad, las contraseñas y claves secretas de los pagos nunca deben guardarse en el teléfono del usuario. La aplicación móvil solo debe avisar cuánto se va a cobrar y el backend se encarga de hablar con la pasarela de pagos de forma segura
