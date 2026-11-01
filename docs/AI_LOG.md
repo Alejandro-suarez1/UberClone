@@ -144,7 +144,7 @@ Verificación: Comparar que es.js y en.js tienen exactamente las mismas claves
 Aprendizaje: Si falta una clave en un idioma, la app muestra el texto en español como respaldo
 
 ### Entrada #A-14
-Fecha: 2026-10-30
+Fecha: 2026-10-31
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Crear la función translate y unir los textos de A y de B
@@ -155,7 +155,7 @@ Verificación: translate('es','auth.register.terms',{rate:20}) reemplaza {rate} 
 Aprendizaje: Unir diccionarios por espacios de nombres evita que dos personas editen el mismo archivo
 
 ### Entrada #A-15
-Fecha: 2026-10-30
+Fecha: 2026-10-31
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Cambiar el idioma de toda la app y recordarlo
@@ -166,12 +166,23 @@ Verificación: Cambiar a inglés, cerrar y abrir la app: debe seguir en inglés
 Aprendizaje: El idioma es una preferencia, por eso puede ir en AsyncStorage
 
 ### Entrada #A-16
-Fecha: 2026-10-30 
+Fecha: 2026-10-31
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Crear la hoja inferior que usan los selectores, las fechas y la cámara
 Prompt: Ayúdame a crear un componente BottomSheet reutilizable que pueda utilizar en los selectores, fechas y cámara
 Qué se usó / modificó / descartó: Se aprovechó la estructura y la lógica de apertura y cierre, integrándolas en el proyecto para poder reutilizarlo en diferentes pantallas.
-Archivos y commit: src/components/common/BottomSheet.js (hash: {{HASH:A-16}})
+Archivos y commit: src/components/common/BottomSheet.js (hash: 92dd2af7959e0e1e73cc7c1713cda21a53070765)
 Verificación: Abrirla y cerrarla tocando fuera; el contenido respeta la zona segura
 Aprendizaje: Un componente base evita repetir el mismo modal en varias pantallas
+
+### Entrada #A-17
+Fecha: 2026-10-31
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: como hacer el botón principal de una app con degradado lima y efecto al presionar
+Prompt: Como puedo mejorar el botón principal de una aplicación con un degradado en tonos lima y una animación suave al presionarlo. También quiero que pueda manejar diferentes estilos y estados, como cargando y deshabilitado
+Qué se usó / modificó / descartó: Se tomó como referencia la propuesta de Claude para implementar el diseño y las animaciones del botón. Se aprovechó la estructura sugerida y se integraron las variantes primary, secondary, danger y ghost, junto con los estados de carga y deshabilitado
+Archivos y commit: src/components/common/Button.js (hash: {{HASH:A-17}})
+Verificación: Probar los cuatro estilos, el estado cargando y el estado deshabilitado
+Aprendizaje: Animated.spring con useNativeDriver da un efecto suave sin gastar rendimiento
