@@ -194,6 +194,17 @@ Herramienta: Claude
 Objetivo: Crear el campo de texto con etiqueta y error debajo (no en un Alert)
 Prompt: Ayúdame a crear un componente Input reutilizable que tenga una etiqueta y permita mostrar mensajes de error debajo del campo, cambiando el borde a rojo cuando el valor no sea válido. 
 Qué se usó / modificó / descartó: Se utilizó la orientación de Claude para definir la estructura del componente y manejar los estados de validación. Se integró la propuesta al proyecto, ajustando el campo para mostrar los errores directamente debajo del input, sin utilizar Alert
-Archivos y commit: src/components/common/Input.js (hash: {{HASH:A-18}})
+Archivos y commit: src/components/common/Input.js (hash: 57a1bb54ee9dcffb02ccf4afc31a49318fe186c5)
 Verificación: Escribir un valor inválido: el borde se pone rojo y el mensaje sale debajo
 Aprendizaje: El error va en el campo para que el usuario sepa exactamente qué corregir
+
+### Entrada #A-19
+Fecha: 2026-11-02
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la lista desplegable de los formularios
+Prompt: Me puedes ayudar a crear un selector de opciones para los formularios? Quiero que al abrirlo muestre las opciones disponibles, permita seleccionar una y muestre un check en la opción elegida
+Qué se usó / modificó / descartó: Se tomó como referencia el componente sugerido por Claude y se adaptó a la estructura de los formularios del proyecto. Se descartaron elementos adicionales que no eran necesarios
+Archivos y commit: src/components/common/Select.js (hash: {{HASH:A-19}})
+Verificación: Abrir, elegir una opción y ver el check; cerrar sin elegir
+Aprendizaje: La hoja inferior es más cómoda con el pulgar que el selector nativo
