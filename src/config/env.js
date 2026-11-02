@@ -1,0 +1,16 @@
+export const ENV = {
+  FIREBASE_API_KEY: process.env.EXPO_PUBLIC_FIREBASE_API_KEY || '',
+  FIREBASE_PROJECT_ID: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID || '',
+  GOOGLE_MAPS_KEY: process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY || '',
+  CLOUDINARY_CLOUD: process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD || '',
+  CLOUDINARY_PRESET: process.env.EXPO_PUBLIC_CLOUDINARY_PRESET || '',
+  BACKEND_URL: (process.env.EXPO_PUBLIC_BACKEND_URL || '').replace(/\/$/, ''),
+
+  USE_MOCKS: process.env.EXPO_PUBLIC_USE_MOCKS === 'true',
+};
+
+export const REQUEST_TIMEOUT_SECONDS = 15;
+
+export const LOCATION_INTERVAL_MS = 5000;
+
+export const HISTORY_PAGE_SIZE = 20;
