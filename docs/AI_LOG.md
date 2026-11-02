@@ -276,6 +276,17 @@ Herramienta: Claude
 Objetivo: Crear el hook personalizado useDriverLocation para enviar la ubicacion en tiempo real
 Prompt: Ayudame a crear un hook en React Native llamado useDriverLocation. Necesito que cuando el conductor este disponible, la app empiece a seguir su ubicacion y guarde los cambios en la base de datos. Si el conductor se apaga o cierra la pantalla, el rastreo se debe detener por completo para no gastar bateria
 Qué se usó / modificó / descartó: Se usó la base que generó Claude para controlar el encendido y apagado seguro del GPS, pero modifiqué el código añadiendo una validación propia para que solo guarde en la base de datos si el conductor realmente se movió de lugar. Descarté la idea original de la IA de enviar datos en cada instante, logrando así ahorrar batería y llamadas innecesarias al servidor si el vehículo está detenido. También agregué alertas en consola para ver los fallos al programar
-Archivos y commit: src/hooks/useDriverLocation.js hash:
+Archivos y commit: src/hooks/useDriverLocation.js hash: 06bd35877095e2c04b79e01870bcf11f44027ba5
 Verificación: Entrar a la app desde el emulador y encender el botón de "Disponible". Revisar la base de datos y ver cómo las coordenadas cambiaban solas. Al apagar el botón, el mapa debe dejar de enviar datos, confirmando que la limpieza funciona bien
 Aprendizaje: Aprendí que en React siempre hay que programar una función de limpieza cuando se trabaja con funciones que se quedan corriendo en segundo plano, porque de lo contrario la aplicación se vuelve lenta o sigue consumiendo batería sin necesidad
+
+### Entrada #B-8
+Fecha: 2026-11-02
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar la recepción de solicitudes de viaje en tiempo real y gestionar su rechazo automático por expiración del temporizador al transcurrir el límite establecido de 15 segundos
+Prompt: Ayudame a crear un hook en para escuchar solicitudes de viaje en tiempo real, permitiendo aceptarlas, rechazarlas manualmente o rechazarlas de forma automática si pasan 15 segundos sin respuesta
+Qué se usó / modificó / descartó: Se integró la lógica del hook para gestionar las solicitudes en tiempo real y el control del temporizador. No se descartó nada, pero se optimizó el manejo de excepciones en la función de rechazo incorporando un registro de advertencias en consola para un mejor control de errores de red, manteniendo intacta la estructura base y los nombres de las variables para asegurar la compatibilidad con el proyecto
+Archivos y commit: src/hooks/useTripRequests.js hash: 
+Verificación: Dejar pasar 15 segundos sin hacer nada para comprobar que el estado cambie automáticamente en Firestore, y probar el botón de aceptar para validar que el cambio se registre correctamente
+Aprendizaje: Controlar los temporizadores con funciones de limpieza es fundamental para evitar que los procesos se queden corriendo en segundo plano y causen errores de memoria
