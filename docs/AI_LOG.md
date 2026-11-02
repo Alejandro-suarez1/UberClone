@@ -264,7 +264,18 @@ Herramienta: Claude
 Objetivo: Estructurar e implementar el sistema de internacionalización en español e inglés para todo el flujo de pantallas del conductor Inicio, Solicitud, Viaje en curso y Cobro
 Prompt: Necesito que me ayudes a crear los archivos de traducción para la versión del conductor que maneje los textos en español e inglés de las pantallas de inicio, solicitud entrante, viaje en curso y resumen de cobro. Debe usar las mismas claves de traducción en ambos archivos para evitar textos faltantes al alternar el selector de idioma
 Qué se usó / modificó / descartó: Se usaron de forma íntegra las estructuras y claves mapeadas provistas por la IA. Se verificó la simetría exacta entre las claves en español e inglés para mitigar errores de renderizado de texto vacío en la interfaz al cambiar de idioma. No se descartó contenido
-Archivos y commit: src/i18n/trip.es.js, src/i18n/trip.en.js hash:
+Archivos y commit: src/i18n/trip.es.js, src/i18n/trip.en.js hash: c0230222dd9b737cf2cbf46fa04c43ef150cc532
 Verificación: Alternar el selector global de idioma del Drawer en el emulador de Expo Go y comprobar que los componentes dinámicos
 conmutaran sus textos de forma instantánea y correcta
 Aprendizaje: Aprendí que organizar las traducciones desde el principio con las mismas palabras clave en español y en inglés te ahorra el dolor de cabeza de que la aplicación se quede en blanco o con textos rotos cuando el usuario cambia de idioma
+
+### Entrada #B-7
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el hook personalizado useDriverLocation para enviar la ubicacion en tiempo real
+Prompt: Ayudame a crear un hook en React Native llamado useDriverLocation. Necesito que cuando el conductor este disponible, la app empiece a seguir su ubicacion y guarde los cambios en la base de datos. Si el conductor se apaga o cierra la pantalla, el rastreo se debe detener por completo para no gastar bateria
+Qué se usó / modificó / descartó: Se usó la base que generó Claude para controlar el encendido y apagado seguro del GPS, pero modifiqué el código añadiendo una validación propia para que solo guarde en la base de datos si el conductor realmente se movió de lugar. Descarté la idea original de la IA de enviar datos en cada instante, logrando así ahorrar batería y llamadas innecesarias al servidor si el vehículo está detenido. También agregué alertas en consola para ver los fallos al programar
+Archivos y commit: src/hooks/useDriverLocation.js hash:
+Verificación: Entrar a la app desde el emulador y encender el botón de "Disponible". Revisar la base de datos y ver cómo las coordenadas cambiaban solas. Al apagar el botón, el mapa debe dejar de enviar datos, confirmando que la limpieza funciona bien
+Aprendizaje: Aprendí que en React siempre hay que programar una función de limpieza cuando se trabaja con funciones que se quedan corriendo en segundo plano, porque de lo contrario la aplicación se vuelve lenta o sigue consumiendo batería sin necesidad
