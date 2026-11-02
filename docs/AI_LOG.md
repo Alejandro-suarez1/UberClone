@@ -256,3 +256,15 @@ Qué se usó / modificó / descartó: Se usó la estructura original del fetch y
 Archivos y commit: src/services/paymentService.js hash: 6f44aad59e8aec4f9aad9c2707dbecb92bfa93cc
 Verificación: Con el backend corriendo, createPayment devuelve una URL de checkout
 Aprendizaje: Aprendí que por seguridad, las contraseñas y claves secretas de los pagos nunca deben guardarse en el teléfono del usuario. La aplicación móvil solo debe avisar cuánto se va a cobrar y el backend se encarga de hablar con la pasarela de pagos de forma segura
+
+### Entrada #B-6
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Estructurar e implementar el sistema de internacionalización en español e inglés para todo el flujo de pantallas del conductor Inicio, Solicitud, Viaje en curso y Cobro
+Prompt: Necesito que me ayudes a crear los archivos de traducción para la versión del conductor que maneje los textos en español e inglés de las pantallas de inicio, solicitud entrante, viaje en curso y resumen de cobro. Debe usar las mismas claves de traducción en ambos archivos para evitar textos faltantes al alternar el selector de idioma
+Qué se usó / modificó / descartó: Se usaron de forma íntegra las estructuras y claves mapeadas provistas por la IA. Se verificó la simetría exacta entre las claves en español e inglés para mitigar errores de renderizado de texto vacío en la interfaz al cambiar de idioma. No se descartó contenido
+Archivos y commit: src/i18n/trip.es.js, src/i18n/trip.en.js hash:
+Verificación: Alternar el selector global de idioma del Drawer en el emulador de Expo Go y comprobar que los componentes dinámicos
+conmutaran sus textos de forma instantánea y correcta
+Aprendizaje: Aprendí que organizar las traducciones desde el principio con las mismas palabras clave en español y en inglés te ahorra el dolor de cabeza de que la aplicación se quede en blanco o con textos rotos cuando el usuario cambia de idioma
