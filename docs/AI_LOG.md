@@ -205,6 +205,17 @@ Herramienta: Claude
 Objetivo: Crear la lista desplegable de los formularios
 Prompt: Me puedes ayudar a crear un selector de opciones para los formularios? Quiero que al abrirlo muestre las opciones disponibles, permita seleccionar una y muestre un check en la opción elegida
 Qué se usó / modificó / descartó: Se tomó como referencia el componente sugerido por Claude y se adaptó a la estructura de los formularios del proyecto. Se descartaron elementos adicionales que no eran necesarios
-Archivos y commit: src/components/common/Select.js (hash: {{HASH:A-19}})
+Archivos y commit: src/components/common/Select.js (hash: 48d4d357eb4c89efd83c6e7d0c2873680633800e)
 Verificación: Abrir, elegir una opción y ver el check; cerrar sin elegir
 Aprendizaje: La hoja inferior es más cómoda con el pulgar que el selector nativo
+
+### Entrada #A-20
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el selector de fecha que funciona en Android e iOS
+Prompt: Me puedes ayudar a implementar un selector de fecha compatible con Android y iOS, teniendo en cuenta cómo funciona en cada sistema y cómo mostrar la fecha seleccionada?
+Qué se usó / modificó / descartó: Se tomó como guía el código de Claude para manejar ambos sistemas. Se utilizaron el diálogo nativo de Android y la hoja inferior con ruleta de iOS, sin necesitar funcionalidades adicionales.
+Archivos y commit: src/components/common/DateField.js (hash: {{HASH:A-20}})
+Verificación: Elegir una fecha en un dispositivo Android y en uno iOS (o simulador) y ver el valor en formato día/mes/año
+Aprendizaje: El selector de fecha se comporta distinto en cada sistema y hay que manejar los dos casos
