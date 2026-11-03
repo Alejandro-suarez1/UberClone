@@ -287,6 +287,17 @@ Herramienta: Claude
 Objetivo: Implementar la recepción de solicitudes de viaje en tiempo real y gestionar su rechazo automático por expiración del temporizador al transcurrir el límite establecido de 15 segundos
 Prompt: Ayudame a crear un hook en para escuchar solicitudes de viaje en tiempo real, permitiendo aceptarlas, rechazarlas manualmente o rechazarlas de forma automática si pasan 15 segundos sin respuesta
 Qué se usó / modificó / descartó: Se integró la lógica del hook para gestionar las solicitudes en tiempo real y el control del temporizador. No se descartó nada, pero se optimizó el manejo de excepciones en la función de rechazo incorporando un registro de advertencias en consola para un mejor control de errores de red, manteniendo intacta la estructura base y los nombres de las variables para asegurar la compatibilidad con el proyecto
-Archivos y commit: src/hooks/useTripRequests.js hash: 
+Archivos y commit: src/hooks/useTripRequests.js hash: cb71bd6d2a5bb08ade6ab1904ff04371436f2dd8
 Verificación: Dejar pasar 15 segundos sin hacer nada para comprobar que el estado cambie automáticamente en Firestore, y probar el botón de aceptar para validar que el cambio se registre correctamente
 Aprendizaje: Controlar los temporizadores con funciones de limpieza es fundamental para evitar que los procesos se queden corriendo en segundo plano y causen errores de memoria
+
+### Entrada #B-9
+Fecha: 2026-11-03
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Guardar el viaje activo y abrir la solicitud entrante cuando llega
+Prompt: Ayúdame a estructurar un context para administrar el viaje activo, gestionar la escucha de solicitudes, automatizar la navegación global y robustecer el control de errores en todas las funciones asíncronas
+Qué se usó / modificó / descartó: Se integró y ajustó el contexto para controlar el viaje en curso y la navegación automática al recibir una solicitudS. Se mejoró el manejo de errores en las funciones principales para evitar fallos de red inesperados y garantizar que la app responda correctamente si el pasajero cancela el viaje, todo ello sin alterar la estructura base del proyecto. No se descartó nada
+Archivos y commit: src/context/ActiveTripContext.js hash:
+Verificación: Simular la cancelación desde Firestore se valida que se muestra la alerta correspondiente y se redirige al inicio, y se verifica mediante pruebas en consola que los errores de red en las funciones asíncronas son capturados de forma limpia sin afectar la interfaz
+Aprendizaje: Un contexto global facilita la gestión de eventos en tiempo real y la navegación, mientras que el control de excepciones previene fallos silenciosos y mejora la estabilidad de la aplicación
