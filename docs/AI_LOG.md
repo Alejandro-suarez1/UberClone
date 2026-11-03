@@ -210,12 +210,23 @@ Verificación: Abrir, elegir una opción y ver el check; cerrar sin elegir
 Aprendizaje: La hoja inferior es más cómoda con el pulgar que el selector nativo
 
 ### Entrada #A-20
-Fecha: 2026-10-27
+Fecha: 2026-11-02
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Crear el selector de fecha que funciona en Android e iOS
 Prompt: Me puedes ayudar a implementar un selector de fecha compatible con Android y iOS, teniendo en cuenta cómo funciona en cada sistema y cómo mostrar la fecha seleccionada?
 Qué se usó / modificó / descartó: Se tomó como guía el código de Claude para manejar ambos sistemas. Se utilizaron el diálogo nativo de Android y la hoja inferior con ruleta de iOS, sin necesitar funcionalidades adicionales.
-Archivos y commit: src/components/common/DateField.js (hash: {{HASH:A-20}})
+Archivos y commit: src/components/common/DateField.js (hash: c70c6a21d40d14ed2d72c64551b812c5e25f87c3s)
 Verificación: Elegir una fecha en un dispositivo Android y en uno iOS (o simulador) y ver el valor en formato día/mes/año
 Aprendizaje: El selector de fecha se comporta distinto en cada sistema y hay que manejar los dos casos
+
+### Entrada #A-21
+Fecha: 2026-11-02
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el campo para tomar o elegir una foto
+Prompt: Me puedes orientar para crear un campo que permita tomar una foto con la cámara o seleccionar una de la galería? También necesito manejar los permisos y mostrar un mensaje si el usuario los rechaza
+Qué se usó / modificó / descartó: Se tomó como guía el código propuesto por Claude para permitir seleccionar fotos desde la galería o la cámara. Se aprovechó el manejo de permisos y los mensajes cuando el usuario no los autoriza.
+Archivos y commit: src/components/common/ImagePickerField.js (hash: {{HASH:A-21}})
+Verificación: Elegir una foto de galería y otra de cámara; negar el permiso y ver el mensaje
+Aprendizaje: Hay que pedir el permiso antes de abrir la cámara o la galería
