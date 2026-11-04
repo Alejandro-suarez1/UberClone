@@ -271,6 +271,17 @@ Herramienta: Claude
 Objetivo: Mostrar un mensaje cuando no hay datos en lugar de una lista en blanco
 Prompt: Me puedes guiar creando un componente que muestre un mensaje cuando una lista no tenga información? Quiero evitar que las pantallas queden en blanco cuando no hay resultados
 Qué se usó / modificó / descartó: Claude ayudo guiando para mostrar un mensaje cuando no hay datos. Se aprovechó su estructura para indicar al usuario que no se encontraron resultados
-Archivos y commit: src/components/common/EmptyState.js (hash: {{HASH:A-25}})
+Archivos y commit: src/components/common/EmptyState.js (hash: f22dcdfe305f12fbb1a6e524aa471c05caebfe00)
 Verificación: Filtrar el historial sin resultados y ver el mensaje
 Aprendizaje: El enunciado pide mostrar un mensaje vacío, no una pantalla en blanco
+
+### Entrada #A-26
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear los filtros horizontales para periodos, métodos de pago e idioma
+Prompt: Estoy implementando unos filtros en la aplicación. Cómo podría crear un componente horizontal que permita cambiar entre opciones para periodos, métodos de pago e idioma, mostrando cuál está seleccionada?
+Qué se usó / modificó / descartó: Se implementó la estructura de selección propuesta por Claude para mostrar las opciones horizontalmente. Se aprovechó el mismo componente para manejar los diferentes filtros sin tener que crear uno independiente para cada caso
+Archivos y commit: src/components/common/Chips.js (hash: {{HASH:A-26}})
+Verificación: Cambiar de opción y ver cuál queda activa
+Aprendizaje: Un componente de selección simple sirve para filtros, idioma y propinas
