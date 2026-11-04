@@ -260,6 +260,17 @@ Herramienta: Claude
 Objetivo: Crear la etiqueta con punto de color para estados
 Prompt: mw puedes ayudar a crear una etiqueta pequeña con un punto de color para identificar diferentes estados? Necesito manejar varios colores según el tipo de estado, especialmente para los pagos
 Qué se usó / modificó / descartó: Se tomó como guía el componente generado para mostrar etiquetas con diferentes colores. Se utilizó paymentTone para asignar el color correspondiente según el estado del pago y se conservaron los tonos propuestos
-Archivos y commit: src/components/common/Badge.js (hash: {{HASH:A-24}})
+Archivos y commit: src/components/common/Badge.js (hash: 14dee76b1fefd11efde95a87abb30960561ab17d)
 Verificación: Probar los tonos success, warning, danger, info y neutral
 Aprendizaje: Asociar el estado a un color ayuda a leer la información de un vistazo
+
+### Entrada #A-25
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar un mensaje cuando no hay datos en lugar de una lista en blanco
+Prompt: Me puedes guiar creando un componente que muestre un mensaje cuando una lista no tenga información? Quiero evitar que las pantallas queden en blanco cuando no hay resultados
+Qué se usó / modificó / descartó: Claude ayudo guiando para mostrar un mensaje cuando no hay datos. Se aprovechó su estructura para indicar al usuario que no se encontraron resultados
+Archivos y commit: src/components/common/EmptyState.js (hash: {{HASH:A-25}})
+Verificación: Filtrar el historial sin resultados y ver el mensaje
+Aprendizaje: El enunciado pide mostrar un mensaje vacío, no una pantalla en blanco
