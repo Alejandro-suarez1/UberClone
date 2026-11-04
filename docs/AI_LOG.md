@@ -238,6 +238,18 @@ Herramienta: Claude
 Objetivo: Crear la casilla para aceptar los términos
 Prompt: puedes ayudarme a crear una casilla para aceptar los términos y condiciones? Necesito que permita marcar y desmarcar, y que muestre un mensaje de error si el usuario intenta continuar sin aceptarlos
 Qué se usó / modificó / descartó: Se tomó como referencia el código de Claude para crear la casilla, incluyendo su estado marcado y desmarcado, la validación y el manejo de accesibilidad con accessibilityRole
-Archivos y commit: src/components/common/Checkbox.js (hash: cb3fedcf3a86c4a94f77b3c79b895e54d2fa5f3d)
+Archivos y commit: src/components/common/Checkbox.js (hash: b912d273f4f6c18eacb042e08e5da268aacdf560)
 Verificación: Marcar y desmarcar; sin marcar muestra el error en rojo
 Aprendizaje: Una casilla accesible usa accessibilityRole checkbox
+
+### Entrada #A-23
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tarjeta base con degradado sutil y opción de halo
+Prompt: Me puedes ayudar a crear un componente de tarjeta reutilizable con un degradado sutil y una opción de halo? Quiero poder utilizar ambos estilos según la necesidad de cada pantalla
+Qué se usó / modificó / descartó: Se aprovecharon sus estilos y la posibilidad de reutilizarlo en diferentes partes de la aplicación
+Archivos y commit: src/components/common/Card.js (hash: {{HASH:A-23}})
+Verificación: Mostrar una tarjeta normal y una glow en una pantalla de prueba
+Aprendizaje: Reutilizar una tarjeta mantiene el mismo estilo en toda la app
+
