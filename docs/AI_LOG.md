@@ -249,7 +249,17 @@ Herramienta: Claude
 Objetivo: Crear la tarjeta base con degradado sutil y opción de halo
 Prompt: Me puedes ayudar a crear un componente de tarjeta reutilizable con un degradado sutil y una opción de halo? Quiero poder utilizar ambos estilos según la necesidad de cada pantalla
 Qué se usó / modificó / descartó: Se aprovecharon sus estilos y la posibilidad de reutilizarlo en diferentes partes de la aplicación
-Archivos y commit: src/components/common/Card.js (hash: {{HASH:A-23}})
+Archivos y commit: src/components/common/Card.js (hash: 21376abdaf3a77b2044bb1ac2d170b7ea22b036f)
 Verificación: Mostrar una tarjeta normal y una glow en una pantalla de prueba
 Aprendizaje: Reutilizar una tarjeta mantiene el mismo estilo en toda la app
 
+### Entrada #A-24
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la etiqueta con punto de color para estados
+Prompt: mw puedes ayudar a crear una etiqueta pequeña con un punto de color para identificar diferentes estados? Necesito manejar varios colores según el tipo de estado, especialmente para los pagos
+Qué se usó / modificó / descartó: Se tomó como guía el componente generado para mostrar etiquetas con diferentes colores. Se utilizó paymentTone para asignar el color correspondiente según el estado del pago y se conservaron los tonos propuestos
+Archivos y commit: src/components/common/Badge.js (hash: {{HASH:A-24}})
+Verificación: Probar los tonos success, warning, danger, info y neutral
+Aprendizaje: Asociar el estado a un color ayuda a leer la información de un vistazo
