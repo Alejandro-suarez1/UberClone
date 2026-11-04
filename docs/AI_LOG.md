@@ -227,6 +227,17 @@ Herramienta: Claude
 Objetivo: Crear el campo para tomar o elegir una foto
 Prompt: Me puedes orientar para crear un campo que permita tomar una foto con la cámara o seleccionar una de la galería? También necesito manejar los permisos y mostrar un mensaje si el usuario los rechaza
 Qué se usó / modificó / descartó: Se tomó como guía el código propuesto por Claude para permitir seleccionar fotos desde la galería o la cámara. Se aprovechó el manejo de permisos y los mensajes cuando el usuario no los autoriza.
-Archivos y commit: src/components/common/ImagePickerField.js (hash: {{HASH:A-21}})
+Archivos y commit: src/components/common/ImagePickerField.js (hash: cb3fedcf3a86c4a94f77b3c79b895e54d2fa5f3d)
 Verificación: Elegir una foto de galería y otra de cámara; negar el permiso y ver el mensaje
 Aprendizaje: Hay que pedir el permiso antes de abrir la cámara o la galería
+
+### Entrada #A-22
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la casilla para aceptar los términos
+Prompt: puedes ayudarme a crear una casilla para aceptar los términos y condiciones? Necesito que permita marcar y desmarcar, y que muestre un mensaje de error si el usuario intenta continuar sin aceptarlos
+Qué se usó / modificó / descartó: Se tomó como referencia el código de Claude para crear la casilla, incluyendo su estado marcado y desmarcado, la validación y el manejo de accesibilidad con accessibilityRole
+Archivos y commit: src/components/common/Checkbox.js (hash: cb3fedcf3a86c4a94f77b3c79b895e54d2fa5f3d)
+Verificación: Marcar y desmarcar; sin marcar muestra el error en rojo
+Aprendizaje: Una casilla accesible usa accessibilityRole checkbox
