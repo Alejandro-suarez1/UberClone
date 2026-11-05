@@ -320,6 +320,17 @@ Herramienta: Claude
 Objetivo: Mostrar la información clave del viaje como origen, destino, distancia, tiempo, categoría, pago, tarifa y ganancia mejorando el rendimiento y la seguridad de los datos
 Prompt: Ayudame a crear un componente para la tarjeta de solicitud de viaje que muestre todos los datos clave como origen, destino, estadísticas, pago, tarifa y ganancia usando la función de cálculo
 Qué se usó / modificó / descartó: Se usó la estructura inicial y la función de tarifas. Se mejoró el código para que los cálculos financieros no se repitieran innecesariamente en cada pantalla y se añadieron protecciones básicas para evitar que la aplicación falle si algún dato del viaje llega tarde o vacío. No se descartó nada
-Archivos y commit: src/components/trip/TripRequestCard.js hash:
+Archivos y commit: src/components/trip/TripRequestCard.js hash: da7da547124a9f5f50a392f95e7250413e7dc846
 Verificación: Revisar visualmente que la tarjeta mostrara los datos correctos y que la tarifa coincidiera con los cálculos esperados
 Aprendizaje: Aprendí a organizar elementos visuales y estadísticos en componentes limpios, reutilizando funciones de cálculo para mantener los montos exactos y protegiendo el código contra datos vacíos
+
+### Entrada #B-12
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Renderizar el mapa del viaje dibujando la ruta con Polyline y los marcadores de la ubicación del conductor y el punto destino
+Prompt: Ayudame a crear un componente de mapa interactivo que dibuje la linea de la ruta del viaje y muestre los puntos del conductor y el destino de forma visual
+Qué se usó / modificó / descartó: Se usó la base de guia generada por Claude dejando el mapa con estilo oscuro. Se mejoró la lógica del efecto para calcular la firma de la ruta y re-encuadrar el mapa de forma fluida al cambiar el tramo, protegiendo las lecturas de coordenadas vacías. No se descartó nada
+Archivos y commit: src/components/trip/RouteMap.js hash:
+Verificación: Probar en el emulador observando la ruta hacia la recogida del pasajero y hacia el destino final, comprobando el re-encuadre automático del mapa
+Aprendizaje: Aprendí a integrar y estructurar un mapa interactivo, combinando líneas de ruta y marcadores personalizados para el conductor y el destino. Además, comprendí cómo usar referencias y efectos condicionales para ajustar automáticamente el zoom y encuadrar todo el recorrido en la pantalla de forma fluida a medida que cambian las coordenadas
