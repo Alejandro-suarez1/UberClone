@@ -373,3 +373,25 @@ Qué se usó / modificó / descartó: Se implementaron las validaciones sugerida
 Archivos y commit: src/screens/auth/PersonalTab.js (hash: 4220725ae1cba00c67c42f7db3cbfe793b6f2390)
 Verificación: Probar nombre con números, documento corto, menor de 18 y correo sin dominio
 Aprendizaje: Cada regla del enunciado se convierte en un mensaje debajo del campo
+
+### Entrada #A-35
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la segunda pestaña del registro
+Prompt: Estoy trabajando en la segunda pestaña del registro, donde se ingresan los datos del vehículo, me puedes orientar sobre cómo validar la placa, seleccionar el tipo de vehículo y controlar la cantidad de pasajeros permitidos?
+Qué se usó / modificó / descartó: Se utilizaron las validaciones propuestas para los datos del vehículo. También se incorporó la conversión automática de la placa a mayúsculas y el control de pasajeros según el tipo de vehículo seleccionado.
+Archivos y commit: src/screens/auth/VehicleTab.js (hash: f95a3adca005df0001e5782ffe3d0cde163fb4a3)
+Verificación: Escribir la placa en minúscula (se convierte a mayúsculas) y elegir XL con 4 pasajeros
+Aprendizaje: La placa se normaliza antes de validar, como pide el enunciado
+
+### Entrada #A-36
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tercera pestaña del registro
+Prompt: Estoy desarrollando la última pestaña del registro, donde se cargan los documentos del conductor y del vehículo, me puedes indicar cómo mostrar la revisión técnico-mecánica solo cuando sea necesaria y validar que se acepten los términos?
+Qué se usó / modificó / descartó: Se aprovechó la lógica propuesta para mostrar u ocultar la revisión técnico-mecánica según el año del vehículo. También se incluyeron las validaciones para los documentos y la aceptación obligatoria de los términos
+Archivos y commit: src/screens/auth/DocumentsTab.js (hash: {{HASH:A-36}})
+Verificación: Poner un vehículo de 2015 y ver que aparece la revisión; dejar los términos sin marcar
+Aprendizaje: Un formulario puede cambiar según lo que el usuario ya escribió
