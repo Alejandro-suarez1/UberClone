@@ -458,9 +458,20 @@ Herramienta: Claude
 Objetivo: Mostrar saldo y totales de hoy, semana y mes
 Prompt: Ya tengo los cálculos de ganancias y saldo en un hook, me puedes orientar sobre cómo mostrar esa información en la pantalla de ganancias, incluyendo el saldo disponible y los totales de hoy, semana y mes, y cómo actualizar los valores al cambiar de periodo?
 Qué se usó / modificó / descartó: Claude me ayudó a identificar cómo organizar la información de ganancias dentro de la pantalla. Se tuvieron en cuenta las ideas para mostrar el saldo y los totales de cada periodo, conectando la información con los cálculos del hook useEarnings para que los valores se actualizaran al cambiar de periodo
-Archivos y commit: src/screens/earnings/EarningsScreen.js (hash: {{HASH:A-42}})
+Archivos y commit: src/screens/earnings/EarningsScreen.js (hash: 504869d105c1795fb4003275ff4d80bfd4fa313f)
 Verificación: Con los datos de ejemplo cambiar de periodo y revisar que los números cambian
 Aprendizaje: Trabajar con el historial completo permite calcular el saldo correcto
+
+### Entrada #A-43
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el historial con filtros de fecha y de método de pago
+Prompt: Estoy desarrollando la pantalla del historial de viajes y quiero que permita consultar los recorridos según diferentes periodos y métodos de pago, me puedes guiar sobre cómo organizar los filtros de Hoy, Semana, Mes y Rango de fechas, junto con los métodos de pago, y cómo mostrar los resultados sin cargar todos los viajes al mismo tiempo?
+Qué se usó / modificó / descartó: Claude me orientó sobre cómo organizar los filtros y conectarlos con la consulta paginada del historial. Se tuvieron en cuenta las opciones de fecha y método de pago, además del uso de FlatList con onEndReached para cargar más viajes a medida que el usuario se desplaza por la pantalla.
+Archivos y commit: src/screens/history/HistoryScreen.js (hash: {{HASH:A-43}})
+Verificación: Probar Hoy, Semana, Mes, Rango y los métodos de pago; filtrar hasta que no haya resultados
+Aprendizaje: FlatList con onEndReached carga por páginas sin traer todo de una vez
 
 
 
