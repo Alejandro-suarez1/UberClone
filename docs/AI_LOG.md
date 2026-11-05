@@ -473,7 +473,16 @@ Archivos y commit: src/screens/history/HistoryScreen.js (hash: {{HASH:A-43}})
 Verificación: Probar Hoy, Semana, Mes, Rango y los métodos de pago; filtrar hasta que no haya resultados
 Aprendizaje: FlatList con onEndReached carga por páginas sin traer todo de una vez
 
-
+### Entrada #A-44
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar el detalle del viaje con la ruta dibujada
+Prompt: Quiero crear una pantalla para consultar los detalles de cada viaje, incluyendo un mapa que muestre el recorrido realizado, me puedes orientar sobre cómo dibujar la ruta usando las coordenadas guardadas y qué alternativa utilizar cuando no estén disponibles?
+Qué se usó / modificó / descartó: Claude me ayudó a comprender cómo representar el recorrido en el mapa utilizando las coordenadas almacenadas. Se tuvo en cuenta el uso de Polyline para dibujar la ruta guardada y, cuando no existe esa información, mostrar una línea sencilla entre el origen y el destino. También se consideró la organización de datos como la comisión, la propina y la calificación del viaje
+Archivos y commit: src/screens/history/TripDetailScreen.js (hash: {{HASH:A-44}})
+Verificación: Abrir un viaje y comprobar el mapa, la comisión, la propina y la calificación
+Aprendizaje: Dibujar la ruta guardada ahorra llamadas a la API de mapas
 
 
 
