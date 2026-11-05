@@ -298,6 +298,17 @@ Herramienta: Claude
 Objetivo: Guardar el viaje activo y abrir la solicitud entrante cuando llega
 Prompt: Ayúdame a estructurar un context para administrar el viaje activo, gestionar la escucha de solicitudes, automatizar la navegación global y robustecer el control de errores en todas las funciones asíncronas
 Qué se usó / modificó / descartó: Se integró y ajustó el contexto para controlar el viaje en curso y la navegación automática al recibir una solicitudS. Se mejoró el manejo de errores en las funciones principales para evitar fallos de red inesperados y garantizar que la app responda correctamente si el pasajero cancela el viaje, todo ello sin alterar la estructura base del proyecto. No se descartó nada
-Archivos y commit: src/context/ActiveTripContext.js hash:
+Archivos y commit: src/context/ActiveTripContext.js hash: 2870686ee1de1dca856ed0088204a1ee137ee26f
 Verificación: Simular la cancelación desde Firestore se valida que se muestra la alerta correspondiente y se redirige al inicio, y se verifica mediante pruebas en consola que los errores de red en las funciones asíncronas son capturados de forma limpia sin afectar la interfaz
 Aprendizaje: Un contexto global facilita la gestión de eventos en tiempo real y la navegación, mientras que el control de excepciones previene fallos silenciosos y mejora la estabilidad de la aplicación
+
+### Entrada #B-10
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar un componente visual de cuenta regresiva en formato de anillo circular para limitar el tiempo de aceptación de las solicitudes de viaje por parte del conductor
+Prompt: Necesito crear un componente que muestre un temporizador circular de 15 segundos. Debe incluir un número central con la cuenta regresiva, el anillo debe irse vaciando a medida que pasa el tiempo, y todo el componente debe cambiar a color de alerta cuando falten 5 segundos o menos
+Qué se usó / modificó / descartó: Se tomó la idea de la estructura base para el anillo visual del temporizador. Se modificó la forma de girar el círculo para asegurar que la animación comience exactamente arriba en el centro y no se mueva de su lugar en las pantallas de Android e iOS
+Archivos y commit: src/components/trip/CountdownRing.js hash: 
+Verificación: Probar en el emulador simulando el contador de 15 a 0 segundos. Confirmar que el círculo se va vaciando de forma limpia, cambia a color rojo al llegar al segundo 5 y el número del centro se mantiene alineado
+Aprendizaje: Aprendí cómo usar las propiedades de dibujo de círculos en pantallas móviles para crear barras de progreso circulares y la importancia de fijar el punto de rotación en el centro exacto de la figura para que no se descuadre el diseño
