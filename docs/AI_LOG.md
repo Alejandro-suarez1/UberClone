@@ -285,3 +285,25 @@ Qué se usó / modificó / descartó: Se implementó la estructura de selección
 Archivos y commit: src/components/common/Chips.js (hash: 99a6f036e6bea3bd8ce7cce8a3d75db454c245a5)
 Verificación: Cambiar de opción y ver cuál queda activa
 Aprendizaje: Un componente de selección simple sirve para filtros, idioma y propinas
+
+### Entrada #A-27
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tarjeta de número para la pantalla de ganancias
+Prompt: Necesito mostrar los valores de ganancias en tarjetas, me puedes indicar cómo crear un componente que muestre un título y un monto, y que se adapte cuando los números sean demasiado largos?
+Qué se usó / modificó / descartó: Se aprovechó la estructura del componente generado por Claude para mostrar los valores y sus títulos. También se utilizó adjustsFontSizeToFit para evitar que los montos largos se corten
+Archivos y commit: src/components/common/StatCard.js (hash: 500bb5a3e1847fd2861d4c9004393be13134a089)
+Verificación: Mostrarla con un valor largo y comprobar que el texto se ajusta
+Aprendizaje: adjustsFontSizeToFit evita que los montos grandes se corten
+
+### Entrada #A-28
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el contenedor con fondo degradado, zona segura y scroll
+Prompt: Estoy organizando las pantallas de la aplicación y necesito un contenedor que tenga fondo degradado, respete las zonas seguras del dispositivo y permita desplazarse cuando haya mucho contenido, cómo podría implementarlo?
+Qué se usó / modificó / descartó: Se utilizó la estructura del componente para manejar el fondo, los márgenes y el desplazamiento de las pantallas. También se aprovechó el ajuste con el teclado para evitar que los campos quedaran ocultos
+Archivos y commit: src/components/common/ScreenContainer.js (hash: {{HASH:A-28}})
+Verificación: Abrir una pantalla con teclado y comprobar que el campo no queda tapado
+Aprendizaje: Un contenedor común da el mismo fondo y márgenes a todas las pantallas
