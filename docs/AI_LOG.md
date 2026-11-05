@@ -304,6 +304,17 @@ Herramienta: Claude
 Objetivo: Crear el contenedor con fondo degradado, zona segura y scroll
 Prompt: Estoy organizando las pantallas de la aplicación y necesito un contenedor que tenga fondo degradado, respete las zonas seguras del dispositivo y permita desplazarse cuando haya mucho contenido, cómo podría implementarlo?
 Qué se usó / modificó / descartó: Se utilizó la estructura del componente para manejar el fondo, los márgenes y el desplazamiento de las pantallas. También se aprovechó el ajuste con el teclado para evitar que los campos quedaran ocultos
-Archivos y commit: src/components/common/ScreenContainer.js (hash: {{HASH:A-28}})
+Archivos y commit: src/components/common/ScreenContainer.js (hash: 28c1e18b4b99e27daba18e7807e067b9aa0a3241)
 Verificación: Abrir una pantalla con teclado y comprobar que el campo no queda tapado
 Aprendizaje: Un contenedor común da el mismo fondo y márgenes a todas las pantallas
+
+### Entrada #A-29
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el servicio para registrar y consultar conductores y subir las fotos
+Prompt: Estoy trabajando en el registro de conductores y necesito organizar las funciones para guardar sus datos, consultarlos y subir sus fotografías, me puedes orientar sobre cómo conectar este servicio con Firebase y manejar las imágenes?
+Qué se usó / modificó / descartó: Se aprovechó la lógica propuesta por Claude para registrar y consultar conductores en Firebase. También se incluyó el manejo de fotografías mediante Cloudinary, conservando la ruta local como alternativa mientras se configura el servicio
+Archivos y commit: src/services/driverService.js (hash: 28c1e18b4b99e27daba18e7807e067b9aa0a3241)
+Verificación: Crear un conductor de prueba y verlo en la colección drivers con approval pending
+Aprendizaje: Las fotos se suben a Cloudinary y en la base solo se guarda la URL
