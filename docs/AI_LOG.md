@@ -331,6 +331,17 @@ Herramienta: Claude
 Objetivo: Renderizar el mapa del viaje dibujando la ruta con Polyline y los marcadores de la ubicación del conductor y el punto destino
 Prompt: Ayudame a crear un componente de mapa interactivo que dibuje la linea de la ruta del viaje y muestre los puntos del conductor y el destino de forma visual
 Qué se usó / modificó / descartó: Se usó la base de guia generada por Claude dejando el mapa con estilo oscuro. Se mejoró la lógica del efecto para calcular la firma de la ruta y re-encuadrar el mapa de forma fluida al cambiar el tramo, protegiendo las lecturas de coordenadas vacías. No se descartó nada
-Archivos y commit: src/components/trip/RouteMap.js hash:
+Archivos y commit: src/components/trip/RouteMap.js hash: 97b69c3bc1f24769ad291016f3b4bd9d121f1d41
 Verificación: Probar en el emulador observando la ruta hacia la recogida del pasajero y hacia el destino final, comprobando el re-encuadre automático del mapa
 Aprendizaje: Aprendí a integrar y estructurar un mapa interactivo, combinando líneas de ruta y marcadores personalizados para el conductor y el destino. Además, comprendí cómo usar referencias y efectos condicionales para ajustar automáticamente el zoom y encuadrar todo el recorrido en la pantalla de forma fluida a medida que cambian las coordenadas
+
+### Entrada #B-13
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Permitir que el pasajero pueda dejar una propina de forma rápida y visual al terminar el viaje, asegurando que se refleje correctamente en las ganancias del conductor
+Prompt: Necesito que me guies de tal manera que pueda crear un selector rápido de propinas usando chips con montos predefinidos incluyendo la opción de cero para que el usuario pueda agregarlas fácilmente al finalizar un viaje, aplicando los estilos y traducciones del sistema
+Qué se usó / modificó / descartó: Se aprovechó la estructura base de componentes visuales (Chips) y las funciones globales de formato de dinero para estructurar las opciones de propina. Se ajustaron los textos descriptivos y las etiquetas de ayuda manteniendo una interfaz limpia y fluida. No se descartó ninguna opción previa
+Archivos y commit: src/components/trip/TipSelector.js hash:
+Verificación: Seleccionar montos en pantalla y comprobar visualmente que la selección responde de inmediato y suma correctamente al total de la ganancia neta del viaje
+Aprendizaje: Comprendí cómo estructurar componentes interactivos pequeños basados en opciones rápidas (chips), conectándolos limpiamente con los estados del sistema para mejorar la experiencia al finalizar procesos importantes como el pago de un viaje
