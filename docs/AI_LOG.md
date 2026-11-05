@@ -342,6 +342,17 @@ Herramienta: Claude
 Objetivo: Permitir que el pasajero pueda dejar una propina de forma rápida y visual al terminar el viaje, asegurando que se refleje correctamente en las ganancias del conductor
 Prompt: Necesito que me guies de tal manera que pueda crear un selector rápido de propinas usando chips con montos predefinidos incluyendo la opción de cero para que el usuario pueda agregarlas fácilmente al finalizar un viaje, aplicando los estilos y traducciones del sistema
 Qué se usó / modificó / descartó: Se aprovechó la estructura base de componentes visuales (Chips) y las funciones globales de formato de dinero para estructurar las opciones de propina. Se ajustaron los textos descriptivos y las etiquetas de ayuda manteniendo una interfaz limpia y fluida. No se descartó ninguna opción previa
-Archivos y commit: src/components/trip/TipSelector.js hash:
+Archivos y commit: src/components/trip/TipSelector.js hash: a28b64a1f2ecba2bf60fe6925724c5d072fe70b1
 Verificación: Seleccionar montos en pantalla y comprobar visualmente que la selección responde de inmediato y suma correctamente al total de la ganancia neta del viaje
 Aprendizaje: Comprendí cómo estructurar componentes interactivos pequeños basados en opciones rápidas (chips), conectándolos limpiamente con los estados del sistema para mejorar la experiencia al finalizar procesos importantes como el pago de un viaje
+
+### Entrada #B-14
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Integrar una pasarela de pagos segura dentro de un modal en la aplicación móvil utilizando un componente WebView para gestionar el proceso de cobro
+Prompt: Necesito que me guies de tal manera que pueda crear un componente modal que abra una pasarela de pago dentro de la aplicación mediante un WebView, mostrando un indicador de carga y detectando automáticamente la URL de retorno del backend para cerrar el modal de forma fluida
+Qué se usó / modificó / descartó: Se utilizó una estructura de Modal combinada con WebView de React Native y un indicador de actividad. Se optimizó la lógica de navegación para cerrar el modal de forma automática al detectar que el usuario regresa a la URL de redirección configurada por el backend. No se descartó ningún elemento previo
+Archivos y commit: src/components/trip/CheckoutModal.js hash:
+Verificación: Abrir el proceso de checkout con una URL de prueba, observar el indicador de carga durante la navegación y comprobar que el modal se cierra correctamente al alcanzar la página de retorno
+Aprendizaje: Comprendí cómo integrar vistas web dentro de una aplicación móvil para flujos seguros como pagos, y la importancia de delegar la validación real del éxito de la transacción al backend a través de la base de datos en lugar de depender únicamente de la interfaz del navegador web
