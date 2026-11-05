@@ -348,6 +348,17 @@ Herramienta: Claude
 Objetivo: Crear la pantalla inicial con las opciones de registro e ingreso
 Prompt: Estoy diseñando la pantalla inicial de la aplicación y quiero mostrar las opciones para registrarse o iniciar sesión, qué estructura podría utilizar para que ambas opciones sean fáciles de identificar y navegar?
 Qué se usó / modificó / descartó: Se utilizaron las ideas de Claude para organizar las opciones de registro e ingreso. Se mantuvo la estructura visual propuesta y se integró con la navegación de la aplicación
-Archivos y commit: src/screens/auth/WelcomeScreen.js (hash: {{HASH:A-32}})
+Archivos y commit: src/screens/auth/WelcomeScreen.js (hash: 8ebd196b3967ab306afb9c756d46f1b172aa751e)
 Verificación: Abrir la app sin sesión y navegar a Registro y a Ingresar
 Aprendizaje: La primera pantalla define la identidad visual de la app
+
+### Entrada #A-33
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Permitir volver a entrar con el correo registrado
+Prompt: Necesito implementar la pantalla de ingreso para que los conductores puedan volver a entrar con su correo registrado. ¿Me puedes orientar sobre cómo validar el correo y mostrar un mensaje cuando no exista una cuenta?
+Qué se usó / modificó / descartó: Se utilizó la lógica propuesta por Claude para consultar el correo registrado y validar el ingreso. También se aprovechó la validación para mostrar un mensaje de error debajo del campo cuando el correo no existe
+Archivos y commit: src/screens/auth/LoginScreen.js (hash: {{HASH:A-33}})
+Verificación: Entrar con un correo registrado y con uno que no existe (debe mostrar el error debajo)
+Aprendizaje: Sin autenticación real, el correo identifica la cuenta de la práctica
