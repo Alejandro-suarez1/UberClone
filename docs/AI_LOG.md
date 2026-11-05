@@ -359,6 +359,17 @@ Herramienta: Claude
 Objetivo: Permitir volver a entrar con el correo registrado
 Prompt: Necesito implementar la pantalla de ingreso para que los conductores puedan volver a entrar con su correo registrado. ¿Me puedes orientar sobre cómo validar el correo y mostrar un mensaje cuando no exista una cuenta?
 Qué se usó / modificó / descartó: Se utilizó la lógica propuesta por Claude para consultar el correo registrado y validar el ingreso. También se aprovechó la validación para mostrar un mensaje de error debajo del campo cuando el correo no existe
-Archivos y commit: src/screens/auth/LoginScreen.js (hash: {{HASH:A-33}})
+Archivos y commit: src/screens/auth/LoginScreen.js (hash: 78cd08334a16bcccb524ef569dfdbd4c5ab0d1f5)
 Verificación: Entrar con un correo registrado y con uno que no existe (debe mostrar el error debajo)
 Aprendizaje: Sin autenticación real, el correo identifica la cuenta de la práctica
+
+### Entrada #A-34
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la primera pestaña del registro
+Prompt: Estoy desarrollando la primera pestaña del registro y necesito validar los datos personales del conductor, me puedes indicar cómo controlar campos como nombre, documento, edad y correo, mostrando los errores cuando los datos no sean correctos?
+Qué se usó / modificó / descartó: Se implementaron las validaciones sugeridas para los datos personales, utilizando mensajes debajo de cada campo para indicar los errores y evitar que se continúe con información incorrecta
+Archivos y commit: src/screens/auth/PersonalTab.js (hash: {{HASH:A-34}})
+Verificación: Probar nombre con números, documento corto, menor de 18 y correo sin dominio
+Aprendizaje: Cada regla del enunciado se convierte en un mensaje debajo del campo
