@@ -406,3 +406,139 @@ Qué se usó / modificó / descartó: Se incorporó la estructura de navegación
 Archivos y commit: src/screens/auth/RegisterScreen.js (hash: {{HASH:A-37}})
 Verificación: Con una pestaña incompleta el botón está deshabilitado; con las tres completas se habilita
 Aprendizaje: Una barra personalizada permite mostrar el botón de envío siempre visible
+
+### Entradas de Juan Diego Delgado
+
+### Entrada #B-1
+Fecha: 2026-10-28
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Inicializar Firebase/Firestore para usarlo en tiempo real desde los servicios de viajes y ubicación
+Prompt: Quiero conectar mi aplicación con Firebase para poder guardar y consultar la información de los viajes. Guíame creando el archivo
+para que todo funcione correctamente.
+Qué se usó / modificó / descartó: Se usó src/services/firebase.js completo. Se descartó @react-native-firebase por incompatibilidad con Expo Go.
+Archivos y commit: src/services/firebase.js hash: 6c7ca3f8ea566980015409367e1e100db750b7b4
+Verificación: Importar db en un archivo de prueba, escribir un documento en la colección trips y verlo en Firebase Console
+Aprendizaje: En React Native conviene forzar long polling en Firestore y proteger la inicialización contra recargas en caliente
+
+### Entrada #B-2
+Fecha: 2026-10-28
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el servicio de solicitudes, estados, cierre del viaje e historial
+Prompt: Ayudame a crear el servicio de solicitudes, estados, cierre del viaje e historial
+Qué se usó / modificó / descartó: Se usó la propuesta generada por Claude, sin necesidad de realizar cambios ni descartar contenido. La solución permite finalizar el viaje, calcular el costo del servicio y guardar la información necesaria para consultar el historial de viajes
+Archivos y commit: src/services/tripService.js hash: 066fdcd9c34cb6f9e9e0cf09da6dcf034a3d0818
+Verificación: Crear una solicitud en Firestore y comprobar que subscribeToRequests la recibe; pedir dos páginas del historial
+Aprendizaje: Aprendí que Firestore puede requerir índices compuestos para ejecutar determinadas consultas y que la consola facilita su creación mediante un enlace
+
+### Entrada #B-3
+Fecha: 2026-10-29
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el servicio encargado de solicitar permisos de ubicación, obtener la ubicación actual del conductor y realizar un seguimiento continuo de sus coordenadas
+Prompt: Me puedes guiar de tal manera que pueda crear el archivo para solicitar los permisos de ubicación del conductor, obtener su ubicación actual y permitir el seguimiento de sus movimientos en tiempo real
+Qué se usó / modificó / descartó: Se usó Expo Location para solicitar permisos y rastrear en tiempo real al conductor en primer plano. Se implementó stopWatchingPlace() para cancelar la suscripción y limpiar la memoria al salir de la pantalla o cambiar de estado, descartando el seguimiento en segundo plano
+Archivos y commit: src/services/locationService.js hash: 6286ca84bc56e7d6295e3c49d5e899278827d614
+Verificación: Aceptar y negar el permiso y ver el resultado; mover el teléfono y ver nuevas posiciones
+Aprendizaje: Comprendí cómo gestionar el ciclo completo de localización en primer plano, desde el control asíncrono de los permisos del usuario y la captura de coordenadas actuales, hasta el manejo correcto de flujos de datos continuos que deben ser cancelados para no saturar el dispositivo
+
+### Entrada #B-4
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Obtener la ruta entre dos puntos y dibujarla
+Prompt: Necesito armar la ruta entre dos puntos en React Native usando Google Maps, la cual guarde los viajes buscados para no gastar el cupo gratis y dibuje una línea recta de respaldo si no hay internet o clave de la API
+Qué se usó / modificó / descartó: Se usó la estructura del fetch y la decodificación de la polilínea. Se modificó añadiendo un límite de 50 elementos al caché para no saturar la RAM y formateando los kilómetros a dos decimales, descartando el bloque de error vacío para meter un console.error que detecte fallas de red
+Archivos y commit: src/services/directionsService.js hash: 7022623b0542b15424f0ce0b3e8a31bdb867b87c
+Verificación: Solicitar una ruta conocida para validar distancia y tiempo; remover la API key para forzar la línea recta de respaldo
+Aprendizaje: Aprendí que se debe solicitar la ruta únicamente por tramo y no por cada movimiento del vehículo, reduciendo drásticamente las consultas innecesarias para cuidar el cupo gratuito
+
+### Entrada #B-5
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar un servicio de integración con la pasarela de pagos en el cliente, delegando la lógica de negocio y las credenciales críticas en el backend, y controlando las redirecciones del flujo mediante URLs de retorno
+Prompt: Necesito crear un archivo de servicios para mandarle al backend el ID del viaje y el monto que se va a cobrar. El backend nos debe responder con un enlace para que el usuario pague. Agrega una seguridad por si se nos olvida configurar la URL del backend, evita que la app se cierre si la respuesta falla, y crea una función que detecte cuando el usuario termina de pagar para mandarlo de vuelta a la app
+Qué se usó / modificó / descartó: Se usó la estructura original del fetch y las funciones planteadas por Claude. Se modificó el código añadiendo una validación temprana para el monto y un control de seguridad en la función de las URLs para evitar fallos si los datos llegan vacíos. Se descartó procesar la solicitud si el monto no es un número válido mayor a cero
+Archivos y commit: src/services/paymentService.js hash: 6f44aad59e8aec4f9aad9c2707dbecb92bfa93cc
+Verificación: Con el backend corriendo, createPayment devuelve una URL de checkout
+Aprendizaje: Aprendí que por seguridad, las contraseñas y claves secretas de los pagos nunca deben guardarse en el teléfono del usuario. La aplicación móvil solo debe avisar cuánto se va a cobrar y el backend se encarga de hablar con la pasarela de pagos de forma segura
+
+### Entrada #B-6
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Estructurar e implementar el sistema de internacionalización en español e inglés para todo el flujo de pantallas del conductor Inicio, Solicitud, Viaje en curso y Cobro
+Prompt: Necesito que me ayudes a crear los archivos de traducción para la versión del conductor que maneje los textos en español e inglés de las pantallas de inicio, solicitud entrante, viaje en curso y resumen de cobro. Debe usar las mismas claves de traducción en ambos archivos para evitar textos faltantes al alternar el selector de idioma
+Qué se usó / modificó / descartó: Se usaron de forma íntegra las estructuras y claves mapeadas provistas por la IA. Se verificó la simetría exacta entre las claves en español e inglés para mitigar errores de renderizado de texto vacío en la interfaz al cambiar de idioma. No se descartó contenido
+Archivos y commit: src/i18n/trip.es.js, src/i18n/trip.en.js hash: c0230222dd9b737cf2cbf46fa04c43ef150cc532
+Verificación: Alternar el selector global de idioma del Drawer en el emulador de Expo Go y comprobar que los componentes dinámicos
+conmutaran sus textos de forma instantánea y correcta
+Aprendizaje: Aprendí que organizar las traducciones desde el principio con las mismas palabras clave en español y en inglés te ahorra el dolor de cabeza de que la aplicación se quede en blanco o con textos rotos cuando el usuario cambia de idioma
+
+### Entrada #B-7
+Fecha: 2026-11-01
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el hook personalizado useDriverLocation para enviar la ubicacion en tiempo real
+Prompt: Ayudame a crear un hook en React Native llamado useDriverLocation. Necesito que cuando el conductor este disponible, la app empiece a seguir su ubicacion y guarde los cambios en la base de datos. Si el conductor se apaga o cierra la pantalla, el rastreo se debe detener por completo para no gastar bateria
+Qué se usó / modificó / descartó: Se usó la base que generó Claude para controlar el encendido y apagado seguro del GPS, pero modifiqué el código añadiendo una validación propia para que solo guarde en la base de datos si el conductor realmente se movió de lugar. Descarté la idea original de la IA de enviar datos en cada instante, logrando así ahorrar batería y llamadas innecesarias al servidor si el vehículo está detenido. También agregué alertas en consola para ver los fallos al programar
+Archivos y commit: src/hooks/useDriverLocation.js hash: 06bd35877095e2c04b79e01870bcf11f44027ba5
+Verificación: Entrar a la app desde el emulador y encender el botón de "Disponible". Revisar la base de datos y ver cómo las coordenadas cambiaban solas. Al apagar el botón, el mapa debe dejar de enviar datos, confirmando que la limpieza funciona bien
+Aprendizaje: Aprendí que en React siempre hay que programar una función de limpieza cuando se trabaja con funciones que se quedan corriendo en segundo plano, porque de lo contrario la aplicación se vuelve lenta o sigue consumiendo batería sin necesidad
+
+### Entrada #B-8
+Fecha: 2026-11-02
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar la recepción de solicitudes de viaje en tiempo real y gestionar su rechazo automático por expiración del temporizador al transcurrir el límite establecido de 15 segundos
+Prompt: Ayudame a crear un hook en para escuchar solicitudes de viaje en tiempo real, permitiendo aceptarlas, rechazarlas manualmente o rechazarlas de forma automática si pasan 15 segundos sin respuesta
+Qué se usó / modificó / descartó: Se integró la lógica del hook para gestionar las solicitudes en tiempo real y el control del temporizador. No se descartó nada, pero se optimizó el manejo de excepciones en la función de rechazo incorporando un registro de advertencias en consola para un mejor control de errores de red, manteniendo intacta la estructura base y los nombres de las variables para asegurar la compatibilidad con el proyecto
+Archivos y commit: src/hooks/useTripRequests.js hash: cb71bd6d2a5bb08ade6ab1904ff04371436f2dd8
+Verificación: Dejar pasar 15 segundos sin hacer nada para comprobar que el estado cambie automáticamente en Firestore, y probar el botón de aceptar para validar que el cambio se registre correctamente
+Aprendizaje: Controlar los temporizadores con funciones de limpieza es fundamental para evitar que los procesos se queden corriendo en segundo plano y causen errores de memoria
+
+### Entrada #B-9
+Fecha: 2026-11-03
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Guardar el viaje activo y abrir la solicitud entrante cuando llega
+Prompt: Ayúdame a estructurar un context para administrar el viaje activo, gestionar la escucha de solicitudes, automatizar la navegación global y robustecer el control de errores en todas las funciones asíncronas
+Qué se usó / modificó / descartó: Se integró y ajustó el contexto para controlar el viaje en curso y la navegación automática al recibir una solicitudS. Se mejoró el manejo de errores en las funciones principales para evitar fallos de red inesperados y garantizar que la app responda correctamente si el pasajero cancela el viaje, todo ello sin alterar la estructura base del proyecto. No se descartó nada
+Archivos y commit: src/context/ActiveTripContext.js hash: 2870686ee1de1dca856ed0088204a1ee137ee26f
+Verificación: Simular la cancelación desde Firestore se valida que se muestra la alerta correspondiente y se redirige al inicio, y se verifica mediante pruebas en consola que los errores de red en las funciones asíncronas son capturados de forma limpia sin afectar la interfaz
+Aprendizaje: Un contexto global facilita la gestión de eventos en tiempo real y la navegación, mientras que el control de excepciones previene fallos silenciosos y mejora la estabilidad de la aplicación
+
+### Entrada #B-10
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Implementar un componente visual de cuenta regresiva en formato de anillo circular para limitar el tiempo de aceptación de las solicitudes de viaje por parte del conductor
+Prompt: Necesito crear un componente que muestre un temporizador circular de 15 segundos. Debe incluir un número central con la cuenta regresiva, el anillo debe irse vaciando a medida que pasa el tiempo, y todo el componente debe cambiar a color de alerta cuando falten 5 segundos o menos
+Qué se usó / modificó / descartó: Se tomó la idea de la estructura base para el anillo visual del temporizador. Se modificó la forma de girar el círculo para asegurar que la animación comience exactamente arriba en el centro y no se mueva de su lugar en las pantallas de Android e iOS
+Archivos y commit: src/components/trip/CountdownRing.js hash: 75b7106ed509f4cc4d25803dc42737a665d707e4
+Verificación: Probar en el emulador simulando el contador de 15 a 0 segundos. Confirmar que el círculo se va vaciando de forma limpia, cambia a color rojo al llegar al segundo 5 y el número del centro se mantiene alineado
+Aprendizaje: Aprendí cómo usar las propiedades de dibujo de círculos en pantallas móviles para crear barras de progreso circulares y la importancia de fijar el punto de rotación en el centro exacto de la figura para que no se descuadre el diseño
+
+### Entrada #B-11
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Mostrar la información clave del viaje como origen, destino, distancia, tiempo, categoría, pago, tarifa y ganancia mejorando el rendimiento y la seguridad de los datos
+Prompt: Ayudame a crear un componente para la tarjeta de solicitud de viaje que muestre todos los datos clave como origen, destino, estadísticas, pago, tarifa y ganancia usando la función de cálculo
+Qué se usó / modificó / descartó: Se usó la estructura inicial y la función de tarifas. Se mejoró el código para que los cálculos financieros no se repitieran innecesariamente en cada pantalla y se añadieron protecciones básicas para evitar que la aplicación falle si algún dato del viaje llega tarde o vacío. No se descartó nada
+Archivos y commit: src/components/trip/TripRequestCard.js hash: da7da547124a9f5f50a392f95e7250413e7dc846
+Verificación: Revisar visualmente que la tarjeta mostrara los datos correctos y que la tarifa coincidiera con los cálculos esperados
+Aprendizaje: Aprendí a organizar elementos visuales y estadísticos en componentes limpios, reutilizando funciones de cálculo para mantener los montos exactos y protegiendo el código contra datos vacíos
+
+### Entrada #B-12
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Renderizar el mapa del viaje dibujando la ruta con Polyline y los marcadores de la ubicación del conductor y el punto destino
+Prompt: Ayudame a crear un componente de mapa interactivo que dibuje la linea de la ruta del viaje y muestre los puntos del conductor y el destino de forma visual
+Qué se usó / modificó / descartó: Se usó la base de guia generada por Claude dejando el mapa con estilo oscuro. Se mejoró la lógica del efecto para calcular la firma de la ruta y re-encuadrar el mapa de forma fluida al cambiar el tramo, protegiendo las lecturas de coordenadas vacías. No se descartó nada
+Archivos y commit: src/components/trip/RouteMap.js hash:
+Verificación: Probar en el emulador observando la ruta hacia la recogida del pasajero y hacia el destino final, comprobando el re-encuadre automático del mapa
+Aprendizaje: Aprendí a integrar y estructurar un mapa interactivo, combinando líneas de ruta y marcadores personalizados para el conductor y el destino. Además, comprendí cómo usar referencias y efectos condicionales para ajustar automáticamente el zoom y encuadrar todo el recorrido en la pantalla de forma fluida a medida que cambian las coordenadas
