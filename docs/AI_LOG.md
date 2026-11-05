@@ -370,6 +370,6 @@ Herramienta: Claude
 Objetivo: Crear la primera pestaña del registro
 Prompt: Estoy desarrollando la primera pestaña del registro y necesito validar los datos personales del conductor, me puedes indicar cómo controlar campos como nombre, documento, edad y correo, mostrando los errores cuando los datos no sean correctos?
 Qué se usó / modificó / descartó: Se implementaron las validaciones sugeridas para los datos personales, utilizando mensajes debajo de cada campo para indicar los errores y evitar que se continúe con información incorrecta
-Archivos y commit: src/screens/auth/PersonalTab.js (hash: {{HASH:A-34}})
+Archivos y commit: src/screens/auth/PersonalTab.js (hash: 4220725ae1cba00c67c42f7db3cbfe793b6f2390)
 Verificación: Probar nombre con números, documento corto, menor de 18 y correo sin dominio
 Aprendizaje: Cada regla del enunciado se convierte en un mensaje debajo del campo
