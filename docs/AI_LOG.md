@@ -436,10 +436,31 @@ Herramienta: Claude
 Objetivo: Cargar el historial por páginas con filtros
 Prompt: Estoy trabajando en el historial de viajes y quiero que los registros se carguen por páginas y puedan filtrarse, me puedes explicar cómo organizar esta lógica para que al cambiar un filtro se vuelva a la primera página y se puedan cargar más resultados al desplazarse?
 Qué se usó / modificó / descartó: La orientación de Claude ayudó a comprender cómo manejar la carga paginada y los filtros en el historial. Se aplicó la lógica para consultar los viajes mediante tripService.getDriverTrips o utilizar los datos de ejemplo. También se tuvo en cuenta cómo ignorar respuestas de consultas anteriores para evitar que los resultados de un filtro viejo reemplacen los actuales
-Archivos y commit: src/hooks/useTripHistory.js (hash: {{HASH:A-40}})
+Archivos y commit: src/hooks/useTripHistory.js (hash: 71dff7e55ae3805134a2e6e475d8ba0b2a8a5431)
 Verificación: Cambiar de filtro y ver que vuelve a la primera página; bajar y ver que carga más
 Aprendizaje: Ignorar respuestas viejas evita que un filtro anterior pise al nuevo
 
+### Entrada #A-41
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la fila con fecha, ruta, categoría, tarifa y estado de pago
+Prompt: Estoy creando el historial de viajes y necesito mostrar la información de cada recorrido de forma ordenada, me puedes orientar sobre cómo diseñar un componente que presente la fecha, la ruta, la categoría, la tarifa y el estado del pago sin que la fila quede demasiado cargada?
+Qué se usó / modificó / descartó: Estoy creando el historial de viajes y necesito mostrar la información de cada recorrido de forma ordenada. ¿Me puedes orientar sobre cómo diseñar un componente que presente la fecha, la ruta, la categoría, la tarifa y el estado del pago sin que la fila quede demasiado cargada?
+Archivos y commit: src/components/common/TripListItem.js (hash: 71dff7e55ae3805134a2e6e475d8ba0b2a8a5431)
+Verificación: Mostrar un viaje de ejemplo y ver todos los datos
+Aprendizaje: Un componente de lista debe ser simple para que la lista sea fluida
+
+### Entrada #A-42
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar saldo y totales de hoy, semana y mes
+Prompt: Ya tengo los cálculos de ganancias y saldo en un hook, me puedes orientar sobre cómo mostrar esa información en la pantalla de ganancias, incluyendo el saldo disponible y los totales de hoy, semana y mes, y cómo actualizar los valores al cambiar de periodo?
+Qué se usó / modificó / descartó: Claude me ayudó a identificar cómo organizar la información de ganancias dentro de la pantalla. Se tuvieron en cuenta las ideas para mostrar el saldo y los totales de cada periodo, conectando la información con los cálculos del hook useEarnings para que los valores se actualizaran al cambiar de periodo
+Archivos y commit: src/screens/earnings/EarningsScreen.js (hash: {{HASH:A-42}})
+Verificación: Con los datos de ejemplo cambiar de periodo y revisar que los números cambian
+Aprendizaje: Trabajar con el historial completo permite calcular el saldo correcto
 
 
 
