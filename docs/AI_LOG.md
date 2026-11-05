@@ -469,23 +469,42 @@ Herramienta: Claude
 Objetivo: Crear el historial con filtros de fecha y de método de pago
 Prompt: Estoy desarrollando la pantalla del historial de viajes y quiero que permita consultar los recorridos según diferentes periodos y métodos de pago, me puedes guiar sobre cómo organizar los filtros de Hoy, Semana, Mes y Rango de fechas, junto con los métodos de pago, y cómo mostrar los resultados sin cargar todos los viajes al mismo tiempo?
 Qué se usó / modificó / descartó: Claude me orientó sobre cómo organizar los filtros y conectarlos con la consulta paginada del historial. Se tuvieron en cuenta las opciones de fecha y método de pago, además del uso de FlatList con onEndReached para cargar más viajes a medida que el usuario se desplaza por la pantalla.
-Archivos y commit: src/screens/history/HistoryScreen.js (hash: {{HASH:A-43}})
+Archivos y commit: src/screens/history/HistoryScreen.js (hash: cb2dc8cadb83cdf512303f341d0bd17bc00c80fb)
 Verificación: Probar Hoy, Semana, Mes, Rango y los métodos de pago; filtrar hasta que no haya resultados
 Aprendizaje: FlatList con onEndReached carga por páginas sin traer todo de una vez
 
 ### Entrada #A-44
-Fecha: 2026-10-27
+Fecha: 2026-11-05
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Mostrar el detalle del viaje con la ruta dibujada
 Prompt: Quiero crear una pantalla para consultar los detalles de cada viaje, incluyendo un mapa que muestre el recorrido realizado, me puedes orientar sobre cómo dibujar la ruta usando las coordenadas guardadas y qué alternativa utilizar cuando no estén disponibles?
 Qué se usó / modificó / descartó: Claude me ayudó a comprender cómo representar el recorrido en el mapa utilizando las coordenadas almacenadas. Se tuvo en cuenta el uso de Polyline para dibujar la ruta guardada y, cuando no existe esa información, mostrar una línea sencilla entre el origen y el destino. También se consideró la organización de datos como la comisión, la propina y la calificación del viaje
-Archivos y commit: src/screens/history/TripDetailScreen.js (hash: {{HASH:A-44}})
+Archivos y commit: src/screens/history/TripDetailScreen.js (hash: 6c143774c4cea58101caa08d59c1f39c74bd1756)
 Verificación: Abrir un viaje y comprobar el mapa, la comisión, la propina y la calificación
 Aprendizaje: Dibujar la ruta guardada ahorra llamadas a la API de mapas
 
+### Entrada #A-45
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Permitir editar nombre, celular, vehículo y documentos
+Prompt: Estoy trabajando en la pantalla de perfil y quiero permitir que el conductor actualice sus datos personales, información del vehículo y documentos, me puedes orientar sobre cómo implementar la edición de estos campos, reutilizando las validaciones que ya tengo en el formulario de registro y guardando los cambios en Firestore?
+Qué se usó / modificó / descartó: la IA me orientó sobre cómo organizar la edición de los datos del perfil y aprovechar los validadores existentes del registro para evitar repetir lógica. También se tuvo en cuenta cómo actualizar campos específicos de Firestore, como personal.phone, sin tener que reemplazar todo el documento.
+Archivos y commit: src/screens/profile/ProfileScreen.js (hash: 6c143774c4cea58101caa08d59c1f39c74bd1756)
+Verificación: Editar el celular con un valor inválido y con uno válido; ver el cambio en Firestore
+Aprendizaje: Los campos con punto, como personal.phone, permiten actualizar solo una parte del documento
 
-
+### Entrada #A-46
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la pantalla de idioma, comisión y cierre de sesión
+Prompt: Quiero crear una pantalla de configuración para que el conductor pueda consultar y cambiar el idioma, revisar la información de las comisiones y cerrar su sesión, me puedes guiar sobre cómo organizar estas opciones y agregar una confirmación antes de cerrar sesión para evitar salidas accidentales?
+Qué se usó / modificó / descartó: me ayudó a definir cómo organizar las opciones de configuración y el comportamiento de cada una. Se tuvieron en cuenta las ideas para cambiar el idioma, mostrar la información de las comisiones y solicitar una confirmación antes de cerrar la sesión
+Archivos y commit: src/screens/profile/SettingsScreen.js (hash: {{HASH:A-46}})
+Verificación: Cambiar el idioma y cerrar sesión con la confirmación
+Aprendizaje: Pedir confirmación antes de cerrar sesión evita salir por accidente
 
 
 
