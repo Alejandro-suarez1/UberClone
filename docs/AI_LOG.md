@@ -282,6 +282,6 @@ Herramienta: Claude
 Objetivo: Crear los filtros horizontales para periodos, métodos de pago e idioma
 Prompt: Estoy implementando unos filtros en la aplicación. Cómo podría crear un componente horizontal que permita cambiar entre opciones para periodos, métodos de pago e idioma, mostrando cuál está seleccionada?
 Qué se usó / modificó / descartó: Se implementó la estructura de selección propuesta por Claude para mostrar las opciones horizontalmente. Se aprovechó el mismo componente para manejar los diferentes filtros sin tener que crear uno independiente para cada caso
-Archivos y commit: src/components/common/Chips.js (hash: {{HASH:A-26}})
+Archivos y commit: src/components/common/Chips.js (hash: 99a6f036e6bea3bd8ce7cce8a3d75db454c245a5)
 Verificación: Cambiar de opción y ver cuál queda activa
 Aprendizaje: Un componente de selección simple sirve para filtros, idioma y propinas
