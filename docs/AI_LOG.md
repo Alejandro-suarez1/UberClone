@@ -353,6 +353,17 @@ Herramienta: Claude
 Objetivo: Integrar una pasarela de pagos segura dentro de un modal en la aplicación móvil utilizando un componente WebView para gestionar el proceso de cobro
 Prompt: Necesito que me guies de tal manera que pueda crear un componente modal que abra una pasarela de pago dentro de la aplicación mediante un WebView, mostrando un indicador de carga y detectando automáticamente la URL de retorno del backend para cerrar el modal de forma fluida
 Qué se usó / modificó / descartó: Se utilizó una estructura de Modal combinada con WebView de React Native y un indicador de actividad. Se optimizó la lógica de navegación para cerrar el modal de forma automática al detectar que el usuario regresa a la URL de redirección configurada por el backend. No se descartó ningún elemento previo
-Archivos y commit: src/components/trip/CheckoutModal.js hash:
+Archivos y commit: src/components/trip/CheckoutModal.js hash: 7466dce6e8195369dc3d2d84b84551c7ef2d0fd2
 Verificación: Abrir el proceso de checkout con una URL de prueba, observar el indicador de carga durante la navegación y comprobar que el modal se cierra correctamente al alcanzar la página de retorno
 Aprendizaje: Comprendí cómo integrar vistas web dentro de una aplicación móvil para flujos seguros como pagos, y la importancia de delegar la validación real del éxito de la transacción al backend a través de la base de datos en lugar de depender únicamente de la interfaz del navegador web
+
+### Entrada #B-15
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Mostrar de forma visual y estandarizada los distintos estados de un pago (Aprobado, Pendiente, Rechazado o Efectivo) dentro de la aplicación
+Prompt: Me puedes ayudar a crear un componente de insignia reutilizable para los estados de pago, que traduzca dinámicamente cada estado como aprobado, pendiente, rechazado o efectivo y le asigne el color y estilo correspondiente usando la base de insignias del sistema
+Qué se usó / modificó / descartó: Se aprovechó el componente global de insignias (Badge) y su utilidad de tonos para pagos, asegurando un valor por defecto en caso de que el estado llegue vacío. Se ajustó para utilizar las traducciones del sistema. No se descartó ningún elemento previo
+Archivos y commit: src/components/trip/PaymentStatusPill.js hash: 
+Verificación: Probar en pantalla los cuatro estados posibles de un pago y comprobar que cada uno muestra su etiqueta traducida con el color e identidad visual correctos
+Aprendizaje: Comprendí que reutilizar componentes base como las insignias (Badge) ayuda a mantener una consistencia visual impecable en toda la aplicación y simplifica la gestión de los colores de estado
