@@ -392,6 +392,17 @@ Herramienta: Claude
 Objetivo: Crear la tercera pestaña del registro
 Prompt: Estoy desarrollando la última pestaña del registro, donde se cargan los documentos del conductor y del vehículo, me puedes indicar cómo mostrar la revisión técnico-mecánica solo cuando sea necesaria y validar que se acepten los términos?
 Qué se usó / modificó / descartó: Se aprovechó la lógica propuesta para mostrar u ocultar la revisión técnico-mecánica según el año del vehículo. También se incluyeron las validaciones para los documentos y la aceptación obligatoria de los términos
-Archivos y commit: src/screens/auth/DocumentsTab.js (hash: {{HASH:A-36}})
+Archivos y commit: src/screens/auth/DocumentsTab.js (hash: fc16d7f1e23b73f15b965b5f83bf0408c44d8dcd)
 Verificación: Poner un vehículo de 2015 y ver que aparece la revisión; dejar los términos sin marcar
 Aprendizaje: Un formulario puede cambiar según lo que el usuario ya escribió
+
+### Entrada #A-37
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Unir las tres pestañas con Tab y el botón Enviar registro
+Prompt: Ya tengo las tres pestañas del registro por separado, me puedes orientar sobre cómo integrarlas en una sola pantalla con navegación por pestañas y un botón para enviar el registro que solo se habilite cuando todas estén completas?
+Qué se usó / modificó / descartó: Se incorporó la estructura de navegación entre las tres pestañas y se utilizó una barra inferior personalizada para mostrar el botón de envío y el estado de cada sección. También se aprovechó la validación para controlar cuándo se habilita el botón.
+Archivos y commit: src/screens/auth/RegisterScreen.js (hash: {{HASH:A-37}})
+Verificación: Con una pestaña incompleta el botón está deshabilitado; con las tres completas se habilita
+Aprendizaje: Una barra personalizada permite mostrar el botón de envío siempre visible
