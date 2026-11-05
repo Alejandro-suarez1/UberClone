@@ -414,9 +414,20 @@ Herramienta: Claude
 Objetivo: Calcular los totales de hoy, semana, mes y el saldo
 Prompt: Tengo un hook llamado useEarnings.js que debe calcular las ganancias y el saldo a partir de los viajes registrados, me puedes indicar cómo obtener los totales del día, la semana y el mes, teniendo en cuenta que el saldo se calcula restando las comisiones de los viajes en efectivo a los viajes pagados por pasarela?
 Qué se usó / modificó / descartó: La orientación de Claude sirvió para comprender cómo organizar los cálculos de ganancias por día, semana y mes, y cómo obtener el saldo teniendo en cuenta los pagos por pasarela y las comisiones de los viajes en efectivo. También se aplicó el uso de useMemo para evitar cálculos innecesarios cuando la lista de viajes no cambia.
-Archivos y commit: src/hooks/useEarnings.js (hash: {{HASH:A-38}})
+Archivos y commit: src/hooks/useEarnings.js (hash: 40bf020fed1cf78d26b742d8e72c7722412d146c)
 Verificación: Con los viajes de ejemplo revisar a mano que los totales coinciden
 Aprendizaje: useMemo evita recalcular los totales si la lista de viajes no cambió
+
+### Entrada #A-39
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Tener viajes de prueba para trabajar sin esperar el servicio de B
+Prompt: Necesito seguir desarrollando la aplicación mientras se conecta el servicio de backend, me puedes orientar sobre cómo crear viajes de prueba que permitan simular diferentes registros y consultar los resultados por páginas, sin depender todavía del servicio real?
+Qué se usó / modificó / descartó: La guía de Claude permitió entender cómo generar viajes ficticios y simular la consulta de datos por páginas. Se tuvo en cuenta la variable EXPO_PUBLIC_USE_MOCKS=true para activar estos datos de prueba y poder avanzar con el desarrollo sin depender del servicio de backend.
+Archivos y commit: src/utils/mockTrips.js (hash: {{HASH:A-39}})
+Verificación: Pedir dos páginas de 15 viajes y comprobar el orden y el cursor
+Aprendizaje: Los datos de ejemplo permiten avanzar en paralelo sin bloquearse
 
 
 
