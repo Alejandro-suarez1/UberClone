@@ -309,6 +309,17 @@ Herramienta: Claude
 Objetivo: Implementar un componente visual de cuenta regresiva en formato de anillo circular para limitar el tiempo de aceptación de las solicitudes de viaje por parte del conductor
 Prompt: Necesito crear un componente que muestre un temporizador circular de 15 segundos. Debe incluir un número central con la cuenta regresiva, el anillo debe irse vaciando a medida que pasa el tiempo, y todo el componente debe cambiar a color de alerta cuando falten 5 segundos o menos
 Qué se usó / modificó / descartó: Se tomó la idea de la estructura base para el anillo visual del temporizador. Se modificó la forma de girar el círculo para asegurar que la animación comience exactamente arriba en el centro y no se mueva de su lugar en las pantallas de Android e iOS
-Archivos y commit: src/components/trip/CountdownRing.js hash: 
+Archivos y commit: src/components/trip/CountdownRing.js hash: 75b7106ed509f4cc4d25803dc42737a665d707e4
 Verificación: Probar en el emulador simulando el contador de 15 a 0 segundos. Confirmar que el círculo se va vaciando de forma limpia, cambia a color rojo al llegar al segundo 5 y el número del centro se mantiene alineado
 Aprendizaje: Aprendí cómo usar las propiedades de dibujo de círculos en pantallas móviles para crear barras de progreso circulares y la importancia de fijar el punto de rotación en el centro exacto de la figura para que no se descuadre el diseño
+
+### Entrada #B-11
+Fecha: 2026-11-04
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Mostrar la información clave del viaje como origen, destino, distancia, tiempo, categoría, pago, tarifa y ganancia mejorando el rendimiento y la seguridad de los datos
+Prompt: Ayudame a crear un componente para la tarjeta de solicitud de viaje que muestre todos los datos clave como origen, destino, estadísticas, pago, tarifa y ganancia usando la función de cálculo
+Qué se usó / modificó / descartó: Se usó la estructura inicial y la función de tarifas. Se mejoró el código para que los cálculos financieros no se repitieran innecesariamente en cada pantalla y se añadieron protecciones básicas para evitar que la aplicación falle si algún dato del viaje llega tarde o vacío. No se descartó nada
+Archivos y commit: src/components/trip/TripRequestCard.js hash:
+Verificación: Revisar visualmente que la tarjeta mostrara los datos correctos y que la tarifa coincidiera con los cálculos esperados
+Aprendizaje: Aprendí a organizar elementos visuales y estadísticos en componentes limpios, reutilizando funciones de cálculo para mantener los montos exactos y protegiendo el código contra datos vacíos
