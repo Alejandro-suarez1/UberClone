@@ -425,11 +425,20 @@ Herramienta: Claude
 Objetivo: Tener viajes de prueba para trabajar sin esperar el servicio de B
 Prompt: Necesito seguir desarrollando la aplicación mientras se conecta el servicio de backend, me puedes orientar sobre cómo crear viajes de prueba que permitan simular diferentes registros y consultar los resultados por páginas, sin depender todavía del servicio real?
 Qué se usó / modificó / descartó: La guía de Claude permitió entender cómo generar viajes ficticios y simular la consulta de datos por páginas. Se tuvo en cuenta la variable EXPO_PUBLIC_USE_MOCKS=true para activar estos datos de prueba y poder avanzar con el desarrollo sin depender del servicio de backend.
-Archivos y commit: src/utils/mockTrips.js (hash: {{HASH:A-39}})
+Archivos y commit: src/utils/mockTrips.js (hash: 2048b41663856d8b4536b7c83d9520930ddf48a6)
 Verificación: Pedir dos páginas de 15 viajes y comprobar el orden y el cursor
 Aprendizaje: Los datos de ejemplo permiten avanzar en paralelo sin bloquearse
 
-
+### Entrada #A-40
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Cargar el historial por páginas con filtros
+Prompt: Estoy trabajando en el historial de viajes y quiero que los registros se carguen por páginas y puedan filtrarse, me puedes explicar cómo organizar esta lógica para que al cambiar un filtro se vuelva a la primera página y se puedan cargar más resultados al desplazarse?
+Qué se usó / modificó / descartó: La orientación de Claude ayudó a comprender cómo manejar la carga paginada y los filtros en el historial. Se aplicó la lógica para consultar los viajes mediante tripService.getDriverTrips o utilizar los datos de ejemplo. También se tuvo en cuenta cómo ignorar respuestas de consultas anteriores para evitar que los resultados de un filtro viejo reemplacen los actuales
+Archivos y commit: src/hooks/useTripHistory.js (hash: {{HASH:A-40}})
+Verificación: Cambiar de filtro y ver que vuelve a la primera página; bajar y ver que carga más
+Aprendizaje: Ignorar respuestas viejas evita que un filtro anterior pise al nuevo
 
 
 
