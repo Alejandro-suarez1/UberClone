@@ -337,6 +337,17 @@ Herramienta: Claude
 Objetivo: Guardar el formulario de las tres pestañas y controlar el envío
 Prompt: Estoy trabajando en un formulario dividido en tres pestañas y necesito que los datos se conserven al cambiar entre ellas, me puedes indicar cómo controlar la validación y el envío para que solo se active cuando todas estén completas?
 Qué se usó / modificó / descartó: Se aprovechó la lógica de Claude para compartir los datos entre las tres pestañas, validar los campos y controlar el botón de envío. También se integraron los procesos para subir las imágenes, registrar el conductor y abrir su sesión
-Archivos y commit: src/context/RegistrationContext.js (hash: {{HASH:A-31}})
+Archivos y commit: src/context/RegistrationContext.js (hash: 70d4f8f6fa7599225758a75d8dca7c5cd9b4f2c4)
 Verificación: Dejar campos vacíos: el botón sigue deshabilitado; completar todo y enviar
 Aprendizaje: Compartir el estado entre pestañas permite habilitar Enviar solo si las tres son válidas
+
+### Entrada #A-32
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la pantalla inicial con las opciones de registro e ingreso
+Prompt: Estoy diseñando la pantalla inicial de la aplicación y quiero mostrar las opciones para registrarse o iniciar sesión, qué estructura podría utilizar para que ambas opciones sean fáciles de identificar y navegar?
+Qué se usó / modificó / descartó: Se utilizaron las ideas de Claude para organizar las opciones de registro e ingreso. Se mantuvo la estructura visual propuesta y se integró con la navegación de la aplicación
+Archivos y commit: src/screens/auth/WelcomeScreen.js (hash: {{HASH:A-32}})
+Verificación: Abrir la app sin sesión y navegar a Registro y a Ingresar
+Aprendizaje: La primera pantalla define la identidad visual de la app
