@@ -403,9 +403,56 @@ Herramienta: Claude
 Objetivo: Unir las tres pestañas con Tab y el botón Enviar registro
 Prompt: Ya tengo las tres pestañas del registro por separado, me puedes orientar sobre cómo integrarlas en una sola pantalla con navegación por pestañas y un botón para enviar el registro que solo se habilite cuando todas estén completas?
 Qué se usó / modificó / descartó: Se incorporó la estructura de navegación entre las tres pestañas y se utilizó una barra inferior personalizada para mostrar el botón de envío y el estado de cada sección. También se aprovechó la validación para controlar cuándo se habilita el botón.
-Archivos y commit: src/screens/auth/RegisterScreen.js (hash: {{HASH:A-37}})
+Archivos y commit: src/screens/auth/RegisterScreen.js (hash: 7843b82bf09484ca16a4915cddfadda9481cb957)
 Verificación: Con una pestaña incompleta el botón está deshabilitado; con las tres completas se habilita
 Aprendizaje: Una barra personalizada permite mostrar el botón de envío siempre visible
+
+### Entrada #A-38
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Calcular los totales de hoy, semana, mes y el saldo
+Prompt: Tengo un hook llamado useEarnings.js que debe calcular las ganancias y el saldo a partir de los viajes registrados, me puedes indicar cómo obtener los totales del día, la semana y el mes, teniendo en cuenta que el saldo se calcula restando las comisiones de los viajes en efectivo a los viajes pagados por pasarela?
+Qué se usó / modificó / descartó: La orientación de Claude sirvió para comprender cómo organizar los cálculos de ganancias por día, semana y mes, y cómo obtener el saldo teniendo en cuenta los pagos por pasarela y las comisiones de los viajes en efectivo. También se aplicó el uso de useMemo para evitar cálculos innecesarios cuando la lista de viajes no cambia.
+Archivos y commit: src/hooks/useEarnings.js (hash: {{HASH:A-38}})
+Verificación: Con los viajes de ejemplo revisar a mano que los totales coinciden
+Aprendizaje: useMemo evita recalcular los totales si la lista de viajes no cambió
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Entradas de Juan Diego Delgado
 
