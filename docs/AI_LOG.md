@@ -561,7 +561,16 @@ Archivos y commit: README.md (hash: {{HASH:A-51}})
 Verificación: Seguir el README desde cero en otra carpeta
 Aprendizaje: Un buen README permite que otra persona ejecute el proyecto sin preguntar
 
-
+### Entrada #A-52
+Fecha: 2026-11-06
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Elegir entre autenticación y app, y registrar las pantallas del viaje
+Prompt: Estoy organizando la navegación de la aplicación y necesito que se muestre una pantalla diferente dependiendo de si el conductor ha iniciado sesión o no, me puedes orientar sobre cómo manejar esta condición y cómo registrar en el Stack las pantallas del viaje que desarrolló el otro integrante, respetando los nombres definidos en el contrato?
+Qué se usó / modificó / descartó: La orientación de Claude me permitió comprender cómo separar la navegación de autenticación y la navegación principal. Se tuvieron en cuenta las condiciones para mostrar Welcome cuando no hay una sesión activa y el Drawer cuando el conductor ya inició sesión. También se revisó cómo registrar las pantallas del viaje en el Stack utilizando los nombres acordados con el otro integrante.
+Archivos y commit: src/navigation/RootNavigator.js (hash: {{HASH:A-49}})
+Verificación: Sin sesión se ve Welcome; con sesión se ve el Drawer
+Aprendizaje: El Stack permite apilar el flujo del viaje encima del Drawer
 
 
 
