@@ -513,11 +513,20 @@ Herramienta: Claude
 Objetivo: Crear el menú lateral con los datos del conductor
 Prompt: Estoy implementando el menú lateral de la aplicación y quiero que muestre la información principal del conductor, me puedes orientar sobre cómo organizarlo para incluir su foto, nombre, placa del vehículo, estado de aprobación y disponibilidad, de manera que sea fácil consultar el estado de la cuenta?
 Qué se usó / modificó / descartó: me ayudó a definir la distribución de los datos dentro del menú lateral y cómo presentar visualmente la información del conductor. Se tuvieron en cuenta los elementos necesarios para identificar al usuario y consultar rápidamente su estado de aprobación y disponibilidad.
-Archivos y commit: src/navigation/DrawerContent.js (hash: {{HASH:A-47}})
+Archivos y commit: src/navigation/DrawerContent.js (hash: c95f1411034ec602facfddae080e8e4d696ffc10)
 Verificación: Abrir el menú y ver foto, nombre, placa, estado de aprobación y disponibilidad
 Aprendizaje: El menú lateral resume el estado de la cuenta en un solo lugar
 
-
+### Entrada #A-48
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Armar el Drawer con Inicio, Ganancias, Historial, Perfil y Configuración
+Prompt: Ya tengo varias pantallas creadas para la aplicación y quiero conectarlas mediante un menú lateral, me puedes orientar sobre cómo configurar el Drawer para navegar entre Inicio, Ganancias, Historial, Perfil y Configuración, teniendo en cuenta que la pantalla de Inicio ya tiene su propio encabezado?
+Qué se usó / modificó / descartó: me orientó sobre la configuración del navegador lateral y la conexión de las diferentes pantallas. Se tuvieron en cuenta las opciones de navegación y la particularidad de Inicio, que conserva su propio encabezado. También se identificaron las dependencias necesarias, como gesture-handler y reanimated, para el funcionamiento del Drawer.
+Archivos y commit: src/navigation/DrawerNavigator.js (hash: {{HASH:A-48}})
+Verificación: Navegar a cada opción desde el menú
+Aprendizaje: El Drawer necesita gesture-handler y reanimated instalados
 
 
 
