@@ -550,23 +550,16 @@ Archivos y commit: App.js (hash: {{HASH:A-50}})
 Verificación: Abrir la app: carga las fuentes y muestra Welcome
 Aprendizaje: El orden de los proveedores importa porque unos usan a los otros
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### Entrada #A-51
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Documentar la instalación, las variables de entorno y la arquitectura
+Prompt: Quiero mejorar el README del proyecto para que cualquier integrante del equipo pueda entender cómo instalar y ejecutar la aplicación, me puedes ayudar sobre cómo documentar los pasos de instalación, las variables de entorno y la arquitectura del proyecto, incluyendo una sección que explique el uso de inteligencia artificial y enlace a la bitácora?
+Qué se usó / modificó / descartó: me ayudó a organizar el contenido y definir qué información era importante incluir en la documentación. Se tuvieron en cuenta las indicaciones para explicar la instalación, las variables de entorno y la estructura de la arquitectura, además de agregar una sección sobre el uso de IA con el enlace a la bitácora.
+Archivos y commit: README.md (hash: {{HASH:A-51}})
+Verificación: Seguir el README desde cero en otra carpeta
+Aprendizaje: Un buen README permite que otra persona ejecute el proyecto sin preguntar
 
 
 
