@@ -364,6 +364,17 @@ Herramienta: Claude
 Objetivo: Mostrar de forma visual y estandarizada los distintos estados de un pago (Aprobado, Pendiente, Rechazado o Efectivo) dentro de la aplicación
 Prompt: Me puedes ayudar a crear un componente de insignia reutilizable para los estados de pago, que traduzca dinámicamente cada estado como aprobado, pendiente, rechazado o efectivo y le asigne el color y estilo correspondiente usando la base de insignias del sistema
 Qué se usó / modificó / descartó: Se aprovechó el componente global de insignias (Badge) y su utilidad de tonos para pagos, asegurando un valor por defecto en caso de que el estado llegue vacío. Se ajustó para utilizar las traducciones del sistema. No se descartó ningún elemento previo
-Archivos y commit: src/components/trip/PaymentStatusPill.js hash: 
+Archivos y commit: src/components/trip/PaymentStatusPill.js hash: 7d51937d693e706e7fb4c67c4009a34d0ec2c131
 Verificación: Probar en pantalla los cuatro estados posibles de un pago y comprobar que cada uno muestra su etiqueta traducida con el color e identidad visual correctos
 Aprendizaje: Comprendí que reutilizar componentes base como las insignias (Badge) ayuda a mantener una consistencia visual impecable en toda la aplicación y simplifica la gestión de los colores de estado
+
+### Entrada #B-16
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla principal de la aplicación para conductores, integrando un mapa interactivo de fondo que sigue la ubicación, un panel flotante con el estado y el interruptor de disponibilidad, y avisos claros según la aprobación de la cuenta
+Prompt: Me puedes ayudar a crear la pantalla principal (Home) que muestre un mapa oscuro cubriendo toda la vista, un encabezado flotante con el menú y el saludo personalizado, un panel inferior con el interruptor de disponibilidad bloqueado si la cuenta está pendiente o rechazada, y botones de simulación de prueba visibles únicamente en entorno de desarrollo
+Qué se usó / modificó / descartó: Se utilizó una estructura de capas absolutas con MapView de fondo y componentes SafeAreaView superpuestos. Se integraron hooks personalizados para el manejo de la ubicación, sesiones del conductor y traducciones. Se incorporó además la lógica para simular peticiones de viaje en modo de desarrollo. No se descartó ningún elemento previo
+Archivos y commit: src/screens/home/HomeScreen.js hash:
+Verificación: Probar en el emulador comprobando que con una cuenta pendiente el interruptor permanece bloqueado con su respectivo aviso, y que al aprobar la cuenta se activa correctamente para enviar la ubicación en tiempo real
+Aprendizaje: Comprendí cómo estructurar pantallas principales complejas utilizando vistas flotantes sobre mapas interactivos, gestionando permisos de ubicación en tiempo real y condicionando los elementos visuales según los estados de validación del usuario
