@@ -375,6 +375,17 @@ Herramienta: Claude
 Objetivo: Diseñar e implementar la pantalla principal de la aplicación para conductores, integrando un mapa interactivo de fondo que sigue la ubicación, un panel flotante con el estado y el interruptor de disponibilidad, y avisos claros según la aprobación de la cuenta
 Prompt: Me puedes ayudar a crear la pantalla principal (Home) que muestre un mapa oscuro cubriendo toda la vista, un encabezado flotante con el menú y el saludo personalizado, un panel inferior con el interruptor de disponibilidad bloqueado si la cuenta está pendiente o rechazada, y botones de simulación de prueba visibles únicamente en entorno de desarrollo
 Qué se usó / modificó / descartó: Se utilizó una estructura de capas absolutas con MapView de fondo y componentes SafeAreaView superpuestos. Se integraron hooks personalizados para el manejo de la ubicación, sesiones del conductor y traducciones. Se incorporó además la lógica para simular peticiones de viaje en modo de desarrollo. No se descartó ningún elemento previo
-Archivos y commit: src/screens/home/HomeScreen.js hash:
+Archivos y commit: src/screens/home/HomeScreen.js hash: 62800c871afdad5334557df69bfbf279b3f4d3dd
 Verificación: Probar en el emulador comprobando que con una cuenta pendiente el interruptor permanece bloqueado con su respectivo aviso, y que al aprobar la cuenta se activa correctamente para enviar la ubicación en tiempo real
 Aprendizaje: Comprendí cómo estructurar pantallas principales complejas utilizando vistas flotantes sobre mapas interactivos, gestionando permisos de ubicación en tiempo real y condicionando los elementos visuales según los estados de validación del usuario
+
+### Entrada #B-17
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla para visualizar las solicitudes de viaje entrantes, integrando un anillo de cuenta regresiva, los detalles del servicio y los botones de aceptación y rechazo
+Prompt: Necesito que me guies para crear una pantalla que muestre la solicitud de viaje entrante con una cuenta regresiva visual, un indicador de los segundos restantes, y botones interactivos para aceptar o rechazar el servicio, manejando correctamente el estado de carga y evitando cierres inesperados durante la aceptación
+Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor con scroll, combinada con componentes visuales especializados como CountdownRing y TripRequestCard. Se implementó una referencia para evitar que la pantalla se desmonte automáticamente al procesar la aceptación. No se descartó ningún elemento previo
+Archivos y commit: src/screens/trip/IncomingRequestScreen.js hash:
+Verificación: Probar en pantalla la recepción de un viaje aceptando una solicitud, rechazando otra de forma manual, y permitiendo que una tercera expire por tiempo límite
+Aprendizaje: Comprendí que al manejar flujos asíncronos críticos como la aceptación de un viaje, es fundamental utilizar referencias de control para evitar que efectos secundarios o cambios de estado cierren la pantalla de forma prematura antes de completar la navegación al trayecto en curso
