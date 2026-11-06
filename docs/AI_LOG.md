@@ -502,11 +502,20 @@ Herramienta: Claude
 Objetivo: Crear la pantalla de idioma, comisión y cierre de sesión
 Prompt: Quiero crear una pantalla de configuración para que el conductor pueda consultar y cambiar el idioma, revisar la información de las comisiones y cerrar su sesión, me puedes guiar sobre cómo organizar estas opciones y agregar una confirmación antes de cerrar sesión para evitar salidas accidentales?
 Qué se usó / modificó / descartó: me ayudó a definir cómo organizar las opciones de configuración y el comportamiento de cada una. Se tuvieron en cuenta las ideas para cambiar el idioma, mostrar la información de las comisiones y solicitar una confirmación antes de cerrar la sesión
-Archivos y commit: src/screens/profile/SettingsScreen.js (hash: {{HASH:A-46}})
+Archivos y commit: src/screens/profile/SettingsScreen.js (hash: 883fd2a45330a89af1096fb1b4afa9c39261eeba)
 Verificación: Cambiar el idioma y cerrar sesión con la confirmación
 Aprendizaje: Pedir confirmación antes de cerrar sesión evita salir por accidente
 
-
+### Entrada #A-47
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el menú lateral con los datos del conductor
+Prompt: Estoy implementando el menú lateral de la aplicación y quiero que muestre la información principal del conductor, me puedes orientar sobre cómo organizarlo para incluir su foto, nombre, placa del vehículo, estado de aprobación y disponibilidad, de manera que sea fácil consultar el estado de la cuenta?
+Qué se usó / modificó / descartó: me ayudó a definir la distribución de los datos dentro del menú lateral y cómo presentar visualmente la información del conductor. Se tuvieron en cuenta los elementos necesarios para identificar al usuario y consultar rápidamente su estado de aprobación y disponibilidad.
+Archivos y commit: src/navigation/DrawerContent.js (hash: {{HASH:A-47}})
+Verificación: Abrir el menú y ver foto, nombre, placa, estado de aprobación y disponibilidad
+Aprendizaje: El menú lateral resume el estado de la cuenta en un solo lugar
 
 
 
