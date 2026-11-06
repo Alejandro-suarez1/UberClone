@@ -397,6 +397,17 @@ Herramienta: Claude
 Objetivo: Diseñar e implementar la pantalla de seguimiento del viaje en curso, gestionando de forma dinámica la ruta hacia el punto de recogida, el estado con el pasajero a bordo hacia el destino, y las acciones de finalización o cancelación
 Prompt: Necesito que me guies para crear la pantalla donde se lleva a cabo el viaje, mostrando la ruta interactiva en el mapa, calculando el tiempo estimado de llegada, permitiendo cambiar al estado de pasajero a bordo, integrar un selector de propinas, abrir aplicaciones externas de navegación y finalizar o cancelar el servicio de forma segura
 Qué se usó / modificó / descartó: Se utilizó una vista de mapa integrada combinada con un panel flotante inferior. Se implementó una lógica de simplificación de coordenadas para optimizar el guardado de la ruta al finalizar el trayecto, y se condicionaron las acciones según el estado activo del viaje. No se descartó ningún elemento previo
-Archivos y commit: src/screens/trip/TripInProgressScreen.js hash: 
+Archivos y commit: src/screens/trip/TripInProgressScreen.js hash: 11b45184c99824e9caef8dc897c8cf65732b8da6
 Verificación: Realizar un viaje completo de prueba en el emulador comprobando la transición de la ruta hacia la recogida y su posterior cambio hacia el destino al pulsar "Pasajero a bordo", revisando la correcta persistencia de los estados
 Aprendizaje: Comprendí que estructurar pantallas de procesos largos requiere una sincronización precisa entre el estado actual del viaje y los componentes visuales mostrados como el objetivo del mapa y los botones de acción, garantizando una experiencia fluida para el conductor
+
+### Entrada #B-19
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla de resumen y cobro de la tarifa del viaje, desglosando ganancias netas, comisiones, propinas y el estado del pago mediante integración con Mercado Pago o efectivo
+Prompt: Necesito que me guies para crear la pantalla donde el conductor visualiza el desglose financiero del viaje (tarifa, comisión y propinas), muestra el estado del pago con insignias dinámicas, y permite cobrar mediante pasarela de pagos con modal de verificación o registrar el cobro en efectivo
+Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor con scroll, combinando tarjetas informativas, componentes personalizados como CheckoutModal y PaymentStatusPill, y llamadas a servicios de pasarela de pago y registro de efectivo. No se descartó ningún elemento previo
+Archivos y commit: src/screens/trip/PaymentSummaryScreen.js hash: 
+Verificación: Realizar pruebas cobrando en efectivo para verificar el estado de pago en efectivo, y realizar cobros mediante la pasarela de Mercado Pago comprobando la actualización a estado aprobado
+Aprendizaje: Comprendí la importancia de sincronizar los estados de pago en tiempo real desde la base de datos para ofrecer una retroalimentación clara al conductor y asegurar un cierre de ciclo sin fricciones en la aplicación
