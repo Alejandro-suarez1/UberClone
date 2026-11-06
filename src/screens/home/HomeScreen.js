@@ -12,7 +12,7 @@ import { useDriverSession } from '../../context/DriverSessionContext';
 import { useActiveTrip } from '../../context/ActiveTripContext';
 import useDriverLocation from '../../hooks/useDriverLocation';
 import { getCurrentPlace, requestLocationPermission } from '../../services/locationService';
-import { createDemoRequest } from '../../services/demoService';
+// import { createDemoRequest } from '../../services/demoService';
 import { APPROVAL, PAYMENT_METHOD } from '../../contracts/types';
 import { darkMapStyle } from '../../theme/mapStyle';
 import { colors } from '../../theme/colors';

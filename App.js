@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
-import { I18nProvider } from './src/context/I18nContext';
+import  I18nProvider  from './src/context/I18nContext';
 import { DriverSessionProvider } from './src/context/DriverSessionContext';
 import { ActiveTripProvider } from './src/context/ActiveTripContext'; 
 import RootNavigator from './src/navigation/RootNavigator';

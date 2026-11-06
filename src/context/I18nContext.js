@@ -6,7 +6,7 @@ import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, translate } from '../i18n';
 const LANGUAGE_KEY = 'pref.language';
 const I18nContext = createContext(null);
 
-export function I18nProvider({ children }) {
+export default function I18nProvider({ children }) {
   const [lang, setLangState] = useState(DEFAULT_LANGUAGE);
 
   useEffect(() => {

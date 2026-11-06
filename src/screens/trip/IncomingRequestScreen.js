@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ScreenContainer from '../../components/common/ScreenContainer';
 import Button from '../../components/common/Button';
-import CountdownRing from '../../components/trip/CountdownRing';
+import CountdownRing from '../../components/trip/CountdownRings';
 import TripRequestCard from '../../components/trip/TripRequestCard';
 import { useI18n } from '../../context/I18nContext';
 import { useActiveTrip } from '../../context/ActiveTripContext';

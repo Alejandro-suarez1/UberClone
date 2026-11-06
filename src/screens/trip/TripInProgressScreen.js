@@ -11,7 +11,7 @@ import TipSelector from '../../components/trip/TipSelector';
 import { useI18n } from '../../context/I18nContext';
 import { useActiveTrip } from '../../context/ActiveTripContext';
 import useDriverLocation from '../../hooks/useDriverLocation';
-import { getRoute, navigationUrl } from '../../services/directionsService';
+import { getRoute, navigationUrl } from '../../services/directionService';
 import { ROUTES } from '../../contracts/routes';
 import { TRIP_STATUS } from '../../contracts/types';
 import { formatKm, placeLabel } from '../../utils/format';
