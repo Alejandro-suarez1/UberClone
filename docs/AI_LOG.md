@@ -386,6 +386,17 @@ Herramienta: Claude
 Objetivo: Diseñar e implementar la pantalla para visualizar las solicitudes de viaje entrantes, integrando un anillo de cuenta regresiva, los detalles del servicio y los botones de aceptación y rechazo
 Prompt: Necesito que me guies para crear una pantalla que muestre la solicitud de viaje entrante con una cuenta regresiva visual, un indicador de los segundos restantes, y botones interactivos para aceptar o rechazar el servicio, manejando correctamente el estado de carga y evitando cierres inesperados durante la aceptación
 Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor con scroll, combinada con componentes visuales especializados como CountdownRing y TripRequestCard. Se implementó una referencia para evitar que la pantalla se desmonte automáticamente al procesar la aceptación. No se descartó ningún elemento previo
-Archivos y commit: src/screens/trip/IncomingRequestScreen.js hash:
+Archivos y commit: src/screens/trip/IncomingRequestScreen.js hash: d993b565b3e06cdbe61b8cc5f2fe741fbe52b763
 Verificación: Probar en pantalla la recepción de un viaje aceptando una solicitud, rechazando otra de forma manual, y permitiendo que una tercera expire por tiempo límite
 Aprendizaje: Comprendí que al manejar flujos asíncronos críticos como la aceptación de un viaje, es fundamental utilizar referencias de control para evitar que efectos secundarios o cambios de estado cierren la pantalla de forma prematura antes de completar la navegación al trayecto en curso
+
+### Entrada #B-18
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla de seguimiento del viaje en curso, gestionando de forma dinámica la ruta hacia el punto de recogida, el estado con el pasajero a bordo hacia el destino, y las acciones de finalización o cancelación
+Prompt: Necesito que me guies para crear la pantalla donde se lleva a cabo el viaje, mostrando la ruta interactiva en el mapa, calculando el tiempo estimado de llegada, permitiendo cambiar al estado de pasajero a bordo, integrar un selector de propinas, abrir aplicaciones externas de navegación y finalizar o cancelar el servicio de forma segura
+Qué se usó / modificó / descartó: Se utilizó una vista de mapa integrada combinada con un panel flotante inferior. Se implementó una lógica de simplificación de coordenadas para optimizar el guardado de la ruta al finalizar el trayecto, y se condicionaron las acciones según el estado activo del viaje. No se descartó ningún elemento previo
+Archivos y commit: src/screens/trip/TripInProgressScreen.js hash: 
+Verificación: Realizar un viaje completo de prueba en el emulador comprobando la transición de la ruta hacia la recogida y su posterior cambio hacia el destino al pulsar "Pasajero a bordo", revisando la correcta persistencia de los estados
+Aprendizaje: Comprendí que estructurar pantallas de procesos largos requiere una sincronización precisa entre el estado actual del viaje y los componentes visuales mostrados como el objetivo del mapa y los botones de acción, garantizando una experiencia fluida para el conductor
