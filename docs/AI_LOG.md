@@ -557,7 +557,7 @@ Herramienta: Claude
 Objetivo: Documentar la instalación, las variables de entorno y la arquitectura
 Prompt: Quiero mejorar el README del proyecto para que cualquier integrante del equipo pueda entender cómo instalar y ejecutar la aplicación, me puedes ayudar sobre cómo documentar los pasos de instalación, las variables de entorno y la arquitectura del proyecto, incluyendo una sección que explique el uso de inteligencia artificial y enlace a la bitácora?
 Qué se usó / modificó / descartó: me ayudó a organizar el contenido y definir qué información era importante incluir en la documentación. Se tuvieron en cuenta las indicaciones para explicar la instalación, las variables de entorno y la estructura de la arquitectura, además de agregar una sección sobre el uso de IA con el enlace a la bitácora.
-Archivos y commit: README.md (hash: {{HASH:A-51}})
+Archivos y commit: README.md (hash: 74bf72acb7c1dec68b23fc9ec72e5f2fa5910b39)
 Verificación: Seguir el README desde cero en otra carpeta
 Aprendizaje: Un buen README permite que otra persona ejecute el proyecto sin preguntar
 
@@ -568,7 +568,7 @@ Herramienta: Claude
 Objetivo: Elegir entre autenticación y app, y registrar las pantallas del viaje
 Prompt: Estoy organizando la navegación de la aplicación y necesito que se muestre una pantalla diferente dependiendo de si el conductor ha iniciado sesión o no, me puedes orientar sobre cómo manejar esta condición y cómo registrar en el Stack las pantallas del viaje que desarrolló el otro integrante, respetando los nombres definidos en el contrato?
 Qué se usó / modificó / descartó: La orientación de Claude me permitió comprender cómo separar la navegación de autenticación y la navegación principal. Se tuvieron en cuenta las condiciones para mostrar Welcome cuando no hay una sesión activa y el Drawer cuando el conductor ya inició sesión. También se revisó cómo registrar las pantallas del viaje en el Stack utilizando los nombres acordados con el otro integrante.
-Archivos y commit: src/navigation/RootNavigator.js (hash: {{HASH:A-49}})
+Archivos y commit: src/navigation/RootNavigator.js (hash: ca6f011895084003f0395dc3b3627532fadb66ba)
 Verificación: Sin sesión se ve Welcome; con sesión se ve el Drawer
 Aprendizaje: El Stack permite apilar el flujo del viaje encima del Drawer
 
