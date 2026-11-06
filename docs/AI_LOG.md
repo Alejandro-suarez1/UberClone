@@ -697,6 +697,72 @@ Herramienta: Claude
 Objetivo: Renderizar el mapa del viaje dibujando la ruta con Polyline y los marcadores de la ubicación del conductor y el punto destino
 Prompt: Ayudame a crear un componente de mapa interactivo que dibuje la linea de la ruta del viaje y muestre los puntos del conductor y el destino de forma visual
 Qué se usó / modificó / descartó: Se usó la base de guia generada por Claude dejando el mapa con estilo oscuro. Se mejoró la lógica del efecto para calcular la firma de la ruta y re-encuadrar el mapa de forma fluida al cambiar el tramo, protegiendo las lecturas de coordenadas vacías. No se descartó nada
-Archivos y commit: src/components/trip/RouteMap.js hash:
+Archivos y commit: src/components/trip/RouteMap.js hash: 97b69c3bc1f24769ad291016f3b4bd9d121f1d41
 Verificación: Probar en el emulador observando la ruta hacia la recogida del pasajero y hacia el destino final, comprobando el re-encuadre automático del mapa
 Aprendizaje: Aprendí a integrar y estructurar un mapa interactivo, combinando líneas de ruta y marcadores personalizados para el conductor y el destino. Además, comprendí cómo usar referencias y efectos condicionales para ajustar automáticamente el zoom y encuadrar todo el recorrido en la pantalla de forma fluida a medida que cambian las coordenadas
+
+### Entrada #B-13
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Permitir que el pasajero pueda dejar una propina de forma rápida y visual al terminar el viaje, asegurando que se refleje correctamente en las ganancias del conductor
+Prompt: Necesito que me guies de tal manera que pueda crear un selector rápido de propinas usando chips con montos predefinidos incluyendo la opción de cero para que el usuario pueda agregarlas fácilmente al finalizar un viaje, aplicando los estilos y traducciones del sistema
+Qué se usó / modificó / descartó: Se aprovechó la estructura base de componentes visuales (Chips) y las funciones globales de formato de dinero para estructurar las opciones de propina. Se ajustaron los textos descriptivos y las etiquetas de ayuda manteniendo una interfaz limpia y fluida. No se descartó ninguna opción previa
+Archivos y commit: src/components/trip/TipSelector.js hash: a28b64a1f2ecba2bf60fe6925724c5d072fe70b1
+Verificación: Seleccionar montos en pantalla y comprobar visualmente que la selección responde de inmediato y suma correctamente al total de la ganancia neta del viaje
+Aprendizaje: Comprendí cómo estructurar componentes interactivos pequeños basados en opciones rápidas (chips), conectándolos limpiamente con los estados del sistema para mejorar la experiencia al finalizar procesos importantes como el pago de un viaje
+
+### Entrada #B-14
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Integrar una pasarela de pagos segura dentro de un modal en la aplicación móvil utilizando un componente WebView para gestionar el proceso de cobro
+Prompt: Necesito que me guies de tal manera que pueda crear un componente modal que abra una pasarela de pago dentro de la aplicación mediante un WebView, mostrando un indicador de carga y detectando automáticamente la URL de retorno del backend para cerrar el modal de forma fluida
+Qué se usó / modificó / descartó: Se utilizó una estructura de Modal combinada con WebView de React Native y un indicador de actividad. Se optimizó la lógica de navegación para cerrar el modal de forma automática al detectar que el usuario regresa a la URL de redirección configurada por el backend. No se descartó ningún elemento previo
+Archivos y commit: src/components/trip/CheckoutModal.js hash: 7466dce6e8195369dc3d2d84b84551c7ef2d0fd2
+Verificación: Abrir el proceso de checkout con una URL de prueba, observar el indicador de carga durante la navegación y comprobar que el modal se cierra correctamente al alcanzar la página de retorno
+Aprendizaje: Comprendí cómo integrar vistas web dentro de una aplicación móvil para flujos seguros como pagos, y la importancia de delegar la validación real del éxito de la transacción al backend a través de la base de datos en lugar de depender únicamente de la interfaz del navegador web
+
+### Entrada #B-15
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Mostrar de forma visual y estandarizada los distintos estados de un pago (Aprobado, Pendiente, Rechazado o Efectivo) dentro de la aplicación
+Prompt: Me puedes ayudar a crear un componente de insignia reutilizable para los estados de pago, que traduzca dinámicamente cada estado como aprobado, pendiente, rechazado o efectivo y le asigne el color y estilo correspondiente usando la base de insignias del sistema
+Qué se usó / modificó / descartó: Se aprovechó el componente global de insignias (Badge) y su utilidad de tonos para pagos, asegurando un valor por defecto en caso de que el estado llegue vacío. Se ajustó para utilizar las traducciones del sistema. No se descartó ningún elemento previo
+Archivos y commit: src/components/trip/PaymentStatusPill.js hash: 7d51937d693e706e7fb4c67c4009a34d0ec2c131
+Verificación: Probar en pantalla los cuatro estados posibles de un pago y comprobar que cada uno muestra su etiqueta traducida con el color e identidad visual correctos
+Aprendizaje: Comprendí que reutilizar componentes base como las insignias (Badge) ayuda a mantener una consistencia visual impecable en toda la aplicación y simplifica la gestión de los colores de estado
+
+### Entrada #B-16
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla principal de la aplicación para conductores, integrando un mapa interactivo de fondo que sigue la ubicación, un panel flotante con el estado y el interruptor de disponibilidad, y avisos claros según la aprobación de la cuenta
+Prompt: Me puedes ayudar a crear la pantalla principal (Home) que muestre un mapa oscuro cubriendo toda la vista, un encabezado flotante con el menú y el saludo personalizado, un panel inferior con el interruptor de disponibilidad bloqueado si la cuenta está pendiente o rechazada, y botones de simulación de prueba visibles únicamente en entorno de desarrollo
+Qué se usó / modificó / descartó: Se utilizó una estructura de capas absolutas con MapView de fondo y componentes SafeAreaView superpuestos. Se integraron hooks personalizados para el manejo de la ubicación, sesiones del conductor y traducciones. Se incorporó además la lógica para simular peticiones de viaje en modo de desarrollo. No se descartó ningún elemento previo
+Archivos y commit: src/screens/home/HomeScreen.js hash: 62800c871afdad5334557df69bfbf279b3f4d3dd
+Verificación: Probar en el emulador comprobando que con una cuenta pendiente el interruptor permanece bloqueado con su respectivo aviso, y que al aprobar la cuenta se activa correctamente para enviar la ubicación en tiempo real
+Aprendizaje: Comprendí cómo estructurar pantallas principales complejas utilizando vistas flotantes sobre mapas interactivos, gestionando permisos de ubicación en tiempo real y condicionando los elementos visuales según los estados de validación del usuario
+
+### Entrada #B-17
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla para visualizar las solicitudes de viaje entrantes, integrando un anillo de cuenta regresiva, los detalles del servicio y los botones de aceptación y rechazo
+Prompt: Necesito que me guies para crear una pantalla que muestre la solicitud de viaje entrante con una cuenta regresiva visual, un indicador de los segundos restantes, y botones interactivos para aceptar o rechazar el servicio, manejando correctamente el estado de carga y evitando cierres inesperados durante la aceptación
+Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor con scroll, combinada con componentes visuales especializados como CountdownRing y TripRequestCard. Se implementó una referencia para evitar que la pantalla se desmonte automáticamente al procesar la aceptación. No se descartó ningún elemento previo
+Archivos y commit: src/screens/trip/IncomingRequestScreen.js hash: d993b565b3e06cdbe61b8cc5f2fe741fbe52b763
+Verificación: Probar en pantalla la recepción de un viaje aceptando una solicitud, rechazando otra de forma manual, y permitiendo que una tercera expire por tiempo límite
+Aprendizaje: Comprendí que al manejar flujos asíncronos críticos como la aceptación de un viaje, es fundamental utilizar referencias de control para evitar que efectos secundarios o cambios de estado cierren la pantalla de forma prematura antes de completar la navegación al trayecto en curso
+
+### Entrada #B-18
+Fecha: 2026-11-05
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Diseñar e implementar la pantalla de seguimiento del viaje en curso, gestionando de forma dinámica la ruta hacia el punto de recogida, el estado con el pasajero a bordo hacia el destino, y las acciones de finalización o cancelación
+Prompt: Necesito que me guies para crear la pantalla donde se lleva a cabo el viaje, mostrando la ruta interactiva en el mapa, calculando el tiempo estimado de llegada, permitiendo cambiar al estado de pasajero a bordo, integrar un selector de propinas, abrir aplicaciones externas de navegación y finalizar o cancelar el servicio de forma segura
+Qué se usó / modificó / descartó: Se utilizó una vista de mapa integrada combinada con un panel flotante inferior. Se implementó una lógica de simplificación de coordenadas para optimizar el guardado de la ruta al finalizar el trayecto, y se condicionaron las acciones según el estado activo del viaje. No se descartó ningún elemento previo
+Archivos y commit: src/screens/trip/TripInProgressScreen.js hash: 
+Verificación: Realizar un viaje completo de prueba en el emulador comprobando la transición de la ruta hacia la recogida y su posterior cambio hacia el destino al pulsar "Pasajero a bordo", revisando la correcta persistencia de los estados
+Aprendizaje: Comprendí que estructurar pantallas de procesos largos requiere una sincronización precisa entre el estado actual del viaje y los componentes visuales mostrados como el objetivo del mapa y los botones de acción, garantizando una experiencia fluida para el conductor
