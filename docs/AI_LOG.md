@@ -524,11 +524,31 @@ Herramienta: Claude
 Objetivo: Armar el Drawer con Inicio, Ganancias, Historial, Perfil y Configuración
 Prompt: Ya tengo varias pantallas creadas para la aplicación y quiero conectarlas mediante un menú lateral, me puedes orientar sobre cómo configurar el Drawer para navegar entre Inicio, Ganancias, Historial, Perfil y Configuración, teniendo en cuenta que la pantalla de Inicio ya tiene su propio encabezado?
 Qué se usó / modificó / descartó: me orientó sobre la configuración del navegador lateral y la conexión de las diferentes pantallas. Se tuvieron en cuenta las opciones de navegación y la particularidad de Inicio, que conserva su propio encabezado. También se identificaron las dependencias necesarias, como gesture-handler y reanimated, para el funcionamiento del Drawer.
-Archivos y commit: src/navigation/DrawerNavigator.js (hash: {{HASH:A-48}})
+Archivos y commit: src/navigation/DrawerNavigator.js (hash: 9626c58e0245597332fb3c710b735362a76819b7)
 Verificación: Navegar a cada opción desde el menú
 Aprendizaje: El Drawer necesita gesture-handler y reanimated instalados
 
+### Entrada #A-49
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Elegir entre autenticación y app, y registrar las pantallas del viaje
+Prompt: Estoy organizando la navegación principal de la aplicación y necesito controlar qué pantallas se muestran según el estado de la sesión, me puedes orientar sobre cómo separar el flujo de autenticación del resto de la aplicación y cómo registrar las pantallas del viaje dentro del Stack, respetando los nombres definidos en el contrato con el otro integrante?
+Qué se usó / modificó / descartó: Se usó el archivo completo generado por Claude, sin modificaciones. Nada descartado. Las pantallas del viaje son de B; en el Stack se registran con los nombres del contrato.
+Archivos y commit: src/navigation/RootNavigator.js (hash: 9626c58e0245597332fb3c710b735362a76819b7)
+Verificación: Sin sesión se ve Welcome; con sesión se ve el Drawer
+Aprendizaje: El Stack permite apilar el flujo del viaje encima del Drawer
 
+### Entrada #A-50
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Armar la app con fuentes, proveedores y el contenedor de navegación
+Prompt: Estoy organizando el archivo principal App.js y quiero integrar las fuentes de texto, los proveedores de contexto y el contenedor de navegación, me puedes explicar cómo estructurar estos elementos y en qué orden ubicar los proveedores de idioma, sesión y viaje activo para evitar problemas de dependencias entre ellos?
+Qué se usó / modificó / descartó: Claude me orientó sobre cómo organizar la estructura principal de la aplicación y conectar sus diferentes elementos. Se tuvieron en cuenta las indicaciones para cargar las fuentes, integrar el contenedor de navegación y establecer el orden correcto de los proveedores: primero idioma, después sesión y finalmente viaje activo.
+Archivos y commit: App.js (hash: {{HASH:A-50}})
+Verificación: Abrir la app: carga las fuentes y muestra Welcome
+Aprendizaje: El orden de los proveedores importa porque unos usan a los otros
 
 
 
