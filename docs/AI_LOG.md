@@ -194,9 +194,384 @@ Herramienta: Claude
 Objetivo: Crear el campo de texto con etiqueta y error debajo (no en un Alert)
 Prompt: Ayúdame a crear un componente Input reutilizable que tenga una etiqueta y permita mostrar mensajes de error debajo del campo, cambiando el borde a rojo cuando el valor no sea válido. 
 Qué se usó / modificó / descartó: Se utilizó la orientación de Claude para definir la estructura del componente y manejar los estados de validación. Se integró la propuesta al proyecto, ajustando el campo para mostrar los errores directamente debajo del input, sin utilizar Alert
-Archivos y commit: src/components/common/Input.js (hash: {{HASH:A-18}})
+Archivos y commit: src/components/common/Input.js (hash: 57a1bb54ee9dcffb02ccf4afc31a49318fe186c5)
 Verificación: Escribir un valor inválido: el borde se pone rojo y el mensaje sale debajo
 Aprendizaje: El error va en el campo para que el usuario sepa exactamente qué corregir
+
+### Entrada #A-19
+Fecha: 2026-11-02
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la lista desplegable de los formularios
+Prompt: Me puedes ayudar a crear un selector de opciones para los formularios? Quiero que al abrirlo muestre las opciones disponibles, permita seleccionar una y muestre un check en la opción elegida
+Qué se usó / modificó / descartó: Se tomó como referencia el componente sugerido por Claude y se adaptó a la estructura de los formularios del proyecto. Se descartaron elementos adicionales que no eran necesarios
+Archivos y commit: src/components/common/Select.js (hash: 48d4d357eb4c89efd83c6e7d0c2873680633800e)
+Verificación: Abrir, elegir una opción y ver el check; cerrar sin elegir
+Aprendizaje: La hoja inferior es más cómoda con el pulgar que el selector nativo
+
+### Entrada #A-20
+Fecha: 2026-11-02
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el selector de fecha que funciona en Android e iOS
+Prompt: Me puedes ayudar a implementar un selector de fecha compatible con Android y iOS, teniendo en cuenta cómo funciona en cada sistema y cómo mostrar la fecha seleccionada?
+Qué se usó / modificó / descartó: Se tomó como guía el código de Claude para manejar ambos sistemas. Se utilizaron el diálogo nativo de Android y la hoja inferior con ruleta de iOS, sin necesitar funcionalidades adicionales.
+Archivos y commit: src/components/common/DateField.js (hash: c70c6a21d40d14ed2d72c64551b812c5e25f87c3s)
+Verificación: Elegir una fecha en un dispositivo Android y en uno iOS (o simulador) y ver el valor en formato día/mes/año
+Aprendizaje: El selector de fecha se comporta distinto en cada sistema y hay que manejar los dos casos
+
+### Entrada #A-21
+Fecha: 2026-11-02
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el campo para tomar o elegir una foto
+Prompt: Me puedes orientar para crear un campo que permita tomar una foto con la cámara o seleccionar una de la galería? También necesito manejar los permisos y mostrar un mensaje si el usuario los rechaza
+Qué se usó / modificó / descartó: Se tomó como guía el código propuesto por Claude para permitir seleccionar fotos desde la galería o la cámara. Se aprovechó el manejo de permisos y los mensajes cuando el usuario no los autoriza.
+Archivos y commit: src/components/common/ImagePickerField.js (hash: cb3fedcf3a86c4a94f77b3c79b895e54d2fa5f3d)
+Verificación: Elegir una foto de galería y otra de cámara; negar el permiso y ver el mensaje
+Aprendizaje: Hay que pedir el permiso antes de abrir la cámara o la galería
+
+### Entrada #A-22
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la casilla para aceptar los términos
+Prompt: puedes ayudarme a crear una casilla para aceptar los términos y condiciones? Necesito que permita marcar y desmarcar, y que muestre un mensaje de error si el usuario intenta continuar sin aceptarlos
+Qué se usó / modificó / descartó: Se tomó como referencia el código de Claude para crear la casilla, incluyendo su estado marcado y desmarcado, la validación y el manejo de accesibilidad con accessibilityRole
+Archivos y commit: src/components/common/Checkbox.js (hash: b912d273f4f6c18eacb042e08e5da268aacdf560)
+Verificación: Marcar y desmarcar; sin marcar muestra el error en rojo
+Aprendizaje: Una casilla accesible usa accessibilityRole checkbox
+
+### Entrada #A-23
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tarjeta base con degradado sutil y opción de halo
+Prompt: Me puedes ayudar a crear un componente de tarjeta reutilizable con un degradado sutil y una opción de halo? Quiero poder utilizar ambos estilos según la necesidad de cada pantalla
+Qué se usó / modificó / descartó: Se aprovecharon sus estilos y la posibilidad de reutilizarlo en diferentes partes de la aplicación
+Archivos y commit: src/components/common/Card.js (hash: 21376abdaf3a77b2044bb1ac2d170b7ea22b036f)
+Verificación: Mostrar una tarjeta normal y una glow en una pantalla de prueba
+Aprendizaje: Reutilizar una tarjeta mantiene el mismo estilo en toda la app
+
+### Entrada #A-24
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la etiqueta con punto de color para estados
+Prompt: mw puedes ayudar a crear una etiqueta pequeña con un punto de color para identificar diferentes estados? Necesito manejar varios colores según el tipo de estado, especialmente para los pagos
+Qué se usó / modificó / descartó: Se tomó como guía el componente generado para mostrar etiquetas con diferentes colores. Se utilizó paymentTone para asignar el color correspondiente según el estado del pago y se conservaron los tonos propuestos
+Archivos y commit: src/components/common/Badge.js (hash: 14dee76b1fefd11efde95a87abb30960561ab17d)
+Verificación: Probar los tonos success, warning, danger, info y neutral
+Aprendizaje: Asociar el estado a un color ayuda a leer la información de un vistazo
+
+### Entrada #A-25
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar un mensaje cuando no hay datos en lugar de una lista en blanco
+Prompt: Me puedes guiar creando un componente que muestre un mensaje cuando una lista no tenga información? Quiero evitar que las pantallas queden en blanco cuando no hay resultados
+Qué se usó / modificó / descartó: Claude ayudo guiando para mostrar un mensaje cuando no hay datos. Se aprovechó su estructura para indicar al usuario que no se encontraron resultados
+Archivos y commit: src/components/common/EmptyState.js (hash: f22dcdfe305f12fbb1a6e524aa471c05caebfe00)
+Verificación: Filtrar el historial sin resultados y ver el mensaje
+Aprendizaje: El enunciado pide mostrar un mensaje vacío, no una pantalla en blanco
+
+### Entrada #A-26
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear los filtros horizontales para periodos, métodos de pago e idioma
+Prompt: Estoy implementando unos filtros en la aplicación. Cómo podría crear un componente horizontal que permita cambiar entre opciones para periodos, métodos de pago e idioma, mostrando cuál está seleccionada?
+Qué se usó / modificó / descartó: Se implementó la estructura de selección propuesta por Claude para mostrar las opciones horizontalmente. Se aprovechó el mismo componente para manejar los diferentes filtros sin tener que crear uno independiente para cada caso
+Archivos y commit: src/components/common/Chips.js (hash: 99a6f036e6bea3bd8ce7cce8a3d75db454c245a5)
+Verificación: Cambiar de opción y ver cuál queda activa
+Aprendizaje: Un componente de selección simple sirve para filtros, idioma y propinas
+
+### Entrada #A-27
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tarjeta de número para la pantalla de ganancias
+Prompt: Necesito mostrar los valores de ganancias en tarjetas, me puedes indicar cómo crear un componente que muestre un título y un monto, y que se adapte cuando los números sean demasiado largos?
+Qué se usó / modificó / descartó: Se aprovechó la estructura del componente generado por Claude para mostrar los valores y sus títulos. También se utilizó adjustsFontSizeToFit para evitar que los montos largos se corten
+Archivos y commit: src/components/common/StatCard.js (hash: 500bb5a3e1847fd2861d4c9004393be13134a089)
+Verificación: Mostrarla con un valor largo y comprobar que el texto se ajusta
+Aprendizaje: adjustsFontSizeToFit evita que los montos grandes se corten
+
+### Entrada #A-28
+Fecha: 2026-10-27
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el contenedor con fondo degradado, zona segura y scroll
+Prompt: Estoy organizando las pantallas de la aplicación y necesito un contenedor que tenga fondo degradado, respete las zonas seguras del dispositivo y permita desplazarse cuando haya mucho contenido, cómo podría implementarlo?
+Qué se usó / modificó / descartó: Se utilizó la estructura del componente para manejar el fondo, los márgenes y el desplazamiento de las pantallas. También se aprovechó el ajuste con el teclado para evitar que los campos quedaran ocultos
+Archivos y commit: src/components/common/ScreenContainer.js (hash: 28c1e18b4b99e27daba18e7807e067b9aa0a3241)
+Verificación: Abrir una pantalla con teclado y comprobar que el campo no queda tapado
+Aprendizaje: Un contenedor común da el mismo fondo y márgenes a todas las pantallas
+
+### Entrada #A-29
+Fecha: 2026-11-04
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el servicio para registrar y consultar conductores y subir las fotos
+Prompt: Estoy trabajando en el registro de conductores y necesito organizar las funciones para guardar sus datos, consultarlos y subir sus fotografías, me puedes orientar sobre cómo conectar este servicio con Firebase y manejar las imágenes?
+Qué se usó / modificó / descartó: Se aprovechó la lógica propuesta por Claude para registrar y consultar conductores en Firebase. También se incluyó el manejo de fotografías mediante Cloudinary, conservando la ruta local como alternativa mientras se configura el servicio
+Archivos y commit: src/services/driverService.js (hash: deb064ccd582307b5d0e3307492770a2e2179e09)
+Verificación: Crear un conductor de prueba y verlo en la colección drivers con approval pending
+Aprendizaje: Las fotos se suben a Cloudinary y en la base solo se guarda la URL
+
+### Entrada #A-30
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Manejar la sesión, la aprobación y el estado Disponible
+Prompt: Estoy trabajando en la sesión de los conductores y necesito controlar si están aprobados y si pueden aparecer como disponibles, cómo puedo detectar los cambios de aprobación en Firebase sin tener que reiniciar la aplicación?
+Qué se usó / modificó / descartó: Se uso como base la lógica propuesta por Claude para controlar la sesión y escuchar los cambios del conductor en tiempo real mediante onSnapshot. También se utilizó la validación para impedir que un conductor no aprobado pueda cambiar su estado a disponible
+Archivos y commit: src/context/DriverSessionContext.js (hash: 4b6b0ad76142a4c7a5ef06c57afded136154a7ee)
+Verificación: Cambiar approval a approved en Firestore y ver que la app lo detecta; sin aprobar, setAvailable(true) devuelve false
+Aprendizaje: Escuchar el documento con onSnapshot evita tener que reiniciar la app al aprobar
+
+### Entrada #A-31
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Guardar el formulario de las tres pestañas y controlar el envío
+Prompt: Estoy trabajando en un formulario dividido en tres pestañas y necesito que los datos se conserven al cambiar entre ellas, me puedes indicar cómo controlar la validación y el envío para que solo se active cuando todas estén completas?
+Qué se usó / modificó / descartó: Se aprovechó la lógica de Claude para compartir los datos entre las tres pestañas, validar los campos y controlar el botón de envío. También se integraron los procesos para subir las imágenes, registrar el conductor y abrir su sesión
+Archivos y commit: src/context/RegistrationContext.js (hash: 70d4f8f6fa7599225758a75d8dca7c5cd9b4f2c4)
+Verificación: Dejar campos vacíos: el botón sigue deshabilitado; completar todo y enviar
+Aprendizaje: Compartir el estado entre pestañas permite habilitar Enviar solo si las tres son válidas
+
+### Entrada #A-32
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la pantalla inicial con las opciones de registro e ingreso
+Prompt: Estoy diseñando la pantalla inicial de la aplicación y quiero mostrar las opciones para registrarse o iniciar sesión, qué estructura podría utilizar para que ambas opciones sean fáciles de identificar y navegar?
+Qué se usó / modificó / descartó: Se utilizaron las ideas de Claude para organizar las opciones de registro e ingreso. Se mantuvo la estructura visual propuesta y se integró con la navegación de la aplicación
+Archivos y commit: src/screens/auth/WelcomeScreen.js (hash: 8ebd196b3967ab306afb9c756d46f1b172aa751e)
+Verificación: Abrir la app sin sesión y navegar a Registro y a Ingresar
+Aprendizaje: La primera pantalla define la identidad visual de la app
+
+### Entrada #A-33
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Permitir volver a entrar con el correo registrado
+Prompt: Necesito implementar la pantalla de ingreso para que los conductores puedan volver a entrar con su correo registrado. ¿Me puedes orientar sobre cómo validar el correo y mostrar un mensaje cuando no exista una cuenta?
+Qué se usó / modificó / descartó: Se utilizó la lógica propuesta por Claude para consultar el correo registrado y validar el ingreso. También se aprovechó la validación para mostrar un mensaje de error debajo del campo cuando el correo no existe
+Archivos y commit: src/screens/auth/LoginScreen.js (hash: 78cd08334a16bcccb524ef569dfdbd4c5ab0d1f5)
+Verificación: Entrar con un correo registrado y con uno que no existe (debe mostrar el error debajo)
+Aprendizaje: Sin autenticación real, el correo identifica la cuenta de la práctica
+
+### Entrada #A-34
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la primera pestaña del registro
+Prompt: Estoy desarrollando la primera pestaña del registro y necesito validar los datos personales del conductor, me puedes indicar cómo controlar campos como nombre, documento, edad y correo, mostrando los errores cuando los datos no sean correctos?
+Qué se usó / modificó / descartó: Se implementaron las validaciones sugeridas para los datos personales, utilizando mensajes debajo de cada campo para indicar los errores y evitar que se continúe con información incorrecta
+Archivos y commit: src/screens/auth/PersonalTab.js (hash: 4220725ae1cba00c67c42f7db3cbfe793b6f2390)
+Verificación: Probar nombre con números, documento corto, menor de 18 y correo sin dominio
+Aprendizaje: Cada regla del enunciado se convierte en un mensaje debajo del campo
+
+### Entrada #A-35
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la segunda pestaña del registro
+Prompt: Estoy trabajando en la segunda pestaña del registro, donde se ingresan los datos del vehículo, me puedes orientar sobre cómo validar la placa, seleccionar el tipo de vehículo y controlar la cantidad de pasajeros permitidos?
+Qué se usó / modificó / descartó: Se utilizaron las validaciones propuestas para los datos del vehículo. También se incorporó la conversión automática de la placa a mayúsculas y el control de pasajeros según el tipo de vehículo seleccionado.
+Archivos y commit: src/screens/auth/VehicleTab.js (hash: f95a3adca005df0001e5782ffe3d0cde163fb4a3)
+Verificación: Escribir la placa en minúscula (se convierte a mayúsculas) y elegir XL con 4 pasajeros
+Aprendizaje: La placa se normaliza antes de validar, como pide el enunciado
+
+### Entrada #A-36
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la tercera pestaña del registro
+Prompt: Estoy desarrollando la última pestaña del registro, donde se cargan los documentos del conductor y del vehículo, me puedes indicar cómo mostrar la revisión técnico-mecánica solo cuando sea necesaria y validar que se acepten los términos?
+Qué se usó / modificó / descartó: Se aprovechó la lógica propuesta para mostrar u ocultar la revisión técnico-mecánica según el año del vehículo. También se incluyeron las validaciones para los documentos y la aceptación obligatoria de los términos
+Archivos y commit: src/screens/auth/DocumentsTab.js (hash: fc16d7f1e23b73f15b965b5f83bf0408c44d8dcd)
+Verificación: Poner un vehículo de 2015 y ver que aparece la revisión; dejar los términos sin marcar
+Aprendizaje: Un formulario puede cambiar según lo que el usuario ya escribió
+
+### Entrada #A-37
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Unir las tres pestañas con Tab y el botón Enviar registro
+Prompt: Ya tengo las tres pestañas del registro por separado, me puedes orientar sobre cómo integrarlas en una sola pantalla con navegación por pestañas y un botón para enviar el registro que solo se habilite cuando todas estén completas?
+Qué se usó / modificó / descartó: Se incorporó la estructura de navegación entre las tres pestañas y se utilizó una barra inferior personalizada para mostrar el botón de envío y el estado de cada sección. También se aprovechó la validación para controlar cuándo se habilita el botón.
+Archivos y commit: src/screens/auth/RegisterScreen.js (hash: 7843b82bf09484ca16a4915cddfadda9481cb957)
+Verificación: Con una pestaña incompleta el botón está deshabilitado; con las tres completas se habilita
+Aprendizaje: Una barra personalizada permite mostrar el botón de envío siempre visible
+
+### Entrada #A-38
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Calcular los totales de hoy, semana, mes y el saldo
+Prompt: Tengo un hook llamado useEarnings.js que debe calcular las ganancias y el saldo a partir de los viajes registrados, me puedes indicar cómo obtener los totales del día, la semana y el mes, teniendo en cuenta que el saldo se calcula restando las comisiones de los viajes en efectivo a los viajes pagados por pasarela?
+Qué se usó / modificó / descartó: La orientación de Claude sirvió para comprender cómo organizar los cálculos de ganancias por día, semana y mes, y cómo obtener el saldo teniendo en cuenta los pagos por pasarela y las comisiones de los viajes en efectivo. También se aplicó el uso de useMemo para evitar cálculos innecesarios cuando la lista de viajes no cambia.
+Archivos y commit: src/hooks/useEarnings.js (hash: 40bf020fed1cf78d26b742d8e72c7722412d146c)
+Verificación: Con los viajes de ejemplo revisar a mano que los totales coinciden
+Aprendizaje: useMemo evita recalcular los totales si la lista de viajes no cambió
+
+### Entrada #A-39
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Tener viajes de prueba para trabajar sin esperar el servicio de B
+Prompt: Necesito seguir desarrollando la aplicación mientras se conecta el servicio de backend, me puedes orientar sobre cómo crear viajes de prueba que permitan simular diferentes registros y consultar los resultados por páginas, sin depender todavía del servicio real?
+Qué se usó / modificó / descartó: La guía de Claude permitió entender cómo generar viajes ficticios y simular la consulta de datos por páginas. Se tuvo en cuenta la variable EXPO_PUBLIC_USE_MOCKS=true para activar estos datos de prueba y poder avanzar con el desarrollo sin depender del servicio de backend.
+Archivos y commit: src/utils/mockTrips.js (hash: 2048b41663856d8b4536b7c83d9520930ddf48a6)
+Verificación: Pedir dos páginas de 15 viajes y comprobar el orden y el cursor
+Aprendizaje: Los datos de ejemplo permiten avanzar en paralelo sin bloquearse
+
+### Entrada #A-40
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Cargar el historial por páginas con filtros
+Prompt: Estoy trabajando en el historial de viajes y quiero que los registros se carguen por páginas y puedan filtrarse, me puedes explicar cómo organizar esta lógica para que al cambiar un filtro se vuelva a la primera página y se puedan cargar más resultados al desplazarse?
+Qué se usó / modificó / descartó: La orientación de Claude ayudó a comprender cómo manejar la carga paginada y los filtros en el historial. Se aplicó la lógica para consultar los viajes mediante tripService.getDriverTrips o utilizar los datos de ejemplo. También se tuvo en cuenta cómo ignorar respuestas de consultas anteriores para evitar que los resultados de un filtro viejo reemplacen los actuales
+Archivos y commit: src/hooks/useTripHistory.js (hash: 71dff7e55ae3805134a2e6e475d8ba0b2a8a5431)
+Verificación: Cambiar de filtro y ver que vuelve a la primera página; bajar y ver que carga más
+Aprendizaje: Ignorar respuestas viejas evita que un filtro anterior pise al nuevo
+
+### Entrada #A-41
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la fila con fecha, ruta, categoría, tarifa y estado de pago
+Prompt: Estoy creando el historial de viajes y necesito mostrar la información de cada recorrido de forma ordenada, me puedes orientar sobre cómo diseñar un componente que presente la fecha, la ruta, la categoría, la tarifa y el estado del pago sin que la fila quede demasiado cargada?
+Qué se usó / modificó / descartó: Estoy creando el historial de viajes y necesito mostrar la información de cada recorrido de forma ordenada. ¿Me puedes orientar sobre cómo diseñar un componente que presente la fecha, la ruta, la categoría, la tarifa y el estado del pago sin que la fila quede demasiado cargada?
+Archivos y commit: src/components/common/TripListItem.js (hash: 71dff7e55ae3805134a2e6e475d8ba0b2a8a5431)
+Verificación: Mostrar un viaje de ejemplo y ver todos los datos
+Aprendizaje: Un componente de lista debe ser simple para que la lista sea fluida
+
+### Entrada #A-42
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar saldo y totales de hoy, semana y mes
+Prompt: Ya tengo los cálculos de ganancias y saldo en un hook, me puedes orientar sobre cómo mostrar esa información en la pantalla de ganancias, incluyendo el saldo disponible y los totales de hoy, semana y mes, y cómo actualizar los valores al cambiar de periodo?
+Qué se usó / modificó / descartó: Claude me ayudó a identificar cómo organizar la información de ganancias dentro de la pantalla. Se tuvieron en cuenta las ideas para mostrar el saldo y los totales de cada periodo, conectando la información con los cálculos del hook useEarnings para que los valores se actualizaran al cambiar de periodo
+Archivos y commit: src/screens/earnings/EarningsScreen.js (hash: 504869d105c1795fb4003275ff4d80bfd4fa313f)
+Verificación: Con los datos de ejemplo cambiar de periodo y revisar que los números cambian
+Aprendizaje: Trabajar con el historial completo permite calcular el saldo correcto
+
+### Entrada #A-43
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el historial con filtros de fecha y de método de pago
+Prompt: Estoy desarrollando la pantalla del historial de viajes y quiero que permita consultar los recorridos según diferentes periodos y métodos de pago, me puedes guiar sobre cómo organizar los filtros de Hoy, Semana, Mes y Rango de fechas, junto con los métodos de pago, y cómo mostrar los resultados sin cargar todos los viajes al mismo tiempo?
+Qué se usó / modificó / descartó: Claude me orientó sobre cómo organizar los filtros y conectarlos con la consulta paginada del historial. Se tuvieron en cuenta las opciones de fecha y método de pago, además del uso de FlatList con onEndReached para cargar más viajes a medida que el usuario se desplaza por la pantalla.
+Archivos y commit: src/screens/history/HistoryScreen.js (hash: cb2dc8cadb83cdf512303f341d0bd17bc00c80fb)
+Verificación: Probar Hoy, Semana, Mes, Rango y los métodos de pago; filtrar hasta que no haya resultados
+Aprendizaje: FlatList con onEndReached carga por páginas sin traer todo de una vez
+
+### Entrada #A-44
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Mostrar el detalle del viaje con la ruta dibujada
+Prompt: Quiero crear una pantalla para consultar los detalles de cada viaje, incluyendo un mapa que muestre el recorrido realizado, me puedes orientar sobre cómo dibujar la ruta usando las coordenadas guardadas y qué alternativa utilizar cuando no estén disponibles?
+Qué se usó / modificó / descartó: Claude me ayudó a comprender cómo representar el recorrido en el mapa utilizando las coordenadas almacenadas. Se tuvo en cuenta el uso de Polyline para dibujar la ruta guardada y, cuando no existe esa información, mostrar una línea sencilla entre el origen y el destino. También se consideró la organización de datos como la comisión, la propina y la calificación del viaje
+Archivos y commit: src/screens/history/TripDetailScreen.js (hash: 6c143774c4cea58101caa08d59c1f39c74bd1756)
+Verificación: Abrir un viaje y comprobar el mapa, la comisión, la propina y la calificación
+Aprendizaje: Dibujar la ruta guardada ahorra llamadas a la API de mapas
+
+### Entrada #A-45
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Permitir editar nombre, celular, vehículo y documentos
+Prompt: Estoy trabajando en la pantalla de perfil y quiero permitir que el conductor actualice sus datos personales, información del vehículo y documentos, me puedes orientar sobre cómo implementar la edición de estos campos, reutilizando las validaciones que ya tengo en el formulario de registro y guardando los cambios en Firestore?
+Qué se usó / modificó / descartó: la IA me orientó sobre cómo organizar la edición de los datos del perfil y aprovechar los validadores existentes del registro para evitar repetir lógica. También se tuvo en cuenta cómo actualizar campos específicos de Firestore, como personal.phone, sin tener que reemplazar todo el documento.
+Archivos y commit: src/screens/profile/ProfileScreen.js (hash: 6c143774c4cea58101caa08d59c1f39c74bd1756)
+Verificación: Editar el celular con un valor inválido y con uno válido; ver el cambio en Firestore
+Aprendizaje: Los campos con punto, como personal.phone, permiten actualizar solo una parte del documento
+
+### Entrada #A-46
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear la pantalla de idioma, comisión y cierre de sesión
+Prompt: Quiero crear una pantalla de configuración para que el conductor pueda consultar y cambiar el idioma, revisar la información de las comisiones y cerrar su sesión, me puedes guiar sobre cómo organizar estas opciones y agregar una confirmación antes de cerrar sesión para evitar salidas accidentales?
+Qué se usó / modificó / descartó: me ayudó a definir cómo organizar las opciones de configuración y el comportamiento de cada una. Se tuvieron en cuenta las ideas para cambiar el idioma, mostrar la información de las comisiones y solicitar una confirmación antes de cerrar la sesión
+Archivos y commit: src/screens/profile/SettingsScreen.js (hash: 883fd2a45330a89af1096fb1b4afa9c39261eeba)
+Verificación: Cambiar el idioma y cerrar sesión con la confirmación
+Aprendizaje: Pedir confirmación antes de cerrar sesión evita salir por accidente
+
+### Entrada #A-47
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Crear el menú lateral con los datos del conductor
+Prompt: Estoy implementando el menú lateral de la aplicación y quiero que muestre la información principal del conductor, me puedes orientar sobre cómo organizarlo para incluir su foto, nombre, placa del vehículo, estado de aprobación y disponibilidad, de manera que sea fácil consultar el estado de la cuenta?
+Qué se usó / modificó / descartó: me ayudó a definir la distribución de los datos dentro del menú lateral y cómo presentar visualmente la información del conductor. Se tuvieron en cuenta los elementos necesarios para identificar al usuario y consultar rápidamente su estado de aprobación y disponibilidad.
+Archivos y commit: src/navigation/DrawerContent.js (hash: c95f1411034ec602facfddae080e8e4d696ffc10)
+Verificación: Abrir el menú y ver foto, nombre, placa, estado de aprobación y disponibilidad
+Aprendizaje: El menú lateral resume el estado de la cuenta en un solo lugar
+
+### Entrada #A-48
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Armar el Drawer con Inicio, Ganancias, Historial, Perfil y Configuración
+Prompt: Ya tengo varias pantallas creadas para la aplicación y quiero conectarlas mediante un menú lateral, me puedes orientar sobre cómo configurar el Drawer para navegar entre Inicio, Ganancias, Historial, Perfil y Configuración, teniendo en cuenta que la pantalla de Inicio ya tiene su propio encabezado?
+Qué se usó / modificó / descartó: me orientó sobre la configuración del navegador lateral y la conexión de las diferentes pantallas. Se tuvieron en cuenta las opciones de navegación y la particularidad de Inicio, que conserva su propio encabezado. También se identificaron las dependencias necesarias, como gesture-handler y reanimated, para el funcionamiento del Drawer.
+Archivos y commit: src/navigation/DrawerNavigator.js (hash: 9626c58e0245597332fb3c710b735362a76819b7)
+Verificación: Navegar a cada opción desde el menú
+Aprendizaje: El Drawer necesita gesture-handler y reanimated instalados
+
+### Entrada #A-49
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Elegir entre autenticación y app, y registrar las pantallas del viaje
+Prompt: Estoy organizando la navegación principal de la aplicación y necesito controlar qué pantallas se muestran según el estado de la sesión, me puedes orientar sobre cómo separar el flujo de autenticación del resto de la aplicación y cómo registrar las pantallas del viaje dentro del Stack, respetando los nombres definidos en el contrato con el otro integrante?
+Qué se usó / modificó / descartó: Se usó el archivo completo generado por Claude, sin modificaciones. Nada descartado. Las pantallas del viaje son de B; en el Stack se registran con los nombres del contrato.
+Archivos y commit: src/navigation/RootNavigator.js (hash: 9626c58e0245597332fb3c710b735362a76819b7)
+Verificación: Sin sesión se ve Welcome; con sesión se ve el Drawer
+Aprendizaje: El Stack permite apilar el flujo del viaje encima del Drawer
+
+### Entrada #A-50
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Armar la app con fuentes, proveedores y el contenedor de navegación
+Prompt: Estoy organizando el archivo principal App.js y quiero integrar las fuentes de texto, los proveedores de contexto y el contenedor de navegación, me puedes explicar cómo estructurar estos elementos y en qué orden ubicar los proveedores de idioma, sesión y viaje activo para evitar problemas de dependencias entre ellos?
+Qué se usó / modificó / descartó: Claude me orientó sobre cómo organizar la estructura principal de la aplicación y conectar sus diferentes elementos. Se tuvieron en cuenta las indicaciones para cargar las fuentes, integrar el contenedor de navegación y establecer el orden correcto de los proveedores: primero idioma, después sesión y finalmente viaje activo.
+Archivos y commit: App.js (hash: {{HASH:A-50}})
+Verificación: Abrir la app: carga las fuentes y muestra Welcome
+Aprendizaje: El orden de los proveedores importa porque unos usan a los otros
+
+### Entrada #A-51
+Fecha: 2026-11-05
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Documentar la instalación, las variables de entorno y la arquitectura
+Prompt: Quiero mejorar el README del proyecto para que cualquier integrante del equipo pueda entender cómo instalar y ejecutar la aplicación, me puedes ayudar sobre cómo documentar los pasos de instalación, las variables de entorno y la arquitectura del proyecto, incluyendo una sección que explique el uso de inteligencia artificial y enlace a la bitácora?
+Qué se usó / modificó / descartó: me ayudó a organizar el contenido y definir qué información era importante incluir en la documentación. Se tuvieron en cuenta las indicaciones para explicar la instalación, las variables de entorno y la estructura de la arquitectura, además de agregar una sección sobre el uso de IA con el enlace a la bitácora.
+Archivos y commit: README.md (hash: 74bf72acb7c1dec68b23fc9ec72e5f2fa5910b39)
+Verificación: Seguir el README desde cero en otra carpeta
+Aprendizaje: Un buen README permite que otra persona ejecute el proyecto sin preguntar
+
+### Entrada #A-52
+Fecha: 2026-11-06
+Integrante: Alejandro
+Herramienta: Claude
+Objetivo: Elegir entre autenticación y app, y registrar las pantallas del viaje
+Prompt: Estoy organizando la navegación de la aplicación y necesito que se muestre una pantalla diferente dependiendo de si el conductor ha iniciado sesión o no, me puedes orientar sobre cómo manejar esta condición y cómo registrar en el Stack las pantallas del viaje que desarrolló el otro integrante, respetando los nombres definidos en el contrato?
+Qué se usó / modificó / descartó: La orientación de Claude me permitió comprender cómo separar la navegación de autenticación y la navegación principal. Se tuvieron en cuenta las condiciones para mostrar Welcome cuando no hay una sesión activa y el Drawer cuando el conductor ya inició sesión. También se revisó cómo registrar las pantallas del viaje en el Stack utilizando los nombres acordados con el otro integrante.
+Archivos y commit: src/navigation/RootNavigator.js (hash: ca6f011895084003f0395dc3b3627532fadb66ba)
+Verificación: Sin sesión se ve Welcome; con sesión se ve el Drawer
+Aprendizaje: El Stack permite apilar el flujo del viaje encima del Drawer
+
 
 
 ### Entradas de Juan Diego Delgado
