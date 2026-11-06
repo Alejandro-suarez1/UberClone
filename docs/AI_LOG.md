@@ -408,6 +408,6 @@ Herramienta: Claude
 Objetivo: Diseñar e implementar la pantalla de resumen y cobro de la tarifa del viaje, desglosando ganancias netas, comisiones, propinas y el estado del pago mediante integración con Mercado Pago o efectivo
 Prompt: Necesito que me guies para crear la pantalla donde el conductor visualiza el desglose financiero del viaje (tarifa, comisión y propinas), muestra el estado del pago con insignias dinámicas, y permite cobrar mediante pasarela de pagos con modal de verificación o registrar el cobro en efectivo
 Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor con scroll, combinando tarjetas informativas, componentes personalizados como CheckoutModal y PaymentStatusPill, y llamadas a servicios de pasarela de pago y registro de efectivo. No se descartó ningún elemento previo
-Archivos y commit: src/screens/trip/PaymentSummaryScreen.js hash: 
+Archivos y commit: src/screens/trip/PaymentSummaryScreen.js hash: ad0cc40e5388d3ab93fa242db104cfbba17029bd
 Verificación: Realizar pruebas cobrando en efectivo para verificar el estado de pago en efectivo, y realizar cobros mediante la pasarela de Mercado Pago comprobando la actualización a estado aprobado
 Aprendizaje: Comprendí la importancia de sincronizar los estados de pago en tiempo real desde la base de datos para ofrecer una retroalimentación clara al conductor y asegurar un cierre de ciclo sin fricciones en la aplicación
