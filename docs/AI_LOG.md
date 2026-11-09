@@ -320,12 +320,12 @@ Verificación: Crear un conductor de prueba y verlo en la colección drivers con
 Aprendizaje: Las fotos se suben a Cloudinary y en la base solo se guarda la URL
 
 ### Entrada #A-30
-Fecha: 2026-10-27
+Fecha: 2026-11-04
 Integrante: Alejandro
 Herramienta: Claude
 Objetivo: Manejar la sesión, la aprobación y el estado Disponible
 Prompt: Estoy trabajando en la sesión de los conductores y necesito controlar si están aprobados y si pueden aparecer como disponibles, cómo puedo detectar los cambios de aprobación en Firebase sin tener que reiniciar la aplicación?
 Qué se usó / modificó / descartó: Se uso como base la lógica propuesta por Claude para controlar la sesión y escuchar los cambios del conductor en tiempo real mediante onSnapshot. También se utilizó la validación para impedir que un conductor no aprobado pueda cambiar su estado a disponible
-Archivos y commit: src/context/DriverSessionContext.js (hash: {{HASH:A-30}})
+Archivos y commit: src/context/DriverSessionContext.js (hash: 4b6b0ad76142a4c7a5ef06c57afded136154a7ee)
 Verificación: Cambiar approval a approved en Firestore y ver que la app lo detecta; sin aprobar, setAvailable(true) devuelve false
 Aprendizaje: Escuchar el documento con onSnapshot evita tener que reiniciar la app al aprobar
