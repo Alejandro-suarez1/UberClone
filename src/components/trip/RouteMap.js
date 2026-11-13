@@ -1,70 +1,54 @@
 // AI-assisted: see docs/AI_LOG.md #B-12
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { StyleSheet } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { darkMapStyle } from '../../theme/mapStyle';
 import { colors } from '../../theme/colors';
 
-const PADDING = { top: 90, right: 50, bottom: 340, left: 50 };
-
-export default function RouteMap({ coordinates, driver, target, targetColor = colors.danger, style }) {
+export default function RouteMap({ coordinates, driver, target, targetColor = colors.success }) {
   const mapRef = useRef(null);
 
-  const signature = coordinates?.length
-    ? `${coordinates.length}:${coordinates[0]?.latitude}:${coordinates[coordinates.length - 1]?.latitude}`
-    : '';
+  const signature = useMemo(() => {
+    if (!coordinates?.length) return 'none';
+    const first = coordinates[0];
+    const last = coordinates[coordinates.length - 1];
+    return `${coordinates.length}:${first.latitude},${first.longitude}:${last.latitude},${last.longitude}`;
+  }, [coordinates]);
 
   useEffect(() => {
-    if (!coordinates || coordinates.length < 2) return;
-    const timer = setTimeout(() => {
-      mapRef.current?.fitToCoordinates(coordinates, { edgePadding: PADDING, animated: true });
-    }, 250);
-    return () => clearTimeout(timer);
+    if (coordinates?.length > 1) {
+      mapRef.current?.fitToCoordinates(coordinates, {
+        edgePadding: { top: 80, right: 60, bottom: 340, left: 60 },
+        animated: true,
+      });
+    }
   }, [signature]);
 
-  const initial = driver || target || { lat: 4.711, lng: -74.0721 };
+  const start = target || driver;
 
   return (
     <MapView
       ref={mapRef}
-      style={[StyleSheet.absoluteFill, style]}
+      style={StyleSheet.absoluteFill}
       customMapStyle={darkMapStyle}
       userInterfaceStyle="dark"
-      initialRegion={{ latitude: initial.lat, longitude: initial.lng, latitudeDelta: 0.05, longitudeDelta: 0.05 }}
       toolbarEnabled={false}
+      initialRegion={{
+        latitude: start?.lat ?? 4.711,
+        longitude: start?.lng ?? -74.0721,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      }}
     >
-      {coordinates && coordinates.length > 1 ? (
+      {coordinates?.length > 1 ? (
         <Polyline coordinates={coordinates} strokeColor={colors.primary} strokeWidth={5} />
+      ) : null}
+      {driver ? (
+        <Marker coordinate={{ latitude: driver.lat, longitude: driver.lng }} pinColor={colors.primary} />
       ) : null}
       {target ? (
         <Marker coordinate={{ latitude: target.lat, longitude: target.lng }} pinColor={targetColor} />
       ) : null}
-      {driver ? (
-        <Marker coordinate={{ latitude: driver.lat, longitude: driver.lng }} anchor={{ x: 0.5, y: 0.5 }} tracksViewChanges={false}>
-          <View style={styles.driverOuter}>
-            <View style={styles.driverInner} />
-          </View>
-        </Marker>
-      ) : null}
     </MapView>
   );
 }
-
-const styles = StyleSheet.create({
-  driverOuter: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    backgroundColor: 'rgba(198, 255, 61, 0.3)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  driverInner: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    backgroundColor: colors.primary,
-    borderWidth: 2,
-    borderColor: colors.bg,
-  },
-});
