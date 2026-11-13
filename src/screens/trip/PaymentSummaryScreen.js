@@ -51,6 +51,7 @@ export default function PaymentSummaryScreen() {
       setCheckoutUrl(url);
       setStarted(true);
     } catch (e) {
+      console.warn('[Pago MP] falló:', e.message);
       setErrorKey('payment.errorCreate');
     } finally {
       setBusy(false);

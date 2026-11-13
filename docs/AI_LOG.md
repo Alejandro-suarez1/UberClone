@@ -794,7 +794,17 @@ Herramienta: Claude
 Objetivo: Desarrollar el servicio de direcciones y cálculo de distancias con respaldo sin conexión
 Prompt: Necesito obtener y dibujar rutas entre dos puntos en React Native utilizando un servicio gratuito como OSRM. Me puedes orientar sobre cómo consultar la ruta, guardar los resultados en caché para evitar solicitudes repetidas y mostrar una línea recta como alternativa cuando no haya conexión o falle el servicio?
 Qué se usó / modificó / descartó: Claude me orientó sobre cómo realizar las consultas de rutas con la API pública de OSRM y cómo implementar un caché en memoria para evitar solicitudes innecesarias. Se tomó como referencia la lógica para transformar las coordenadas y dibujar el recorrido. Además, se ajustó el almacenamiento en caché para limitarlo a 50 elementos, se mantuvo el cálculo de distancia en kilómetros con dos decimales incluyendo fórmula Haversine para el respaldo y se mejoró el manejo de errores de red mediante. Se descartó el bloque de error vacío
-Archivos y commit: src/services/directionsService.js hash: 
+Archivos y commit: src/services/directionsService.js hash: 6213d37c44cab1f185202e69400b4e83539014e2
 Verificación: Solicitar una ruta conocida para validar distancia y tiempo; desconectar la red o alterar temporalmente la URL base para comprobar que se devuelve la línea recta de respaldo
 Aprendizaje: Aprendí que se debe solicitar la ruta únicamente por tramo y no por cada movimiento del vehículo, reduciendo drásticamente las consultas innecesarias para evitar saturar el servidor público y mejorar el rendimiento de la app
 
+### Entrada #B-20
+Fecha: 2026-11-12
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Crear el archivo de pruebas para la generación automática de solicitudes de viaje utilizando ubicaciones de Medellín y el servicio de rutas
+Prompt: Necesito que me ayudes de tal manera que me guies para crear un archivo de pruebas que incluya una lista de puntos de referencia en Medellín, una función para seleccionar origen y destino diferentes al azar, y la función createDemoRequest para registrar viajes en Firestore consumiendo el servicio de rutas
+Qué se usó / modificó / descartó: Se creó el archivo de pruebas estructurado con el arreglo MEDELLIN_PLACES con coordenadas reales de puntos clave como Parque Lleras, Estadio, etc. La función auxiliar pickTwoDifferent para garantizar que el origen y destino no se repitan, y la implementación de createDemoRequest utilizando getRoute y Firebase Firestore (addDoc) con el estado inicial del viaje
+Archivos y commit: src/services/demoService.js hash: 
+Verificación: Ejecutar la función de prueba para validar que los puntos se seleccionan aleatoriamente, calcula la ruta correctamente y se inserta el documento en la base de datos sin errores
+Aprendizaje: Aprendí a estructurar scripts de pruebas locales aislados para simular dinámicamente flujos de viaje completos con coordenadas del entorno real

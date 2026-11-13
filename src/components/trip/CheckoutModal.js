@@ -25,16 +25,22 @@ export default function CheckoutModal({ visible, url, onClose }) {
         </View>
 
         {url ? (
-          <WebView
-            source={{ uri: url }}
-            style={styles.web}
-            onLoadStart={() => setLoading(true)}
-            onLoadEnd={() => setLoading(false)}
-            onNavigationStateChange={(navState) => {
-              if (isPaymentReturnUrl(navState.url)) onClose();
-            }}
-            startInLoadingState
-          />
+      <WebView
+        source={{ uri: url }}
+        style={styles.web}
+        javaScriptEnabled
+        domStorageEnabled
+        setSupportMultipleWindows={false}
+        originWhitelist={['https://*', 'http://*']}
+        onLoadStart={() => setLoading(true)}
+        onLoadEnd={() => setLoading(false)}
+        onError={(e) => console.warn('WebView error:', e.nativeEvent)}
+        onHttpError={(e) => console.warn('WebView HTTP:', e.nativeEvent.statusCode, e.nativeEvent.url)}
+        onShouldStartLoadWithRequest={(req) => {
+          if (isPaymentReturnUrl(req.url)) { onClose(); return false; }
+          return /^https?:\/\//.test(req.url);   // bloquea mercadopago://, intent://, etc.
+        }}
+      />
         ) : null}
 
         {loading ? <ActivityIndicator style={styles.loader} color={colors.primary} /> : null}

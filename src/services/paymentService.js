@@ -24,8 +24,5 @@ export async function createPayment(tripId, amount) {
 }
 
 export function isPaymentReturnUrl(url) {
-  if (!url || typeof url !== 'string' || !ENV.BACKEND_URL) {
-    return false;
-  }
-  return url.startsWith(`${ENV.BACKEND_URL}/payments/return`);
+  return typeof url === 'string' && url.includes('/payments/return');
 }
