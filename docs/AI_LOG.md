@@ -805,6 +805,6 @@ Herramienta: Claude
 Objetivo: Crear el archivo de pruebas para la generación automática de solicitudes de viaje utilizando ubicaciones de Medellín y el servicio de rutas
 Prompt: Necesito que me ayudes de tal manera que me guies para crear un archivo de pruebas que incluya una lista de puntos de referencia en Medellín, una función para seleccionar origen y destino diferentes al azar, y la función createDemoRequest para registrar viajes en Firestore consumiendo el servicio de rutas
 Qué se usó / modificó / descartó: Se creó el archivo de pruebas estructurado con el arreglo MEDELLIN_PLACES con coordenadas reales de puntos clave como Parque Lleras, Estadio, etc. La función auxiliar pickTwoDifferent para garantizar que el origen y destino no se repitan, y la implementación de createDemoRequest utilizando getRoute y Firebase Firestore (addDoc) con el estado inicial del viaje
-Archivos y commit: src/services/demoService.js hash: 
+Archivos y commit: src/services/demoService.js hash: 264db866f80164bc277d5c40b84bf5fb64b3543b
 Verificación: Ejecutar la función de prueba para validar que los puntos se seleccionan aleatoriamente, calcula la ruta correctamente y se inserta el documento en la base de datos sin errores
 Aprendizaje: Aprendí a estructurar scripts de pruebas locales aislados para simular dinámicamente flujos de viaje completos con coordenadas del entorno real
