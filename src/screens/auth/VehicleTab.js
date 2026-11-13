@@ -43,7 +43,7 @@ export default function VehicleTab() {
         placeholder={t('placeholders.plate')}
         autoCapitalize="characters"
         autoCorrect={false}
-        maxLength={7}
+        maxLength={6}
         {...bind('plate')}
       />
       <Input label={t('fields.brand')} placeholder={t('placeholders.brand')} maxLength={30} {...bind('brand')} />

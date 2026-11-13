@@ -121,7 +121,7 @@ export default {
     expired: 'The expiry date must be after today',
     imageRequired: 'You must add an image',
     termsRequired: 'You must accept the terms',
-    licenseFormat: '5 to 15 letters or numbers',
+    licenseFormat: '5 to 15 numbers',
     emailExists: 'A driver with this email already exists',
     submitFailed: 'We could not send your registration. Check your connection and try again.',
     generic: 'Something went wrong. Please try again.',

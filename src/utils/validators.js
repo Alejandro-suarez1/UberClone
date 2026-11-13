@@ -85,7 +85,7 @@ export function seats(v, category) {
 
 export function licenseNumber(v) {
   if (isBlank(v)) return E.required;
-  return /^[A-Za-z0-9]{5,15}$/.test(String(v).trim()) ? null : E.licenseFormat;
+  return /^\d{5,15}$/.test(String(v).trim()) ? null : E.licenseFormat;
 }
 
 export function expiryDate(v, now = new Date()) {
