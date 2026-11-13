@@ -787,3 +787,15 @@ Qué se usó / modificó / descartó: Se utilizó una estructura de contenedor c
 Archivos y commit: src/screens/trip/PaymentSummaryScreen.js hash: ad0cc40e5388d3ab93fa242db104cfbba17029bd
 Verificación: Realizar pruebas cobrando en efectivo para verificar el estado de pago en efectivo, y realizar cobros mediante la pasarela de Mercado Pago comprobando la actualización a estado aprobado
 Aprendizaje: Comprendí la importancia de sincronizar los estados de pago en tiempo real desde la base de datos para ofrecer una retroalimentación clara al conductor y asegurar un cierre de ciclo sin fricciones en la aplicación
+
+### Entrada #B-4
+Fecha: 2026-11-12
+Integrante: Juan Diego
+Herramienta: Claude
+Objetivo: Desarrollar el servicio de direcciones y cálculo de distancias con respaldo sin conexión
+Prompt: Necesito obtener y dibujar rutas entre dos puntos en React Native utilizando un servicio gratuito como OSRM. Me puedes orientar sobre cómo consultar la ruta, guardar los resultados en caché para evitar solicitudes repetidas y mostrar una línea recta como alternativa cuando no haya conexión o falle el servicio?
+Qué se usó / modificó / descartó: Claude me orientó sobre cómo realizar las consultas de rutas con la API pública de OSRM y cómo implementar un caché en memoria para evitar solicitudes innecesarias. Se tomó como referencia la lógica para transformar las coordenadas y dibujar el recorrido. Además, se ajustó el almacenamiento en caché para limitarlo a 50 elementos, se mantuvo el cálculo de distancia en kilómetros con dos decimales incluyendo fórmula Haversine para el respaldo y se mejoró el manejo de errores de red mediante. Se descartó el bloque de error vacío
+Archivos y commit: src/services/directionsService.js hash: 
+Verificación: Solicitar una ruta conocida para validar distancia y tiempo; desconectar la red o alterar temporalmente la URL base para comprobar que se devuelve la línea recta de respaldo
+Aprendizaje: Aprendí que se debe solicitar la ruta únicamente por tramo y no por cada movimiento del vehículo, reduciendo drásticamente las consultas innecesarias para evitar saturar el servidor público y mejorar el rendimiento de la app
+

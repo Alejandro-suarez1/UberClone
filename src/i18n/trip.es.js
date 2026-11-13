@@ -41,7 +41,7 @@ export default {
     openMaps: 'Abrir en Maps',
     tipTitle: 'Propina recibida',
     tipHint: 'Las propinas son tuyas completas.',
-    routeApproximate: 'Ruta aproximada (sin llave de Directions)',
+    routeApproximate: 'Ruta aproximada (no se pudo calcular el trayecto)',
     eta: '{minutes} min · {km}',
     errorUpdate: 'No se pudo actualizar el viaje. Inténtalo de nuevo.',
   },

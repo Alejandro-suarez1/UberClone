@@ -62,7 +62,7 @@ export default function DocumentsTab() {
         <Input
           label={t('fields.licenseNumber')}
           placeholder={t('placeholders.licenseNumber')}
-          autoCapitalize="characters"
+          keyboardType="number-pad"
           autoCorrect={false}
           maxLength={15}
           value={d.licenseNumber}

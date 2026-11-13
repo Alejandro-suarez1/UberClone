@@ -24,7 +24,8 @@ const SANITIZERS = {
   phone: onlyDigits,
   year: onlyDigits,
   seats: onlyDigits,
-  plate: normalizePlate, 
+  licenseNumber: onlyDigits,
+  plate: (v) => normalizePlate(v).slice(0, 6),
 };
 
 export function RegistrationProvider({ children }) {

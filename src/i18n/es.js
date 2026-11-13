@@ -121,7 +121,7 @@ export default {
     expired: 'La fecha de vencimiento debe ser posterior a hoy',
     imageRequired: 'Debes agregar una imagen',
     termsRequired: 'Debes aceptar los términos',
-    licenseFormat: 'Entre 5 y 15 letras o números',
+    licenseFormat: 'Entre 5 y 15 números',
     emailExists: 'Ya existe un conductor con este correo',
     submitFailed: 'No pudimos enviar el registro. Revisa tu conexión e inténtalo de nuevo.',
     generic: 'Algo salió mal. Inténtalo de nuevo.',

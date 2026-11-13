@@ -41,7 +41,7 @@ export default {
     openMaps: 'Open in Maps',
     tipTitle: 'Tip received',
     tipHint: 'Tips are entirely yours.',
-    routeApproximate: 'Approximate route (no Directions key)',
+    routeApproximate: 'Approximate route (could not calculate the path)',
     eta: '{minutes} min · {km}',
     errorUpdate: 'Could not update the trip. Please try again.',
   },
