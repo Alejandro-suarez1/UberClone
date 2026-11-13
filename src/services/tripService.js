@@ -1,11 +1,19 @@
 import { collection, doc, getDocs, limit as limitTo, onSnapshot, orderBy, query, setDoc, startAfter, updateDoc, where } from 'firebase/firestore';
 import { db } from './firebase';
 import { calculateFare } from '../utils/calculateFare';
-import { COMMISSION_RATE } from '../config/pricing';
+import { COMMISSION_RATE, PRICING } from '../config/pricing';
 import { COLLECTIONS, PAYMENT_METHOD, PAYMENT_STATUS, TRIP_STATUS } from '../contracts/types';
 
 const tripsRef = () => collection(db, COLLECTIONS.TRIPS);
 const withId = (snapshot) => ({ id: snapshot.id, ...snapshot.data() });
+
+const ACTIVE_STATUSES = [
+  TRIP_STATUS.ACCEPTED,
+  TRIP_STATUS.DRIVER_ARRIVING,
+  TRIP_STATUS.IN_PROGRESS,
+  TRIP_STATUS.COMPLETED, 
+];
+const ACTIVE_MAX_AGE_MS = 6 * 60 * 60 * 1000; 
 
 export function subscribeToRequests(driverId, onRequests, onError) {
   const q = query(tripsRef(), where('driverId', '==', driverId), where('status', '==', TRIP_STATUS.REQUESTED));
@@ -31,11 +39,25 @@ export async function updateTripStatus(tripId, status, extra = {}) {
   await updateDoc(doc(db, COLLECTIONS.TRIPS, tripId), { status, ...extra, updatedAt: Date.now() });
 }
 
+export async function getActiveTrip(driverId) {
+  const snapshot = await getDocs(
+    query(tripsRef(), where('driverId', '==', driverId), where('status', 'in', ACTIVE_STATUSES)),
+  );
+  const now = Date.now();
+  const stamp = (trip) => trip.updatedAt || trip.createdAt || 0;
+  const fresh = snapshot.docs
+    .map(withId)
+    .filter((trip) => now - stamp(trip) < ACTIVE_MAX_AGE_MS)
+    .sort((a, b) => stamp(b) - stamp(a));
+  return fresh[0] || null;
+}
+
 export async function completeTrip(trip, { tip = 0, route } = {}) {
+  const category = PRICING.categoryMultiplier[trip.category] !== undefined ? trip.category : 'economy';
   const { fare, commission, driverEarnings } = calculateFare({
-    distanceKm: trip.distanceKm,
-    durationMin: trip.durationMin,
-    category: trip.category,
+    distanceKm: Number(trip.distanceKm) || 0,
+    durationMin: Number(trip.durationMin) || 0,
+    category,
     tip,
     commissionRate: COMMISSION_RATE,
   });

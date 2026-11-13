@@ -54,6 +54,9 @@ async function syncPayment(paymentId) {
   const snapshot = await ref.get();
   if (!snapshot.exists) return null;
 
+  const current = snapshot.data();
+  if (current.status === 'paid') return { tripId, paymentStatus: current.paymentStatus || 'approved' };
+
   const paymentStatus = mapPaymentStatus(payment.status);
   const patch = {
     paymentStatus,
@@ -151,6 +154,29 @@ app.post('/payments/webhook', async (req, res) => {
     if (topic === 'payment' && paymentId) await syncPayment(paymentId);
   } catch (error) {
     console.error('Error en el webhook:', error.message);
+  }
+});
+
+app.get('/payments/status/:tripId', async (req, res) => {
+  try {
+    const { tripId } = req.params;
+    const snapshot = await trips.doc(tripId).get();
+    if (!snapshot.exists) return res.status(404).json({ error: 'Viaje no encontrado' });
+
+    const trip = snapshot.data();
+    if (trip.status === 'paid') return res.json({ paymentStatus: trip.paymentStatus || 'approved' });
+
+    const search = await mpFetch(
+      `/v1/payments/search?external_reference=${encodeURIComponent(tripId)}&sort=date_created&criteria=desc&limit=1`,
+    );
+    const latest = search.results?.[0];
+    if (!latest) return res.json({ paymentStatus: trip.paymentStatus || 'pending' });
+
+    const result = await syncPayment(latest.id);
+    res.json({ paymentStatus: result?.paymentStatus || 'pending' });
+  } catch (error) {
+    console.error('Error verificando el pago:', error.message);
+    res.status(500).json({ error: 'No se pudo verificar el pago' });
   }
 });
 

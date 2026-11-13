@@ -1,10 +1,15 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 import { useDriverSession } from './DriverSessionContext';
 import { useI18n } from './I18nContext';
 import useTripRequests from '../hooks/useTripRequests';
-import { completeTrip as completeTripService, subscribeToTrip, updateTripStatus } from '../services/tripService';
-import { navigate, resetToHome } from '../contracts/navigationRef';
+import {
+  completeTrip as completeTripService,
+  getActiveTrip,
+  subscribeToTrip,
+  updateTripStatus,
+} from '../services/tripService';
+import { navigate, navigationRef, resetToHome } from '../contracts/navigationRef';
 import { ROUTES } from '../contracts/routes';
 import { APPROVAL, TRIP_STATUS } from '../contracts/types';
 
@@ -15,6 +20,7 @@ export function ActiveTripProvider({ children }) {
   const { t } = useI18n();
   const [trip, setTrip] = useState(null);
   const tripId = trip?.id;
+  const restoredFor = useRef(null);
 
   const incoming = useTripRequests({
     driverId,
@@ -25,6 +31,49 @@ export function ActiveTripProvider({ children }) {
   useEffect(() => {
     if (incomingId) navigate(ROUTES.INCOMING_REQUEST);
   }, [incomingId]);
+
+  useEffect(() => {
+    if (!driverId) setTrip(null);
+  }, [driverId]);
+
+  useEffect(() => {
+    if (!driverId) {
+      restoredFor.current = null;
+      return undefined;
+    }
+    if (approval !== APPROVAL.APPROVED || restoredFor.current === driverId) return undefined;
+    restoredFor.current = driverId;
+
+    let active = true;
+    let timer = null;
+    (async () => {
+      try {
+        const found = await getActiveTrip(driverId);
+        if (!active || !found) return;
+        setTrip(found);
+
+        const target = found.status === TRIP_STATUS.COMPLETED ? ROUTES.PAYMENT_SUMMARY : ROUTES.TRIP_IN_PROGRESS;
+        let tries = 0;
+        timer = setInterval(() => {
+          tries += 1;
+          const ready = navigationRef.isReady() && navigationRef.getRootState()?.routeNames?.includes(target);
+          if (ready) {
+            clearInterval(timer);
+            navigate(target);
+          } else if (tries > 40) {
+            clearInterval(timer);
+          }
+        }, 250);
+      } catch (e) {
+        console.warn('Error al buscar un viaje activo:', e);
+      }
+    })();
+
+    return () => {
+      active = false;
+      if (timer) clearInterval(timer);
+    };
+  }, [driverId, approval]);
 
   useEffect(() => {
     if (!tripId) return undefined;

@@ -44,6 +44,9 @@ export default {
     routeApproximate: 'Ruta aproximada (no se pudo calcular el trayecto)',
     eta: '{minutes} min · {km}',
     errorUpdate: 'No se pudo actualizar el viaje. Inténtalo de nuevo.',
+    verify: 'Verificar pago',
+    stillPending: 'El pago todavía no aparece aprobado. Inténtalo de nuevo en unos segundos.',
+    errorVerify: 'No se pudo verificar el pago. Revisa el backend e inténtalo de nuevo.',
   },
   payment: {
     title: 'Resumen del cobro',

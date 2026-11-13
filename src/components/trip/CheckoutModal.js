@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,6 +12,14 @@ import { spacing } from '../../theme/spacing';
 export default function CheckoutModal({ visible, url, onClose }) {
   const { t } = useI18n();
   const [loading, setLoading] = useState(true);
+  const handled = useRef(false);
+
+  useEffect(() => {
+    if (visible) {
+      setLoading(true);
+      handled.current = false;
+    }
+  }, [visible, url]);
 
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
@@ -31,9 +39,11 @@ export default function CheckoutModal({ visible, url, onClose }) {
             onLoadStart={() => setLoading(true)}
             onLoadEnd={() => setLoading(false)}
             onNavigationStateChange={(navState) => {
-              if (isPaymentReturnUrl(navState.url)) onClose();
+              if (isPaymentReturnUrl(navState.url) && !handled.current) {
+                handled.current = true;
+                onClose();
+              }
             }}
-            startInLoadingState
           />
         ) : null}
 

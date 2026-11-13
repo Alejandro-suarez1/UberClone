@@ -1,6 +1,7 @@
 // AI-assisted: see docs/AI_LOG.md #B-19
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { BackHandler, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import ScreenContainer from '../../components/common/ScreenContainer';
 import Card from '../../components/common/Card';
@@ -9,7 +10,7 @@ import CheckoutModal from '../../components/trip/CheckoutModal';
 import PaymentStatusPill from '../../components/trip/PaymentStatusPill';
 import { useI18n } from '../../context/I18nContext';
 import { useActiveTrip } from '../../context/ActiveTripContext';
-import { createPayment } from '../../services/paymentService';
+import { checkPayment, createPayment } from '../../services/paymentService';
 import { markCashReceived } from '../../services/tripService';
 import { resetToHome } from '../../contracts/navigationRef';
 import { PAYMENT_METHOD, PAYMENT_STATUS, TRIP_STATUS } from '../../contracts/types';
@@ -32,20 +33,53 @@ export default function PaymentSummaryScreen() {
   const { trip, clearTrip } = useActiveTrip();
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const [busy, setBusy] = useState(false);
+  const [verifying, setVerifying] = useState(false);
   const [started, setStarted] = useState(false);
+  const [stillPending, setStillPending] = useState(false);
   const [errorKey, setErrorKey] = useState(null);
+
+  const isPaidNow = trip?.status === TRIP_STATUS.PAID;
+
+  useFocusEffect(
+    useCallback(() => {
+      const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+        if (isPaidNow) {
+          clearTrip();
+          resetToHome();
+        }
+        return true;
+      });
+      return () => sub.remove();
+    }, [isPaidNow, clearTrip]),
+  );
 
   if (!trip) return <ScreenContainer />;
 
   const isCash = trip.paymentMethod === PAYMENT_METHOD.CASH;
-  const isPaid = trip.status === TRIP_STATUS.PAID;
+  const isPaid = isPaidNow;
   const status = isPaid ? (isCash ? PAYMENT_STATUS.CASH : PAYMENT_STATUS.APPROVED) : trip.paymentStatus || PAYMENT_STATUS.PENDING;
   const rejected = status === PAYMENT_STATUS.REJECTED;
   const ratePercent = Math.round((trip.commissionRate || 0) * 100);
+  const attempted = started || Boolean(trip.paymentPreferenceId); 
+
+  const verifyPayment = async () => {
+    setVerifying(true);
+    setErrorKey(null);
+    setStillPending(false);
+    try {
+      const result = await checkPayment(trip.id);
+      if (result.paymentStatus === 'pending') setStillPending(true);
+    } catch (e) {
+      setErrorKey('payment.errorVerify');
+    } finally {
+      setVerifying(false);
+    }
+  };
 
   const collectWithGateway = async () => {
     setBusy(true);
     setErrorKey(null);
+    setStillPending(false);
     try {
       const { checkoutUrl: url } = await createPayment(trip.id, trip.fare + (trip.tip || 0));
       setCheckoutUrl(url);
@@ -72,6 +106,11 @@ export default function PaymentSummaryScreen() {
   const backHome = () => {
     clearTrip();
     resetToHome();
+  };
+
+  const closeCheckout = () => {
+    setCheckoutUrl(null);
+    verifyPayment(); 
   };
 
   return (
@@ -107,6 +146,7 @@ export default function PaymentSummaryScreen() {
       ) : null}
 
       {rejected ? <Text style={styles.rejected}>{t('payment.rejectedText')}</Text> : null}
+      {stillPending ? <Text style={styles.waiting}>{t('payment.stillPending')}</Text> : null}
       {errorKey ? <Text style={styles.rejected}>{t(errorKey)}</Text> : null}
 
       <View style={styles.actions}>
@@ -122,12 +162,25 @@ export default function PaymentSummaryScreen() {
               onPress={collectWithGateway}
               loading={busy}
             />
-            {started && !rejected ? <Text style={styles.waiting}>{t('payment.waiting')}</Text> : null}
+            {attempted && !rejected ? (
+              <>
+                <Text style={styles.waiting}>{t('payment.waiting')}</Text>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  icon="refresh"
+                  title={t('payment.verify')}
+                  onPress={verifyPayment}
+                  loading={verifying}
+                  style={styles.verify}
+                />
+              </>
+            ) : null}
           </>
         )}
       </View>
 
-      <CheckoutModal visible={checkoutUrl !== null} url={checkoutUrl} onClose={() => setCheckoutUrl(null)} />
+      <CheckoutModal visible={checkoutUrl !== null} url={checkoutUrl} onClose={closeCheckout} />
     </ScreenContainer>
   );
 }
@@ -203,6 +256,9 @@ const styles = StyleSheet.create({
     ...typography.caption,
     color: colors.textMuted,
     textAlign: 'center',
+    marginTop: spacing.md,
+  },
+  verify: {
     marginTop: spacing.md,
   },
 });

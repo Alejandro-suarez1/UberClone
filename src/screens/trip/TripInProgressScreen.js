@@ -1,7 +1,7 @@
 // AI-assisted: see docs/AI_LOG.md #B-18
-import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Linking, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Alert, BackHandler, Linking, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
@@ -35,6 +35,12 @@ export default function TripInProgressScreen({ navigation }) {
   const { trip, setStatus, completeTrip, cancelTrip } = useActiveTrip();
   const { location } = useDriverLocation({ enabled: true });
 
+  useFocusEffect(
+    useCallback(() => {
+      const sub = BackHandler.addEventListener('hardwareBackPress', () => true);
+      return () => sub.remove();
+    }, []),
+  );
   const [route, setRoute] = useState(null);
   const [tip, setTip] = useState(0);
   const [busy, setBusy] = useState(false);

@@ -34,8 +34,8 @@ export default function RouteMap({ coordinates, driver, target, targetColor = co
       userInterfaceStyle="dark"
       toolbarEnabled={false}
       initialRegion={{
-        latitude: start?.lat ?? 4.711,
-        longitude: start?.lng ?? -74.0721,
+        latitude: start?.lat ?? 6.2518,
+        longitude: start?.lng ?? -75.5636,
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
       }}

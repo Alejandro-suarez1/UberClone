@@ -70,7 +70,16 @@ export function RegistrationProvider({ children }) {
     setTouched((prev) => (prev[tab][field] ? prev : { ...prev, [tab]: { ...prev[tab], [field]: true } }));
   }, []);
 
-  // Errores reales de cada pestaña (siempre calculados)
+  const touchTab = useCallback(
+    (tab) => {
+      setTouched((prev) => ({
+        ...prev,
+        [tab]: Object.fromEntries(Object.keys(values[tab]).map((key) => [key, true])),
+      }));
+    },
+    [values],
+  );
+
   const errors = useMemo(
     () => ({
       personal: validatePersonal(values.personal),

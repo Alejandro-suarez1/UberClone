@@ -97,7 +97,7 @@ export default function HomeScreen({ navigation }) {
         showsUserLocation
         showsMyLocationButton={false}
         toolbarEnabled={false}
-        initialRegion={{ latitude: 4.711, longitude: -74.0721, latitudeDelta: 0.08, longitudeDelta: 0.08 }}
+        initialRegion={{ latitude: 6.2518, longitude: -75.5636, latitudeDelta: 0.08, longitudeDelta: 0.08 }}
       />
 
       <SafeAreaView edges={['top']} style={styles.top} pointerEvents="box-none">

@@ -66,5 +66,8 @@ export default {
     close: 'Close',
     errorCreate: 'Could not start the payment. Check the backend and try again.',
     errorCash: 'Could not record the payment. Please try again.',
+    verify: 'Check payment',
+    stillPending: 'The payment is not approved yet. Try again in a few seconds.',
+    errorVerify: 'Could not check the payment. Check the backend and try again.',
   },
 };

@@ -25,11 +25,17 @@ function Stat({ icon, label, value }) {
 export default function TripRequestCard({ trip }) {
   const { t } = useI18n();
 
-  const { fare, driverEarnings } = useMemo(() => calculateFare({
-    distanceKm: trip?.distanceKm,
-    durationMin: trip?.durationMin,
-    category: trip?.category,
-  }), [trip?.distanceKm, trip?.durationMin, trip?.category]);
+   const { fare, driverEarnings } = useMemo(() => {
+    try {
+      return calculateFare({
+        distanceKm: trip?.distanceKm,
+        durationMin: trip?.durationMin,
+        category: trip?.category,
+      });
+    } catch (e) {
+      return { fare: 0, driverEarnings: 0 };
+    }
+  }, [trip?.distanceKm, trip?.durationMin, trip?.category]);
 
   return (
     <Card variant="glow">
@@ -55,7 +61,8 @@ export default function TripRequestCard({ trip }) {
 
       <View style={styles.stats}>
         <Stat icon="speedometer-outline" label={t('trip.distance')} value={formatKm(trip?.distanceKm)} />
-        <Stat icon="time-outline" label={t('trip.duration')} value={`${trip?.durationMin} min`} />
+        <Stat icon="time-outline" label={t('trip.duration')} value={trip?.durationMin != null ? `${trip.durationMin} min` : '—'}
+        />
       </View>
       <View style={styles.stats}>
         <Stat icon="car-sport-outline" label={t('trip.category')} value={t(`status.category.${trip?.category}`)} />
